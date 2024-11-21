@@ -1,0 +1,16 @@
+<div class="social-links">
+  {% if settings.social_facebook != blank %}
+    <li>
+      <a href="#!">
+        {% render 'icon_facebook' %}
+      </a>
+    </li>
+  {% endif %}
+  {% if settings.social_instagram != blank %}
+    <li>
+      <a href="#!">
+        {% render 'icon_instagram' %}
+      </a>
+    </li>
+  {% endif %}
+</div>

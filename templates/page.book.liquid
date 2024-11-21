@@ -1,0 +1,40 @@
+{{ 'book.css' | asset_url | stylesheet_tag }}
+
+{% section 'page-header' %}
+<section id="book">
+  <div class="wrapper">
+    <div class="book-container">
+      <div class="book-details">
+        <h2 class="dark-gray">{{ page.title }}</h2>
+        <p class="light-gray">{{ page.content | strip_html }}</p>
+      </div>
+      <div class="book-list-container">
+        <div class="book-widget">
+          <img src="https://cdn.shopify.com/s/files/1/0597/1116/0382/files/Default_Image.webp?v=1732132876" alt="Default Image">
+          <div class="book-widget-details">
+            <h6 class="dark-gray">NicholsMD of Greenwich</h6>
+            <p class="light-gray">50 Old Field Point Road, Third Floor Greenwich, CT 06830</p>
+            <a href="#!" class="btn-primary">Book an Appointment </a>
+          </div>
+        </div>
+        <div class="book-widget">
+          <img src="https://cdn.shopify.com/s/files/1/0597/1116/0382/files/Default_Image.webp?v=1732132876" alt="Default Image">
+          <div class="book-widget-details">
+            <h6 class="dark-gray">NicholsMD of Greenwich</h6>
+            <p class="light-gray">50 Old Field Point Road, Third Floor Greenwich, CT 06830</p>
+            <a href="#!" class="btn-primary">Book an Appointment </a>
+          </div>
+        </div>
+        <div class="book-widget">
+          <img src="https://cdn.shopify.com/s/files/1/0597/1116/0382/files/Default_Image.webp?v=1732132876" alt="Default Image">
+          <div class="book-widget-details">
+            <h6 class="dark-gray">NicholsMD of Greenwich</h6>
+            <p class="light-gray">50 Old Field Point Road, Third Floor Greenwich, CT 06830</p>
+            <a href="#!" class="btn-primary">Book an Appointment </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+{% section 'quiz' %}

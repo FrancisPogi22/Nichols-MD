@@ -1,0 +1,49 @@
+<div class="cart-drawer-con">
+  <div class="cart-drawer">
+    <div class="close-cart-con closeCart">
+      {% render 'icon_close' %}
+    </div>
+    {% form 'cart', cart, class: 'cart-drawer-form' %}
+      {% if cart.item_count > 0 %}
+        <div class="cart-drawer-items">
+          {% for item in cart.items %}
+            <div class="cart-drawer-item" data-line-item-key="{{ item.key }}">
+              <div class="cart-drawer-item-image">
+                <a href="{{ item.url }}"><img src="{{ item.image | img_url: '2048x' }}" alt="{{ item.title }}" loading="lazy"></a>
+                <div class="item-details">
+                  <a href="{{ item.url }}">{{ item.product.title }}</a>
+                  <p class="quantity-text">
+                    <button class="decrease-quantity minus" data-line="{{ forloop.index }}">−</button>
+                    <span class="quantity-value">{{ item.quantity }}</span>
+                    <button class="increase-quantity plus" data-line="{{ forloop.index }}">+</button>
+                    × <span>{{ item.price | money }}</span>
+                  </p>
+                  <a
+                    href="/cart/change?line={{ forloop.index }}&amp;quantity=0"
+                    class="remove-item-btn"
+                    data-variant="{{ item.id }}"
+                  ></a>
+                </div>
+              </div>
+            </div>
+          {% endfor %}
+        </div>
+        <div class="sub-total-con">
+          <p><span>Subtotal: </span class> <span class="cart-total-price">{{ cart.total_price | money }}</span></p>
+        </div>
+        <div class="cart-btn-con">
+          <a href="/cart" class="btn-secondary">View Cart</a>
+          <button type="submit" name="checkout" class="btn-secondary">Checkout</button>
+        </div>
+      {% else %}
+        <p class="cart-drawer-empty">No products in the cart.</p>
+      {% endif %}
+    {% endform %}
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Cart drawer"
+}
+{% endschema %}

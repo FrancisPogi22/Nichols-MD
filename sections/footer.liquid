@@ -1,0 +1,87 @@
+{% liquid
+  assign has_social_icons = true
+  if settings.social_facebook == blank and settings.social_instagram == blank
+    assign has_social_icons = false
+  endif
+%}
+
+<section id="footer">
+  <div class="wrapper">
+    <div class="footer-container">
+      {% if section.settings.footer_logo != blank %}
+        <a href="{{ routes.root_url }}">
+          <img
+            class="footer-logo"
+            src="{{ section.settings.footer_logo | img_url: "2048x" }}"
+            alt="{{ section.settings.footer_logo.alt }}"
+          >
+        </a>
+      {% else %}
+        <img
+          src="https://cdn.shopify.com/s/files/1/0597/1116/0382/files/Default_Image.webp?v=1732132876"
+          alt="Default Image"
+        >
+      {% endif %}
+      <ul>
+        <h6>Contact Details</h6>
+        <li>
+          <a href="#!">Your Address Here</a>
+        </li>
+        <li>
+          <a href="#!">email@yourdomain.com</a>
+        </li>
+        <li>
+          <a href="#!">123-456-7890</a>
+        </li>
+      </ul>
+      <ul>
+        <h6>Quick Links</h6>
+        {% for link in linklists.footer.links %}
+          <li>
+            <a href="{{ link.url }}" title="{{ link.title }}">{{ link.title }}</a>
+          </li>
+        {% endfor %}
+      </ul>
+      <ul>
+        <h6>Connect With Us!</h6>
+        {% if section.settings.show_social and has_social_icons %}
+          {% render 'social_icons', class: 'footer_list_social' %}
+        {% endif %}
+      </ul>
+    </div>
+    <div class="footer-copyright">
+      <p>©<span class="year">2024</span> NicholsMD</p>
+      <p>Designed by Aesthetic Conversion</p>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Footer",
+  "enabled_on": {
+    "groups": ["footer"]
+  },
+  "settings": [
+    {
+      "type": "header",
+      "content": "Footer Logo"
+    },
+    {
+      "type": "image_picker",
+      "id": "footer_logo",
+      "label": "Footer Logo"
+    },
+    {
+      "type": "header",
+      "content": "Social Links"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_social",
+      "default": true,
+      "label": "Social media icons"
+    }
+  ]
+}
+{% endschema %}

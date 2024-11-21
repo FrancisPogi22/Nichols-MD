@@ -1,0 +1,119 @@
+{{ 'featured-product.css' | asset_url | stylesheet_tag }}
+
+<section id="featured-product">
+  <div class="wrapper">
+    <div class="featured-container">
+      <div class="featured-details-container">
+        {% if section.settings.lead_in_text != blank %}
+          <p class="lead-in light-blue">{{ section.settings.lead_in_text | escape }}</p>
+        {% endif %}
+        {% if section.settings.heading_text != blank %}
+          <h2 class="dark-gray">{{ section.settings.heading_text | escape }}</h2>
+        {% endif %}
+        {% if section.settings.sub_text != blank %}
+          <p class="light-gray">
+            {{ section.settings.sub_text | escape }}
+          </p>
+        {% endif %}
+      </div>
+      <div class="featured-products">
+        {% for block in section.blocks %}
+          {% case block.type %}
+            {% when 'product' %}
+              {% if block.settings.featured_product != blank %}
+                <div class="product-widget">
+                  <a href="{{ block.settings.featured_product.url }}">
+                    {% if block.settings.featured_product.featured_image != blank %}
+                      <img
+                        src="{{ block.settings.featured_product.featured_image | img_url: '2048x' }}"
+                        alt="{{ block.settings.featured_product.alt }}"
+                      >
+                      </a>
+                    {% else %}
+                      <img
+                        class="product-img"
+                        src="https://cdn.shopify.com/s/files/1/0597/1116/0382/files/Default_Image.webp?v=1732132876"
+                        alt="Default Image"
+                      >
+                    {% endif %}
+                  </a>
+                  <a href="{{ block.settings.featured_product.url }}">
+                    {% if block.settings.featured_product.title != blank %}
+                      <h4 class="dark-gray">{{ block.settings.featured_product.title }}</h4>
+                    {% else %}
+                      <h4 class="dark-gray">Feattured Product</h4>
+                    {% endif %}
+                  </a>
+                  <a href="{{ block.settings.featured_product.url }}" class="semi-gray">Learn More</a>
+                </div>
+              {% endif %}
+          {% endcase %}
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Featured Product",
+  "disabled_on": {
+    "groups": ["header", "footer"]
+  },
+  "settings": [
+    {
+      "type": "header",
+      "content": "Lead In Text"
+    },
+    {
+      "type": "text",
+      "id": "lead_in_text",
+      "default": "Featured products",
+      "label": "Lead In Text"
+    },
+    {
+      "type": "header",
+      "content": "Heading Text"
+    },
+    {
+      "type": "text",
+      "id": "heading_text",
+      "default": "Products We Offer",
+      "label": "Heading Text"
+    },
+    {
+      "type": "header",
+      "content": "Sub Text"
+    },
+    {
+      "type": "text",
+      "id": "sub_text",
+      "default": "This space is reserved for your unique and captivating header text. Let your creativity flow and set the tone for what follows. Your header is the gateway to your content – make it compelling and unforgettable. Add your header text now!",
+      "label": "Sub Text"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "product",
+      "name": "Featured Product",
+      "limit": 3,
+      "settings": [
+        {
+          "type": "header",
+          "content": "Featured Product"
+        },
+        {
+          "type": "product",
+          "id": "featured_product",
+          "label": "Featured Product"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Featured Product"
+    }
+  ]
+}
+{% endschema %}

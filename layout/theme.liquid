@@ -1,0 +1,103 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="description" content="{{ page_description | escape }}">
+    <link rel="canonical" href="{{ canonical_url }}">
+    <title>{{ shop.name }}</title>
+    <link
+      rel="shortcut icon"
+      href="https://cdn.shopify.com/s/files/1/0649/1635/7281/files/NMD_Logo.png?v=1731625425"
+      type="image/x-icon"
+    >
+    <meta name="viewport" content="width=device-width,initial-scale=1,shrink-to-fit=no">
+    {{ content_for_header }}
+    {% style %}
+            :root {
+              --font-heading-family: {{ settings.type_header_font.family }}, {{ settings.type_header_font.fallback_families }};
+              --font-body-family: {{ settings.type_body_font.family }}, {{ settings.type_body_font.fallback_families }};
+            }
+
+            :root {
+              --buttons-radius: {{ settings.buttons_radius }}px;
+              --buttons-radius-outset: {% if settings.buttons_radius > 0 %}{{ settings.buttons_radius | plus: settings.buttons_border_thickness }}{% else %}0{% endif %}px;
+              --buttons-border-width: {% if settings.buttons_border_opacity > 0 %}{{ settings.buttons_border_thickness }}{% else %}0{% endif %}px;
+              --buttons-border-opacity: {{ settings.buttons_border_opacity | divided_by: 100.0 }};
+              --buttons-shadow-opacity: {{ settings.buttons_shadow_opacity | divided_by: 100.0 }};
+              --buttons-shadow-visible: {% if settings.buttons_shadow_opacity > 0 %}1{% else %}0{% endif %};
+              --buttons-shadow-horizontal-offset: {{ settings.buttons_shadow_horizontal_offset }}px;
+              --buttons-shadow-vertical-offset: {{ settings.buttons_shadow_vertical_offset }}px;
+              --buttons-shadow-blur-radius: {{ settings.buttons_shadow_blur }}px;
+              --buttons-border-offset: {% if settings.buttons_radius > 0 or settings.buttons_shadow_opacity > 0 %}0.3{% else %}0{% endif %}px;
+            }
+
+            {% for scheme in settings.color_schemes %}
+        {% assign scheme_classes = scheme_classes | append: ', .color-' | append: scheme.id %}
+        {% if forloop.index == 1 %}
+          :root,
+        {% endif %}
+        .color-{{ scheme.id }} {
+          --color-background: rgb({{ scheme.settings.background.red }}, {{ scheme.settings.background.green }}, {{ scheme.settings.background.blue }});
+          {% if scheme.settings.background_gradient != empty %}
+            --gradient-background: {{ scheme.settings.background_gradient }};
+          {% else %}
+            --gradient-background: rgb({{ scheme.settings.background.red }}, {{ scheme.settings.background.green }}, {{ scheme.settings.background.blue }});
+          {% endif %}
+          {% liquid
+            assign background_color = scheme.settings.background
+            assign background_color_brightness = background_color | color_brightness
+            if background_color_brightness <= 26
+              assign background_color_contrast = background_color | color_lighten: 50
+            elsif background_color_brightness <= 65
+              assign background_color_contrast = background_color | color_lighten: 5
+            else
+              assign background_color_contrast = background_color | color_darken: 25
+            endif
+          %}
+          --color-foreground: rgb({{ scheme.settings.text.red }}, {{ scheme.settings.text.green }}, {{ scheme.settings.text.blue }});
+          --color-background-contrast: rgb({{ background_color_contrast.red }}, {{ background_color_contrast.green }}, {{ background_color_contrast.blue }});
+          --color-shadow: rgb({{ scheme.settings.shadow.red }}, {{ scheme.settings.shadow.green }}, {{ scheme.settings.shadow.blue }});
+          --color-button: rgb({{ scheme.settings.button.red }}, {{ scheme.settings.button.green }}, {{ scheme.settings.button.blue }});
+          --color-button-text: rgb({{ scheme.settings.button_label.red }}, {{ scheme.settings.button_label.green }}, {{ scheme.settings.button_label.blue }});
+          --color-secondary-button: rgb({{ scheme.settings.background.red }}, {{ scheme.settings.background.green }}, {{ scheme.settings.background.blue }});
+          --color-secondary-button-text: rgb({{ scheme.settings.secondary_button_label.red }}, {{ scheme.settings.secondary_button_label.green }}, {{ scheme.settings.secondary_button_label.blue }});
+          --color-link: rgb({{ scheme.settings.secondary_button_label.red }}, {{ scheme.settings.secondary_button_label.green }}, {{ scheme.settings.secondary_button_label.blue }});
+          --color-badge-foreground: rgb({{ scheme.settings.text.red }}, {{ scheme.settings.text.green }}, {{ scheme.settings.text.blue }});
+          --color-badge-background: rgb({{ scheme.settings.background.red }}, {{ scheme.settings.background.green }}, {{ scheme.settings.background.blue }});
+          --color-badge-border: rgb({{ scheme.settings.text.red }}, {{ scheme.settings.text.green }}, {{ scheme.settings.text.blue }});
+          --payment-terms-background-color: rgb({{ scheme.settings.background.red }}, {{ scheme.settings.background.green }}, {{ scheme.settings.background.blue }});
+        }
+      {% endfor %}
+
+            {{ scheme_classes | prepend: 'body' }} {
+              font-family: var(--font-body-family);
+              color: rgba(var(--color-foreground), 1);
+              background: {% if scheme.settings.background_gradient != empty %} var(--gradient-background); {% else %}rgb(var(--color-background)){% endif %};
+            }
+
+            h1,
+            h2,
+            h3,
+            h4,
+            h5,
+            h6,
+            button {
+              font-family: var(--font-heading-family);
+            }
+    {% endstyle %}
+    {{ 'application.css' | asset_url | stylesheet_tag }}
+    {{ 'jquery.js' | asset_url | script_tag }}
+    {{ 'application.js' | asset_url | script_tag }}
+  </head>
+  <body>
+    <div class="loader"></div>
+    {% sections 'header-group' %}
+
+    <main id="MainContent" role="main">
+      {{ content_for_layout }}
+    </main>
+
+    {% sections 'footer-group' %}
+  </body>
+</html>

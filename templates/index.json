@@ -1,0 +1,158 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "banner": {
+      "type": "banner",
+      "blocks": {
+        "buttons_b8zCj7": {
+          "type": "buttons",
+          "settings": {
+            "primary_button_link_text": "Learn More",
+            "primary_button_link": ""
+          }
+        }
+      },
+      "block_order": [
+        "buttons_b8zCj7"
+      ],
+      "settings": {
+        "heading_text": "Dermatologist Approved Skincare Products",
+        "sub_text": "This space is reserved for your unique and captivating header text. Let your creativity flow and set the tone for what follows. Your header is the gateway to your content – make it compelling and unforgettable. Add your header text now!",
+        "banner_image": "shopify://shop_images/Woman_Representing_Products.webp"
+      }
+    },
+    "meet_p9dUEN": {
+      "type": "meet",
+      "blocks": {
+        "buttons_wLfnia": {
+          "type": "buttons",
+          "settings": {
+            "primary_button_link_text": "Learn More",
+            "primary_button_link": ""
+          }
+        }
+      },
+      "block_order": [
+        "buttons_wLfnia"
+      ],
+      "settings": {
+        "lead_in_text": "Meet the Doctor",
+        "heading_text": "Dr. Kim Nichols",
+        "sub_text": "Kim Nichols, MD, FAAD is a Harvard-trained, board-certified, celebrity dermatologist that treats both cosmetic and medical skincare concerns. She has been recognized world-wide for her artistic expertise in administering injectables that yield -looking results for clients to look and feel their best.",
+        "featured_image": "shopify://shop_images/Women_Holding_Coffee.webp"
+      }
+    },
+    "partners_gEcmYq": {
+      "type": "partners",
+      "blocks": {
+        "buttons_EqTgyX": {
+          "type": "buttons",
+          "settings": {
+            "primary_button_link_text": "Learn More",
+            "primary_button_link": ""
+          }
+        }
+      },
+      "block_order": [
+        "buttons_EqTgyX"
+      ],
+      "settings": {
+        "lead_in_text": "A Proud Partner",
+        "heading_text": "We Proudly Carry SkinCeuticals",
+        "sub_text": "This space is reserved for your unique and captivating header text. Let your creativity flow and set the tone for what follows. Your header is the gateway to your content – make it compelling and unforgettable. Add your header text now!",
+        "featured_image": "shopify://shop_images/SkinCeuticals.webp"
+      }
+    },
+    "featured_product_e37tUg": {
+      "type": "featured-product",
+      "blocks": {
+        "product_e4qegc": {
+          "type": "product",
+          "settings": {
+            "featured_product": "botox-treatment-enhancers"
+          }
+        },
+        "product_NrBwW3": {
+          "type": "product",
+          "settings": {
+            "featured_product": "brow-lamination-tint-shape"
+          }
+        },
+        "product_TUVhV3": {
+          "type": "product",
+          "settings": {
+            "featured_product": "dr-nichols-hair-regrowth-kit"
+          }
+        }
+      },
+      "block_order": [
+        "product_e4qegc",
+        "product_NrBwW3",
+        "product_TUVhV3"
+      ],
+      "settings": {
+        "lead_in_text": "Featured products",
+        "heading_text": "Products We Offer",
+        "sub_text": "This space is reserved for your unique and captivating header text. Let your creativity flow and set the tone for what follows. Your header is the gateway to your content – make it compelling and unforgettable. Add your header text now!"
+      }
+    },
+    "philosophy_j8zRCC": {
+      "type": "philosophy",
+      "blocks": {
+        "buttons_TGMgm3": {
+          "type": "buttons",
+          "settings": {
+            "primary_button_link_text": "Learn More",
+            "primary_button_link": ""
+          }
+        }
+      },
+      "block_order": [
+        "buttons_TGMgm3"
+      ],
+      "settings": {
+        "lead_in_text": "About Our Philosophy",
+        "heading_text": "It’s More Than Skin Deep",
+        "sub_text": "This space is reserved for your unique and captivating header text. Let your creativity flow and set the tone for what follows. Your header is the gateway to your content – make it compelling and unforgettable. Add your header text now!",
+        "featured_image": "shopify://shop_images/Woman_Sharing_Details.webp"
+      }
+    },
+    "shop_qhWfBj": {
+      "type": "shop",
+      "settings": {
+        "lead_in_text": "Our shop",
+        "heading_text": "Shop by Category",
+        "collection": "treatments"
+      }
+    },
+    "solution_niRtfM": {
+      "type": "solution",
+      "settings": {
+        "lead_in_text": "We offer solutions",
+        "heading_text": "Skin Concerns"
+      }
+    },
+    "quiz_hwAhXr": {
+      "type": "quiz",
+      "settings": {}
+    }
+  },
+  "order": [
+    "banner",
+    "meet_p9dUEN",
+    "partners_gEcmYq",
+    "featured_product_e37tUg",
+    "philosophy_j8zRCC",
+    "shop_qhWfBj",
+    "solution_niRtfM",
+    "quiz_hwAhXr"
+  ]
+}

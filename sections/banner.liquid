@@ -1,0 +1,111 @@
+{{ 'banner.css' | asset_url | stylesheet_tag }}
+
+<section id="banner">
+  <div class="wrapper">
+    <div class="banner-container">
+      <div class="banner-details-container">
+        <h1 class="white">{{ section.settings.heading_text | escape }}</h1>
+        <p class="low-white">
+          {{ section.settings.sub_text | escape }}
+        </p>
+        {% for block in section.blocks %}
+          {% case block.type %}
+            {% when 'buttons' %}
+              {% if block.settings.primary_button_link_text != blank %}
+                <a
+                  {% if block.settings.primary_button_link == blank %}
+                    role="link" aria-disabled="true"
+                  {% else %}
+                    href="{{ block.settings.primary_button_link }}"
+                  {% endif %}
+                  class="btn-primary"
+                >
+                  {{ block.settings.primary_button_link_text | escape }}
+                </a>
+              {% endif %}
+          {% endcase %}
+        {% endfor %}
+      </div>
+      <div class="banner-image-container">
+        <img src="https://cdn.shopify.com/s/files/1/0597/1116/0382/files/Flower.webp?v=1732132876" alt="Flower">
+        {% if section.settings.banner_image != blank %}
+          <img
+            src="{{ section.settings.banner_image | img_url: "2048x" }}"
+            alt="Woman Representing Products"
+          >
+        {% else %}
+          <img
+            src="https://cdn.shopify.com/s/files/1/0597/1116/0382/files/Default_Image.webp?v=1732132876"
+            alt="Default Image"
+          >
+        {% endif %}
+      </div>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Banner",
+  "disabled_on": {
+    "groups": ["header", "footer"]
+  },
+  "settings": [
+    {
+      "type": "header",
+      "content": "Heading Text"
+    },
+    {
+      "type": "text",
+      "id": "heading_text",
+      "default": "Dermatologist Approved Skincare Products",
+      "label": "Heading Text"
+    },
+    {
+      "type": "text",
+      "id": "sub_text",
+      "default": "This space is reserved for your unique and captivating header text. Let your creativity flow and set the tone for what follows. Your header is the gateway to your content – make it compelling and unforgettable. Add your header text now!",
+      "label": "Sub Banner Text"
+    },
+    {
+      "type": "header",
+      "content": "Banner Image"
+    },
+    {
+      "type": "image_picker",
+      "id": "banner_image",
+      "label": "Banner Image"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "buttons",
+      "name": "Buttons",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "header",
+          "content": "Banner Primary Button"
+        },
+        {
+          "type": "text",
+          "id": "primary_button_link_text",
+          "label": "Primary Button Link Text",
+          "default": "Learn More",
+          "info": "Leave the label blank to hide the button."
+        },
+        {
+          "type": "url",
+          "id": "primary_button_link",
+          "label": "Primary Button Link"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Banner"
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,495 @@
+{{ 'partner.css' | asset_url | stylesheet_tag }}
+
+<section id="partner">
+  <div class="wrapper">
+    <div class="partner-container">
+      <div class="partner-details-container">
+        {% if section.settings.lead_in_text != blank %}
+          <p class="lead-in light-blue">{{ section.settings.lead_in_text | escape }}</p>
+        {% endif %}
+        {% if section.settings.heading_text != blank %}
+          <h2 class="white">{{ section.settings.heading_text | escape }}</h2>
+        {% endif %}
+        {% if section.settings.sub_text != blank %}
+          <p>
+            {{ section.settings.sub_text | escape }}
+          </p>
+        {% endif %}
+        {% for block in section.blocks %}
+          {% case block.type %}
+            {% when 'buttons' %}
+              {% if block.settings.primary_button_link_text != blank %}
+                <a
+                  {% if block.settings.primary_button_link == blank %}
+                    role="link" aria-disabled="true"
+                  {% else %}
+                    href="{{ block.settings.primary_button_link }}"
+                  {% endif %}
+                  class="btn-primary"
+                >
+                  {{ block.settings.primary_button_link_text | escape }}
+                </a>
+              {% endif %}
+          {% endcase %}
+        {% endfor %}
+      </div>
+      <div class="partner-featured-image">
+        {% if section.settings.featured_image != blank %}
+          <img
+            src="{{ section.settings.featured_image | img_url: "2048x" }}"
+            class="featured-image"
+            alt="{{ section.settings.featured_image.alt }}"
+          >
+        {% else %}
+          <img
+            src="https://cdn.shopify.com/s/files/1/0597/1116/0382/files/Default_Image.webp?v=1732132876"
+            alt="Default Image"
+          >
+        {% endif %}
+        <img
+          src="https://cdn.shopify.com/s/files/1/0597/1116/0382/files/Blue_Flower.webp?v=1732221567"
+          class="flower"
+          alt="Blue Flower"
+        >
+        <svg
+          class="rotatingText"
+          viewBox="0 0 200 200"
+          width="200"
+          height="200"
+        >
+          <defs>
+            <path
+              id="circle"
+              d="M 100, 100
+                    m -75, 0
+                    a 75, 75 0 1, 0 150, 0
+                    a 75, 75 0 1, 0 -150, 0
+                    "
+            ></path>
+          </defs>
+          <text width="200">
+            <textPath
+              alignment-baseline="top"
+              xlink:href="#circle"
+              class="text"
+            >
+              Look like the best version of yourself
+            </textPath>
+          </text>
+        </svg>
+      </div>
+    </div>
+    <ul class="partner-effect-container">
+      <li>
+        <svg
+          width="55"
+          height="56"
+          viewBox="0 0 55 56"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <rect
+            x="0.75"
+            y="1.25"
+            width="53.5"
+            height="53.5"
+            fill="white"
+            stroke="#4DB4BD"
+            stroke-width="1.5"
+          />
+          <path
+            d="M7.42383 31.2455H14.4069V45.2117H7.42383V31.2455Z"
+            fill="white"
+            stroke="#4DB4BD"
+            stroke-width="1.5"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          />
+          <path
+            d="M14.4072 42.7029C32.7378 48.8131 26.6276 48.8131 47.5769 38.3384C46.9883 37.5455 46.1702 36.9527 45.2333 36.6404C44.2964 36.3281 43.2862 36.3114 42.3396 36.5927L34.8048 38.9791"
+            fill="white"
+          />
+          <path
+            d="M14.4072 42.7029C32.7378 48.8131 26.6276 48.8131 47.5769 38.3384C46.9883 37.5455 46.1702 36.9527 45.2333 36.6404C44.2964 36.3281 43.2862 36.3114 42.3396 36.5927L34.8048 38.9791"
+            stroke="#4DB4BD"
+            stroke-width="1.5"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          />
+          <path
+            d="M14.4072 32.9912H19.6445C23.7523 32.9912 26.6276 36.4828 27.5005 36.4828H33.6107C35.3565 36.4828 35.3565 39.9743 33.6107 39.9743H24.009"
+            fill="white"
+          />
+          <path
+            d="M14.4072 32.9912H19.6445C23.7523 32.9912 26.6276 36.4828 27.5005 36.4828H33.6107C35.3565 36.4828 35.3565 39.9743 33.6107 39.9743H24.009"
+            stroke="#4DB4BD"
+            stroke-width="1.5"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          />
+          <path
+            d="M43.212 23.3894C43.2359 24.4276 43.049 25.4598 42.6627 26.4238C42.2763 27.3877 41.6985 28.2633 40.9642 28.9976C40.2299 29.7319 39.3543 30.3097 38.3904 30.696C37.4265 31.0824 36.3942 31.2692 35.3561 31.2454C34.3179 31.2692 33.2856 31.0824 32.3217 30.696C31.3578 30.3097 30.4822 29.7319 29.7479 28.9976C29.0136 28.2633 28.4358 27.3877 28.0494 26.4238C27.6631 25.4598 27.4762 24.4276 27.5001 23.3894C27.5001 19.7425 32.7164 12.185 34.6577 9.51224C34.7387 9.40047 34.8449 9.30947 34.9678 9.24672C35.0908 9.18396 35.2268 9.15125 35.3648 9.15125C35.5028 9.15125 35.6388 9.18396 35.7617 9.24672C35.8846 9.30947 35.9909 9.40047 36.0718 9.51224C37.9957 12.185 43.212 19.7425 43.212 23.3894Z"
+            fill="white"
+            stroke="#4DB4BD"
+            stroke-width="1.5"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          />
+        </svg>
+        <h5>Backed by Science</h5>
+        <p>Transform your appearance at our medspa. Unleash your inner radiance.</p>
+      </li>
+      <li>
+        <svg
+          width="56"
+          height="56"
+          viewBox="0 0 56 56"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <rect
+            x="1.56641"
+            y="1.25"
+            width="53.5"
+            height="53.5"
+            fill="white"
+            stroke="#4DB4BD"
+            stroke-width="1.5"
+          />
+          <path
+            d="M25.5593 36.7648L18.9799 32.3999C18.2532 31.9178 17.2732 32.1161 16.7911 32.8428L12.4262 39.4222C11.9441 40.1489 12.1424 41.1289 12.8691 41.611L19.4485 45.9759C20.1752 46.458 21.1552 46.2597 21.6373 45.533L26.0022 38.9536C26.4843 38.2269 26.286 37.2469 25.5593 36.7648Z"
+            fill="white"
+            stroke="#4DB4BD"
+            stroke-width="1.5"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          />
+          <path
+            d="M24.6616 26.6935L28.6092 29.3124C28.9582 29.544 29.2009 29.9046 29.284 30.3151C29.367 30.7256 29.2836 31.1523 29.0521 31.5013L25.5602 36.7648L18.9808 32.3999L22.4727 27.1364C22.7043 26.7874 23.0649 26.5447 23.4754 26.4617C23.8859 26.3786 24.3126 26.462 24.6616 26.6935Z"
+            fill="white"
+            stroke="#4DB4BD"
+            stroke-width="1.5"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          />
+          <path
+            d="M32.9746 22.7326C33.0438 22.6283 33.0871 22.509 33.101 22.3846C33.115 22.2603 33.0992 22.1344 33.0549 22.0173C33.0107 21.9002 32.9392 21.7954 32.8465 21.7113C32.7537 21.6273 32.6423 21.5666 32.5214 21.5341L29.3079 20.6656C29.148 20.6223 28.9786 20.6305 28.8236 20.6888C28.6685 20.7472 28.5358 20.8529 28.4442 20.9909L24.6543 26.693L28.6021 29.3128L32.9746 22.7326Z"
+            fill="white"
+            stroke="#4DB4BD"
+            stroke-width="1.5"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          />
+          <path
+            d="M45.6134 27.3742L47.5074 29.1842C48.1129 29.7628 48.4638 30.5584 48.4828 31.3958C48.5018 32.2332 48.1874 33.0438 47.6087 33.6494L41.6203 39.9159C41.331 40.2187 40.9332 40.3941 40.5145 40.4036C40.0958 40.4131 39.6905 40.2559 39.3877 39.9666L35.2104 35.9747C34.9076 35.6853 34.7322 35.2875 34.7227 34.8688C34.7132 34.4501 34.8704 34.0448 35.1597 33.742L41.1481 27.4756C41.7268 26.87 42.5224 26.5191 43.3598 26.5001C44.1972 26.4811 45.0078 26.7955 45.6134 27.3742Z"
+            fill="white"
+            stroke="#4DB4BD"
+            stroke-width="1.5"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          />
+          <path
+            d="M40.6836 27.9626L47.1437 34.1354"
+            stroke="#4DB4BD"
+            stroke-width="1.5"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          />
+          <path
+            d="M38.001 30.7688L44.4611 36.9431"
+            stroke="#4DB4BD"
+            stroke-width="1.5"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          />
+          <path
+            d="M40.3678 20.3782C40.2941 20.4551 40.2056 20.5163 40.1076 20.5581C40.0097 20.5999 39.9043 20.6214 39.7977 20.6214C39.6912 20.6214 39.5858 20.5999 39.4879 20.5581C39.3899 20.5163 39.3014 20.4551 39.2277 20.3782L34.4146 15.3582C33.9418 14.8853 33.6297 14.2757 33.5226 13.6156C33.4155 12.9556 33.5187 12.2786 33.8177 11.6804C34.0434 11.2291 34.3732 10.8379 34.7797 10.5391C35.1863 10.2402 35.6581 10.0422 36.1562 9.96139C36.6543 9.88059 37.1644 9.91928 37.6446 10.0743C38.1248 10.2293 38.5613 10.4962 38.9182 10.853L39.7977 11.7325L40.6773 10.853C41.0342 10.4962 41.4707 10.2293 41.9509 10.0743C42.4311 9.91928 42.9412 9.88059 43.4393 9.96139C43.9374 10.0422 44.4092 10.2402 44.8158 10.5391C45.2223 10.8379 45.5521 11.2291 45.7778 11.6804C46.0768 12.2786 46.18 12.9556 46.0729 13.6156C45.9658 14.2757 45.6537 14.8853 45.1809 15.3582L40.3678 20.3782Z"
+            fill="white"
+            stroke="#4DB4BD"
+            stroke-width="1.5"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          />
+          <path
+            d="M17.245 23.5364C17.1713 23.6133 17.0828 23.6745 16.9849 23.7163C16.8869 23.7581 16.7815 23.7796 16.675 23.7796C16.5684 23.7796 16.463 23.7581 16.3651 23.7163C16.2671 23.6745 16.1786 23.6133 16.1049 23.5364L12.8298 20.1207C12.4933 19.7835 12.2711 19.349 12.1946 18.8787C12.1181 18.4084 12.1911 17.926 12.4035 17.4994C12.5642 17.1765 12.7994 16.8963 13.0896 16.6822C13.3799 16.468 13.7169 16.3259 14.0729 16.2676C14.4289 16.2093 14.7936 16.2365 15.137 16.3468C15.4805 16.4572 15.7927 16.6477 16.048 16.9025L16.6797 17.5342L17.3113 16.9025C17.5666 16.6493 17.8782 16.4603 18.2206 16.3508C18.563 16.2414 18.9265 16.2147 19.2813 16.2729C19.636 16.3312 19.9719 16.4727 20.2614 16.6859C20.5508 16.8991 20.7856 17.1779 20.9465 17.4994C21.1599 17.9265 21.2336 18.41 21.157 18.8813C21.0805 19.3525 20.8577 19.7878 20.5201 20.1255L17.245 23.5364Z"
+            fill="white"
+            stroke="#4DB4BD"
+            stroke-width="1.5"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          />
+          <path
+            d="M24.7969 13.078H27.9551"
+            stroke="#4DB4BD"
+            stroke-width="1.5"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          />
+          <path
+            d="M26.376 11.4988V14.657"
+            stroke="#4DB4BD"
+            stroke-width="1.5"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          />
+        </svg>
+        <h5>Ethically Sourced</h5>
+        <p>Transform your appearance at our medspa. Unleash your inner radiance.</p>
+      </li>
+      <li>
+        <svg
+          width="56"
+          height="56"
+          viewBox="0 0 56 56"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <rect
+            x="1.38281"
+            y="1.25"
+            width="53.5"
+            height="53.5"
+            fill="white"
+            stroke="#4DB4BD"
+            stroke-width="1.5"
+          />
+          <path
+            d="M44.4396 30.3574C44.5421 30.5071 44.5969 30.6843 44.5969 30.8657C44.5969 31.0472 44.5421 31.2244 44.4396 31.3741C42.6186 33.8429 40.2187 35.8262 37.4511 37.1495C34.6834 38.4728 31.6329 39.0954 28.5681 38.9625C25.5035 39.0951 22.4534 38.4723 19.6861 37.1491C16.9188 35.8258 14.5192 33.8426 12.6984 31.3741C12.5959 31.2244 12.541 31.0472 12.541 30.8657C12.541 30.6843 12.5959 30.5071 12.6984 30.3574C14.519 27.8885 16.9185 25.905 19.6858 24.5814C22.4531 23.2578 25.5034 22.6348 28.5681 22.7671C31.6331 22.6345 34.6837 23.2574 37.4513 24.581C40.219 25.9045 42.6188 27.8882 44.4396 30.3574Z"
+            fill="white"
+            stroke="#4DB4BD"
+            stroke-width="1.5"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          />
+          <path
+            d="M20.4707 30.8648C20.4707 33.0124 21.3239 35.0721 22.8425 36.5907C24.3611 38.1093 26.4208 38.9625 28.5684 38.9625C30.716 38.9625 32.7757 38.1093 34.2943 36.5907C35.813 35.0721 36.6661 33.0124 36.6661 30.8648C36.6661 28.7171 35.813 26.6575 34.2943 25.1389C32.7757 23.6202 30.716 22.7671 28.5684 22.7671C26.4208 22.7671 24.3611 23.6202 22.8425 25.1389C21.3239 26.6575 20.4707 28.7171 20.4707 30.8648Z"
+            fill="white"
+            stroke="#4DB4BD"
+            stroke-width="1.5"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          />
+          <path
+            d="M44.4072 30.3107C45.6448 29.8578 46.7009 29.0136 47.4154 27.9062C48.1298 26.7989 48.4636 25.4887 48.3661 24.1744"
+            fill="white"
+          />
+          <path
+            d="M44.4072 30.3107C45.6448 29.8578 46.7009 29.0136 47.4154 27.9062C48.1298 26.7989 48.4636 25.4887 48.3661 24.1744"
+            stroke="#4DB4BD"
+            stroke-width="1.5"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          />
+          <path
+            d="M39.4131 25.6733C40.4135 24.8281 41.1132 23.6815 41.4074 22.4054C41.7016 21.1292 41.5746 19.792 41.0452 18.5941"
+            fill="white"
+          />
+          <path
+            d="M39.4131 25.6733C40.4135 24.8281 41.1132 23.6815 41.4074 22.4054C41.7016 21.1292 41.5746 19.792 41.0452 18.5941"
+            stroke="#4DB4BD"
+            stroke-width="1.5"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          />
+          <path
+            d="M33.034 23.1937C33.7178 22.0424 34.0124 20.7013 33.874 19.3694C33.7356 18.0375 33.1716 16.7857 32.2656 15.7996"
+            fill="white"
+          />
+          <path
+            d="M33.034 23.1937C33.7178 22.0424 34.0124 20.7013 33.874 19.3694C33.7356 18.0375 33.1716 16.7857 32.2656 15.7996"
+            stroke="#4DB4BD"
+            stroke-width="1.5"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          />
+          <path
+            d="M26.241 22.8823C26.5097 21.5631 26.3465 20.1923 25.7754 18.9731C25.2043 17.7538 24.2558 16.7508 23.0703 16.1127"
+            fill="white"
+          />
+          <path
+            d="M26.241 22.8823C26.5097 21.5631 26.3465 20.1923 25.7754 18.9731C25.2043 17.7538 24.2558 16.7508 23.0703 16.1127"
+            stroke="#4DB4BD"
+            stroke-width="1.5"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          />
+          <path
+            d="M19.7224 24.6027C19.5281 23.2992 18.913 22.0949 17.9709 21.1733C17.0288 20.2517 15.8114 19.6632 14.5039 19.4976"
+            fill="white"
+          />
+          <path
+            d="M19.7224 24.6027C19.5281 23.2992 18.913 22.0949 17.9709 21.1733C17.0288 20.2517 15.8114 19.6632 14.5039 19.4976"
+            stroke="#4DB4BD"
+            stroke-width="1.5"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          />
+          <path
+            d="M14.1771 28.5526C13.5738 27.4544 12.6425 26.5722 11.5132 26.0292C10.384 25.4862 9.1134 25.3096 7.87891 25.524"
+            fill="white"
+          />
+          <path
+            d="M14.1771 28.5526C13.5738 27.4544 12.6425 26.5722 11.5132 26.0292C10.384 25.4862 9.1134 25.3096 7.87891 25.524"
+            stroke="#4DB4BD"
+            stroke-width="1.5"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          />
+          <path
+            d="M24.9678 30.8648C24.9678 31.8194 25.347 32.7348 26.0219 33.4097C26.6968 34.0846 27.6122 34.4638 28.5668 34.4638C29.5213 34.4638 30.4367 34.0846 31.1116 33.4097C31.7866 32.7348 32.1657 31.8194 32.1657 30.8648C32.1657 29.9103 31.7866 28.9949 31.1116 28.32C30.4367 27.645 29.5213 27.2659 28.5668 27.2659C27.6122 27.2659 26.6968 27.645 26.0219 28.32C25.347 28.9949 24.9678 29.9103 24.9678 30.8648Z"
+            fill="white"
+            stroke="#4DB4BD"
+            stroke-width="1.5"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          />
+        </svg>
+        <h5>Ethically Sourced</h5>
+        <p>Transform your appearance at our medspa. Unleash your inner radiance.</p>
+      </li>
+      <li>
+        <svg
+          width="56"
+          height="56"
+          viewBox="0 0 56 56"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <rect
+            x="1.19922"
+            y="1.25"
+            width="53.5"
+            height="53.5"
+            fill="white"
+            stroke="#4DB4BD"
+            stroke-width="1.5"
+          />
+          <path
+            d="M34.0232 11.6146L32.7102 12.271L28.607 10.9581C28.2787 10.7939 27.9505 10.7939 27.4581 10.9581L24.1756 12.271L21.8778 11.4503C20.893 11.1221 19.7441 11.7786 19.7441 12.9275V16.8666C19.7441 17.8514 20.893 18.672 21.8778 18.3438L24.1756 17.5231L27.4581 18.836C27.7864 19.0002 28.1146 19.0002 28.607 18.836L32.7102 17.5231L34.0232 18.1797C35.008 18.6721 36.1568 17.8514 36.1568 16.8666V13.2559C36.1568 11.7787 35.008 11.1222 34.0232 11.6146Z"
+            fill="white"
+            stroke="#4DB4BD"
+            stroke-width="1.5"
+            stroke-miterlimit="10"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          />
+          <path
+            d="M19.7433 14.8353C19.7433 14.8353 18.9227 14.8353 17.2814 14.8353C15.6402 14.8353 13.1783 17.6255 15.6402 19.7591C18.1021 21.8928 22.2052 25.3396 23.8465 26.6527C25.4878 27.9657 25.4878 29.4428 25.4878 30.7558V32.0687"
+            fill="white"
+          />
+          <path
+            d="M19.7433 14.8353C19.7433 14.8353 18.9227 14.8353 17.2814 14.8353C15.6402 14.8353 13.1783 17.6255 15.6402 19.7591C18.1021 21.8928 22.2052 25.3396 23.8465 26.6527C25.4878 27.9657 25.4878 29.4428 25.4878 30.7558V32.0687"
+            stroke="#4DB4BD"
+            stroke-width="1.5"
+            stroke-miterlimit="10"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          />
+          <path
+            d="M36.1556 14.8353C36.1556 14.8353 36.9762 14.8353 38.6175 14.8353C40.2588 14.8353 42.7207 17.6255 40.2588 19.7591C37.7968 21.8928 33.6937 25.3396 32.0524 26.6527C30.4111 27.9657 30.4111 29.4428 30.4111 30.7558V32.0687"
+            fill="white"
+          />
+          <path
+            d="M36.1556 14.8353C36.1556 14.8353 36.9762 14.8353 38.6175 14.8353C40.2588 14.8353 42.7207 17.6255 40.2588 19.7591C37.7968 21.8928 33.6937 25.3396 32.0524 26.6527C30.4111 27.9657 30.4111 29.4428 30.4111 30.7558V32.0687"
+            stroke="#4DB4BD"
+            stroke-width="1.5"
+            stroke-miterlimit="10"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          />
+          <path
+            d="M30.4108 47.7636H25.487C24.5022 47.7636 23.8457 47.1071 23.8457 46.1223V33.8128C23.8457 32.828 24.5022 32.1715 25.487 32.1715H30.4108C31.3955 32.1715 32.0521 32.828 32.0521 33.8128V46.1223C32.0521 47.1071 31.3955 47.7636 30.4108 47.7636Z"
+            fill="white"
+            stroke="#4DB4BD"
+            stroke-width="1.5"
+            stroke-miterlimit="10"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          />
+        </svg>
+        <h5>Medical-Grade</h5>
+        <p>Transform your appearance at our medspa. Unleash your inner radiance.</p>
+      </li>
+    </ul>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Partners",
+  "disabled_on": {
+    "groups": ["header", "footer"]
+  },
+  "settings": [
+    {
+      "type": "header",
+      "content": "Lead In Text"
+    },
+    {
+      "type": "text",
+      "id": "lead_in_text",
+      "default": "A Proud Partner",
+      "label": "Lead In Text"
+    },
+    {
+      "type": "header",
+      "content": "Heading Text"
+    },
+    {
+      "type": "text",
+      "id": "heading_text",
+      "default": "We Proudly Carry SkinCeuticals",
+      "label": "Heading Text"
+    },
+    {
+      "type": "header",
+      "content": "Sub Text"
+    },
+    {
+      "type": "text",
+      "id": "sub_text",
+      "default": "This space is reserved for your unique and captivating header text. Let your creativity flow and set the tone for what follows. Your header is the gateway to your content – make it compelling and unforgettable. Add your header text now!",
+      "label": "Sub Text"
+    },
+    {
+      "type": "header",
+      "content": "Featured Image"
+    },
+    {
+      "type": "image_picker",
+      "id": "featured_image",
+      "label": "Featured Image"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "buttons",
+      "name": "Buttons",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "header",
+          "content": "Primary Button"
+        },
+        {
+          "type": "text",
+          "id": "primary_button_link_text",
+          "label": "Primary Button Link Text",
+          "default": "Learn More",
+          "info": "Leave the label blank to hide the button."
+        },
+        {
+          "type": "url",
+          "id": "primary_button_link",
+          "label": "Primary Button Link"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Partners"
+    }
+  ]
+}
+{% endschema %}

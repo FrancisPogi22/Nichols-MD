@@ -1,0 +1,80 @@
+{{ 'quiz.css' | asset_url | stylesheet_tag }}
+
+<section id="quiz">
+  <div class="wrapper">
+    <div class="quiz-container">
+      <img
+        src="https://cdn.shopify.com/s/files/1/0597/1116/0382/files/Flower.webp?v=1732132876"
+        class="flower"
+        alt="Flower"
+      >
+      <img
+        src="https://cdn.shopify.com/s/files/1/0597/1116/0382/files/Woman_Smiling.webp?v=1732133488"
+        alt="Woman_Smiling"
+      >
+      <img
+        src="https://cdn.shopify.com/s/files/1/0597/1116/0382/files/Putting_Cream_in_Skin.webp?v=1732201670"
+        alt="Putting_Cream_in_Skin"
+      >
+
+      <img
+        src="https://cdn.shopify.com/s/files/1/0597/1116/0382/files/Removing_Object_in_Eye.webp?v=1732201737"
+        alt="Removing_Object_in_Eye"
+      >
+      <div class="quiz-details-container">
+        <svg
+          class="rotatingText"
+          viewBox="0 0 200 200"
+          width="200"
+          height="200"
+        >
+          <circle cx="100" cy="100" r="12" fill="white" stroke-width="2" />
+          <defs>
+            <path
+              id="circle"
+              d="M 100, 100
+                    m -75, 0
+                    a 75, 75 0 1, 0 150, 0
+                    a 75, 75 0 1, 0 -150, 0
+                    "
+            ></path>
+          </defs>
+          <text width="200">
+            <textPath
+              href="#circle"
+              class="text"
+              startOffset="50%"
+              text-anchor="middle"
+              dominant-baseline="middle"
+            >
+              You came to the right place
+            </textPath>
+          </text>
+        </svg>
+        <h2 class="white">Don’t know your skin type? Take the Quiz!</h2>
+        <p class="low-white">
+          Rediscover your natural beauty with personalized treatments at our medspa. From skincare rejuvenation to
+          innovative procedures, experience transformative results and embrace a new level of confidence.
+        </p>
+        <a href="#vf-696bwf7z-p-r" class="btn-primary">Take the Quiz</a>
+        {% comment %} <a href="#quizify-pop-25e646de1d14a0538e631e7f3605eb12" class="btn-primary">Take the Quiz</a> {% endcomment %}
+        {% comment %} <div class="ps-quiz-button" data-key="2773f72cdc12">Take the Quiz</div> {% endcomment %}
+      </div>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Quiz",
+  "disabled_on": {
+    "groups": ["header", "footer"]
+  },
+  "settings": [],
+  "presets": [
+    {
+      "name": "Quiz"
+    }
+  ]
+}
+{% endschema %}

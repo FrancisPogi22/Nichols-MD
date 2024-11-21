@@ -1,0 +1,180 @@
+<section id="header">
+  <div class="wrapper">
+    <div class="header-container">
+      <div class="main-header-cotainer">
+        <div class="top-navbar">
+          <div class="search-con">
+            <input type="text" id="searchInput" placeholder="Search...">
+            <div id="search-details-con"></div>
+          </div>
+          <a class="search">
+            {% render 'icon_search' %}
+          </a>
+          <a class="login">
+            {% render 'icon_login' %}
+          </a>
+          <div class="cart-container">
+            <p class="cart-item-count">
+              <span>{{ cart.item_count }}</span>
+            </p>
+            {% render 'icon_cart' %}
+          </div>
+          <p>$0.00</p>
+        </div>
+        {% if section.settings.header_logo != blank %}
+          <a href="{{ routes.root_url }}">
+            <img
+              class="logo"
+              src="{{ section.settings.header_logo | img_url: '2048x' }}"
+              alt="Logo"
+            >
+          </a>
+        {% else %}
+          <p class="logo">{{ shop.name }}</p>
+        {% endif %}
+        <ul class="navbar">
+          {% for link in linklists[section.settings.menu].links %}
+            {% if link.title == 'Skincare' %}
+              <li>
+                <a href="{{ link.url }}" class="has-sub-menu" data-title="{{ link.title | downcase}}">
+                  {{ link.title }}
+                  {% render 'icon_caret' %}
+                </a>
+              </li>
+            {% else %}
+              <li>
+                <a href="{{ link.url }}" class="{% if link.url == request.path %}current-page{% endif %}">
+                  {{- link.title -}}
+                </a>
+              </li>
+            {% endif %}
+          {% endfor %}
+        </ul>
+        <div class="btn-container">
+          <a href="#vf-696bwf7z-p-r" class="btn-primary">Take the Skintype Quiz</a>
+          <div class="mobile-btn-container">
+            {% render 'icon_burger' %}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<section id="skincare">
+  <div class="wrapper">
+    <div class="skincare-container">
+      <div class="sub-link-container">
+        <ul>
+          <div class="header-container">
+            <h4>Skintype</h4>
+          </div>
+          {% for link in linklists.skintype.links %}
+            <li>
+              <a href="{{ link.url }}" title="{{ link.title }}">{{ link.title }}</a>
+            </li>
+          {% endfor %}
+        </ul>
+        <ul>
+          <div class="header-container">
+            <h4>Skin Condition</h4>
+          </div>
+          {% for link in linklists['skin-condition'].links %}
+            <li>
+              <a href="{{ link.url }}" title="{{ link.title }}">{{ link.title }}</a>
+            </li>
+          {% endfor %}
+        </ul>
+        <ul>
+          <div class="header-container">
+            <h4>Product Type</h4>
+          </div>
+          <div class="double-side-links">
+            {% for link in linklists['product-type'].links %}
+              <li>
+                <a href="{{ link.url }}" title="{{ link.title }}">{{ link.title }}</a>
+              </li>
+            {% endfor %}
+          </div>
+        </ul>
+      </div>
+      <div class="featured-product">
+        <div class="featured-product-container">
+          <p class="lead-in light-blue">Featured Product</p>
+          <h5>Product Name</h5>
+          <p>$10.00</p>
+          <a href="#!" class="btn-primary">View Product</a>
+        </div>
+        <img
+          src="https://cdn.shopify.com/s/files/1/0649/1635/7281/files/Default_Image.webp?v=1731627219"
+          alt="Clarifying Clay Masque"
+        >
+      </div>
+    </div>
+  </div>
+</section>
+<section id="mobile-navbar">
+  <div class="wrapper">
+    <div class="mobile-nav-container">
+      <ul class="navbar">
+        <li>
+          <a href="">Skincare</a>
+        </li>
+        <li>
+          <a href="">Treatments</a>
+        </li>
+        <li>
+          <a href="">Vitamins &amp; Supplements</a>
+        </li>
+        <li>
+          <a href="">Giftcards</a>
+        </li>
+        <li>
+          <a href="">Makeup</a>
+        </li>
+        <li>
+          <a href="">Hair</a>
+        </li>
+        <li>
+          <a href="">Body Skincare</a>
+        </li>
+        <li>
+          <a href="">Skincare Accessories</a>
+        </li>
+        <div class="auth-container">
+          <li>
+            {{ 'Sign In' | customer_login_link }}
+          </li>
+          <li>
+            {{ 'Register' | customer_register_link }}
+          </li>
+        </div>
+        <a href="#vf-696bwf7z-p-r" class="btn-primary">Take the Skintype Quiz</a>
+      </ul>
+    </div>
+  </div>
+</section>
+
+{{ 'predictive-search.js' | asset_url | script_tag }}
+
+{% schema %}
+{
+  "name": "Header",
+  "settings": [
+    {
+      "id": "header_logo",
+      "type": "image_picker",
+      "label": "Header Logo"
+    },
+    {
+      "type": "header",
+      "content": "Navbar"
+    },
+    {
+      "id": "menu",
+      "type": "link_list",
+      "default": "main-menu",
+      "label": "Header Menu"
+    }
+  ]
+}
+{% endschema %}

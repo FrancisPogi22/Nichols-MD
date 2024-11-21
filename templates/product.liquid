@@ -1,0 +1,197 @@
+{{ 'single-product.css' | asset_url | stylesheet_tag }}
+
+{% assign current_variant = product.selected_or_first_available_variant %}
+{% assign featured_image = current_variant.featured_image | default: product.featured_image %}
+
+{% section 'page-header' %}
+<section id="single-product">
+  <div class="wrapper">
+    <div class="single-product-container">
+      <div class="product-image-container">
+        {% if featured_image != blank %}
+          <img
+            src="{{ featured_image | img_url: '2048x' }}"
+            alt="{{ featured_image.alt | escape }}"
+          >
+        {% else %}
+          <img
+            src="https://cdn.shopify.com/s/files/1/0597/1116/0382/files/Default_Image.webp?v=1732132876"
+            alt="Default Image"
+          >
+        {% endif %}
+      </div>
+      <div class="product-details-container">
+        <div class="product-details">
+          {% if product.type != blank %}
+            <p class="light-gray">{{ product.type | escape }}</p>
+          {% else %}
+            <p class="light-gray">Type of Product Here</p>
+          {% endif %}
+          {% if product.title != blank %}
+            <h2>{{ product.title | escape }}</h2>
+          {% else %}
+            <h2>Product Name</h2>
+          {% endif %}
+          {% if product.description != blank %}
+            <p class="light-gray product-description">{{ product.description | strip_html }}</p>
+          {% else %}
+            <h2>Product Name</h2>
+          {% endif %}
+        </div>
+        <div class="product-variants-container">
+          <p class="dark-gray"><strong>Choose Your Size</strong></p>
+          <ul>
+            <li class="active">
+              <span>200 mL</span>
+            </li>
+            <li><span>500 mL</span></li>
+            <li><span>750 mL</span></li>
+          </ul>
+          <p class="light-blue price">
+            <strong>{{ current_variant.price | money_with_currency }}</strong>
+          </p>
+          <form class="add-to-cart-form quantity-container">
+            <input type="hidden" name="id" value="{{ product.variants.first.id }}">
+            <div class="product-quantity">
+              <input type="button" value="-" class="minus">
+              <input type="number" class="quantity" name="quantity" value="1" min="1">
+              <input type="button" value="+" class="plus">
+            </div>
+            <button
+              type="submit"
+              name="add"
+              class="btn-primary"
+              id="AddToCart"
+              {% if product.available == false %}
+                disabled
+                aria-disabled="true"
+              {% endif %}
+            >
+              {% if product.available == false %}
+                Out of Stock
+              {% else %}
+                Add to Cart
+              {% endif %}
+            </button>
+          </form>
+          <div class="recommendation-container">
+            <p><strong>Recommended Skin Types:</strong></p>
+            <p>For all skin types.</p>
+            <p><strong>Directions for Use:</strong></p>
+            {% if product.metafields.custom.sub_benefit != blank %}
+              <p>{{ product.metafields.custom.sub_benefit | metafield_tag }}</p>
+            {% else %}
+              <p>
+                Apply a small amount to damp skin, rinse well and pat dry. Because drying of the skin can occur, start
+                by using once daily, then gradually increase to 2 or 3x daily if needed. If bothersome dryness or
+                peeling occurs, reduce usage to once daily or every other day.
+              </p>
+            {% endif %}
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="product-information-container">
+      <ul class="product-sub-details-con">
+        <li>
+          <a href="#!" class="active" data-id="description">Product Description</a>
+        </li>
+        <li>
+          <a href="#!" data-id="details">Details</a>
+        </li>
+        <li>
+          <a href="#!" data-id="benefits">Benefits</a>
+        </li>
+        <li>
+          <a href="#!" data-id="ingredient-iist">Ingredients List</a>
+        </li>
+        <li>
+          <a href="#!" data-id="indications">Indications</a>
+        </li>
+      </ul>
+      <div class="product-details-flash">
+        <div id="description" class="active">
+          {{ product.metafields.custom.sub_description | metafield_tag }}
+        </div>
+        <div id="details">
+          {{ product.metafields.custom.sub_details | metafield_tag }}
+        </div>
+        <div id="benefits">
+          {{ product.metafields.custom.sub_benefit | metafield_tag }}
+        </div>
+        <div id="ingredient-iist">
+          {{ product.metafields.custom.sub_ingredient | metafield_tag }}
+        </div>
+        <div id="indications">
+          {{ product.metafields.custom.sub_indication | metafield_tag }}
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<section id="related-products">
+  <div class="wrapper">
+    <div class="related-products-con">
+      <h2 class="low-white">You may also like</h2>
+      <div class="related-products">
+        {% assign product_tags = product.tags | json %}
+        {% assign related_products = collections.all.products | where: 'tags', product_tags[0] %}
+        {% for related_product in related_products limit: 4 %}
+          {% if related_product.id != product.id %}
+            <div class="related-product">
+              <a href="{{ related_product.url }}">
+                {% if related_product.featured_image != blank %}
+                  <img
+                    src="{{ related_product.featured_image | img_url: '2048x' }}"
+                    alt="{{ related_product.title }}"
+                  >
+                {% else %}
+                  <img
+                    src="https://cdn.shopify.com/s/files/1/0597/1116/0382/files/Default_Image.webp?v=1732132876"
+                    alt="Default Image"
+                  >
+                {% endif %}
+              </a>
+              <a href="{{ related_product.url }}">
+                <h6 class="low-white">{{ related_product.title }}</h6>
+              </a>
+              <p class="white">{{ related_product.price | money_with_currency }}</p>
+            </div>
+          {% endif %}
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  $(document).ready(() => {
+    $('.minus').click(function () {
+      let input = $(this).siblings('input[type="number"]');
+      let value = parseInt(input.val(), 10);
+
+      if (!isNaN(value) && value > 1) {
+        input.val(value - 1);
+      }
+    });
+
+    $('.plus').click(function () {
+      let input = $(this).siblings('input[type="number"]');
+      let value = parseInt(input.val(), 10);
+
+      if (!isNaN(value)) {
+        input.val(value + 1);
+      }
+    });
+
+    $('.product-sub-details-con li a')
+      .click(function () {
+        $('.product-sub-details-con li a').removeClass('active');
+        $(this).addClass('active');
+        $(`.product-details-flash > div`).removeClass('active');
+        $(`.product-details-flash #${$(this).data('id')}`).addClass('active');
+      })
+      .filter('.active')
+      .click();
+  });
+</script>

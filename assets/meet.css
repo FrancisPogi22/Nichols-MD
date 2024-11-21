@@ -1,0 +1,85 @@
+#meet .meet-image-container img {
+  width: 699px;
+  height: 700px;
+  position: relative;
+  left: -120px;
+  border-top-right-radius: 400px;
+}
+#meet .meet-container {
+  display: flex;
+  align-items: center;
+}
+#meet .meet-details-container {
+  padding: 127px 24px 99px 295px;
+  margin-left: -395px;
+  right: -20px;
+  position: relative;
+}
+#meet .meet-details-container:after {
+  content: "";
+  position: absolute;
+  background-image: url("https://cdn.shopify.com/s/files/1/0597/1116/0382/files/Flower.webp?v=1732132876");
+  background-repeat: no-repeat;
+  background-size: contain;
+  width: 100%;
+  max-width: 491px;
+  height: 100%;
+  top: 50px;
+  left: 60px;
+  z-index: -1;
+  opacity: 0.1;
+}
+#meet .meet-details-container:before {
+  position: absolute;
+  content: "";
+  background: var(--global-primary-blue);
+  top: 0;
+  left: 0;
+  z-index: -1;
+  bottom: 0;
+  border-radius: 300px 0 200px 0;
+  right: 0;
+}
+#meet .meet-details-container .btn-primary {
+  margin-top: 16px;
+}
+@media screen and (max-width: 1024px) {
+  #meet .meet-container {
+    flex-direction: column;
+  }
+  #meet .meet-image-container img {
+    width: 500px;
+    height: 500px;
+    border-radius: 150px 0 150px 0;
+    left: 0;
+    top: 50px;
+  }
+  #meet .meet-details-container {
+    margin-left: 0;
+    padding: 100px 50px 50px 100px;
+    right: 0;
+  }
+  #meet .meet-details-container:before {
+    border-radius: 200px 0 150px 0;
+  }
+  #meet .meet-details-container:after {
+    top: 30px;
+    max-width: 250px;
+    left: unset;
+    right: 20px;
+  }
+}
+@media screen and (max-width: 767px) {
+  #meet .meet-image-container img {
+    width: 100%;
+    max-width: 400px;
+    height: 100%;
+    border-radius: 100px 0 100px 0;
+  }
+  #meet .meet-details-container {
+    padding: 100px 25px 50px 40px;
+  }
+  #meet .meet-details-container:before {
+    border-radius: 130px 0 150px 0;
+  }
+}

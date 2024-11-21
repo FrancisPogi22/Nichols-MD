@@ -1,0 +1,79 @@
+{{ 'shop.css' | asset_url | stylesheet_tag }}
+
+<section id="shop">
+  <div class="wrapper">
+    <div class="shop-container">
+      <div class="shop-header-container">
+        {% if section.settings.lead_in_text != blank %}
+          <p class="light-blue lead-in">{{ section.settings.lead_in_text | escape }}</p>
+        {% endif %}
+        {% if section.settings.heading_text != blank %}
+          <h2 class="dark-gray">{{ section.settings.heading_text | escape }}</h2>
+        {% endif %}
+      </div>
+      <div class="product-container">
+        {% assign collection = collections[section.settings.collection] %}
+        {% for product in collection.products limit: 3 %}
+          <div class="product-widget">
+            {% if product.featured_image != blank %}
+              <img
+                class="product-img"
+                src="{{ product.featured_image.src | img_url: '2048x' }}"
+                alt="{{ product.featured_image.alt | escape }}"
+              >
+            {% else %}
+              <img
+                class="product-img"
+                src="https://cdn.shopify.com/s/files/1/0597/1116/0382/files/Default_Image.webp?v=1732132876"
+                alt="Default Image"
+              >
+            {% endif %}
+            <h4 class="dark-gray">{{ product.title | escape }}</h4>
+            <a href="{{ product.url }}" class="semi-gray">Learn More</a>
+          </div>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Shop",
+  "disabled_on": {
+    "groups": ["header", "footer"]
+  },
+  "settings": [
+    {
+      "type": "header",
+      "content": "Lead In Text"
+    },
+    {
+      "type": "text",
+      "id": "lead_in_text",
+      "default": "Our shop",
+      "label": "Lead In Text"
+    },
+    {
+      "type": "header",
+      "content": "Heading Text"
+    },
+    {
+      "type": "text",
+      "id": "heading_text",
+      "default": "Shop by Category",
+      "label": "Heading Text"
+    },
+    {
+      "id": "collection",
+      "type": "collection",
+      "label": "Collection"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Shop"
+    }
+  ]
+}
+{% endschema %}

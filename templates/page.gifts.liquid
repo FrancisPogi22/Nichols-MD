@@ -1,0 +1,173 @@
+{{ 'categories.css' | asset_url | stylesheet_tag }}
+
+{% section 'page-header' %}
+<section id="categories">
+  <div class="wrapper">
+    <div class="categories-container">
+      <div class="categories-header">
+        <h2 class="dark-gray">{{ page.title }}</h2>
+        <p class="light-gray">{{ page.content | strip_html }}</p>
+      </div>
+      <div class="categories-product-container">
+        <div class="categories-header-container">
+          <p>Showing 1–9 of {{ collection.products_count }} results</p>
+          <div class="filtering-container">
+            <select name="" id="">
+              <option value="">Default Sorting</option>
+            </select>
+          </div>
+        </div>
+      </div>
+      <div class="categories-product-main">
+        <div class="filtering-product-container">
+          <div class="filter-container">
+            <p>Filter by Price ($)</p>
+            <input
+              type="range"
+              min="0"
+              max="2500"
+              value="0"
+              id="priceRange"
+            >
+            <div class="price-range"><span id="minPrice">0</span><span id="maxPrice">2500</span></div>
+          </div>
+          <div class="filter-container">
+            <p>Filter by Skintype</p>
+            <select name="" id="">
+              <option value="">Select All</option>
+            </select>
+          </div>
+          <div class="filter-container">
+            <p>Filter by Product Type</p>
+            <select name="" id="">
+              <option value="">Select All</option>
+            </select>
+          </div>
+          <div class="filter-container">
+            <p>Filter by Price ($)</p>
+            <select name="" id="">
+              <option value="">Select All</option>
+            </select>
+          </div>
+          <div class="filter-container">
+            <p>Filter by Brand</p>
+            <select name="" id="">
+              <option value="">Select All</option>
+            </select>
+          </div>
+          <a href="#!" class="btn-primary">Show Filtered Products</a>
+        </div>
+        <div class="categories-product-list-container">
+          <div class="categories-product-list">
+            <div class="product-widget">
+              <img
+                src="https://cdn.shopify.com/s/files/1/0597/1116/0382/files/Default_Image.webp?v=1732132876"
+                alt="Default Image"
+              >
+              <div class="product-details">
+                <p>Treatment Name</p>
+                <p>$100.00</p>
+                <a href="" class="btn-secondary">View Product</a>
+              </div>
+            </div>
+            <div class="product-widget">
+              <img
+                src="https://cdn.shopify.com/s/files/1/0597/1116/0382/files/Default_Image.webp?v=1732132876"
+                alt="Default Image"
+              >
+              <div class="product-details">
+                <p>Treatment Name</p>
+                <p>$100.00</p>
+                <a href="" class="btn-secondary">View Product</a>
+              </div>
+            </div>
+            <div class="product-widget">
+              <img
+                src="https://cdn.shopify.com/s/files/1/0597/1116/0382/files/Default_Image.webp?v=1732132876"
+                alt="Default Image"
+              >
+              <div class="product-details">
+                <p>Treatment Name</p>
+                <p>$100.00</p>
+                <a href="" class="btn-secondary">View Product</a>
+              </div>
+            </div>
+            <div class="product-widget">
+              <img
+                src="https://cdn.shopify.com/s/files/1/0597/1116/0382/files/Default_Image.webp?v=1732132876"
+                alt="Default Image"
+              >
+              <div class="product-details">
+                <p>Treatment Name</p>
+                <p>$100.00</p>
+                <a href="" class="btn-secondary">View Product</a>
+              </div>
+            </div>
+            <div class="product-widget">
+              <img
+                src="https://cdn.shopify.com/s/files/1/0597/1116/0382/files/Default_Image.webp?v=1732132876"
+                alt="Default Image"
+              >
+              <div class="product-details">
+                <p>Treatment Name</p>
+                <p>$100.00</p>
+                <a href="" class="btn-secondary">View Product</a>
+              </div>
+            </div>
+            <div class="product-widget">
+              <img
+                src="https://cdn.shopify.com/s/files/1/0597/1116/0382/files/Default_Image.webp?v=1732132876"
+                alt="Default Image"
+              >
+              <div class="product-details">
+                <p>Treatment Name</p>
+                <p>$100.00</p>
+                <a href="" class="btn-secondary">View Product</a>
+              </div>
+            </div>
+            <div class="product-widget">
+              <img
+                src="https://cdn.shopify.com/s/files/1/0597/1116/0382/files/Default_Image.webp?v=1732132876"
+                alt="Default Image"
+              >
+              <div class="product-details">
+                <p>Treatment Name</p>
+                <p>$100.00</p>
+                <a href="" class="btn-secondary">View Product</a>
+              </div>
+            </div>
+            <div class="product-widget">
+              <img
+                src="https://cdn.shopify.com/s/files/1/0597/1116/0382/files/Default_Image.webp?v=1732132876"
+                alt="Default Image"
+              >
+              <div class="product-details">
+                <p>Treatment Name</p>
+                <p>$100.00</p>
+                <a href="" class="btn-secondary">View Product</a>
+              </div>
+            </div>
+            <div class="product-widget">
+              <img
+                src="https://cdn.shopify.com/s/files/1/0597/1116/0382/files/Default_Image.webp?v=1732132876"
+                alt="Default Image"
+              >
+              <div class="product-details">
+                <p>Treatment Name</p>
+                <p>$100.00</p>
+                <a href="" class="btn-secondary">View Product</a>
+              </div>
+            </div>
+          </div>
+          <div class="pagination-container">
+            <span>1</span>
+            <span>2</span>
+            <span>3</span>
+            <span>4</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+{% section 'quiz' %}

@@ -6,7 +6,6 @@ class ProductWidget {
     this.currentPage = 1;
     this.allProducts = [];
     this.totalPages = 0;
-
     this.init();
   }
 
@@ -45,7 +44,6 @@ class ProductWidget {
   }
 
   createProductWidget(product) {
-    console.log(product);
     const productUrl = `/products/${product.handle}`;
     const productWidget = $("<div>", { class: "product-widget" });
     const productLink = $("<a>", { href: productUrl });
@@ -58,7 +56,7 @@ class ProductWidget {
       });
     } else {
       productImage = $("<img>", {
-        src: "https://cdn.shopify.com/s/files/1/0649/1635/7281/files/Default_Image.webp?v=1731627219",
+        src: "https://cdn.shopify.com/s/files/1/0597/1116/0382/files/NMD_Logo.png?v=1732133643",
         alt: "Default Image",
       });
     }
@@ -76,22 +74,28 @@ class ProductWidget {
       ? parseFloat(product.variants[0].compare_at_price)
       : null;
 
+    let lowestPrice = Math.min(
+      ...product.variants.map((variant) => variant.price)
+    );
+    let highestPrice = Math.max(
+      ...product.variants.map((variant) => variant.price)
+    );
+
     const priceWrapper = $("<p>", {
-      class:
-        compareAtPrice && compareAtPrice !== price ? "price-comparison" : "",
+      class: lowestPrice !== highestPrice ? "price-comparison" : "",
     }).append(
-      compareAtPrice && compareAtPrice < price
+      lowestPrice !== highestPrice
         ? $("<span>").text(
-            "$" + compareAtPrice.toFixed(2) + " - $" + price.toFixed(2)
+            "$" + lowestPrice.toFixed(2) + " - $" + highestPrice.toFixed(2)
           )
-        : compareAtPrice && compareAtPrice > price
+        : compareAtPrice && compareAtPrice < lowestPrice
         ? [
-            $("<span>").text("$" + price.toFixed(2)),
+            $("<span>").text("$" + compareAtPrice.toFixed(2)),
             $("<span>", { class: "compare-price" })
-              .text(" $" + compareAtPrice.toFixed(2))
+              .text(" $" + lowestPrice.toFixed(2))
               .css("text-decoration", "line-through"),
           ]
-        : $("<span>").text("$" + price.toFixed(2))
+        : $("<span>").text("$" + lowestPrice.toFixed(2))
     );
 
     const viewProductButton = $("<a>", {

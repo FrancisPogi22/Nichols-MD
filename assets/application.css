@@ -346,7 +346,7 @@ input[type="range"]:focus::-ms-fill-upper {
 #skincare {
   position: fixed;
   width: 100%;
-  padding-top: 175px;
+  padding-top: 88px;
   display: none;
   z-index: 998;
   background: var(--global-color-white);
@@ -381,6 +381,17 @@ input[type="range"]:focus::-ms-fill-upper {
 #skincare .header-container:after {
   left: 0;
   width: 100%;
+}
+#mobile-navbar .sub-link-container {
+  display: none;
+  padding-bottom: 20px;
+  margin-bottom: 20px;
+  border-bottom: 1px solid var(--global-ash-gray);
+}
+#mobile-navbar .sub-link-container h4 {
+  font-size: 20px;
+  border-bottom: 1px solid var(--global-ash-gray);
+  margin-top: 20px;
 }
 #skincare .sub-link-container {
   position: relative;
@@ -542,16 +553,6 @@ input[type="range"]:focus::-ms-fill-upper {
 #header .wrapper {
   max-width: 1380px;
 }
-/* #header .top-navbar:after {
-  left: 50%;
-  content: "";
-  transform: translateX(-50%);
-  position: absolute;
-  bottom: 0;
-  width: 100vw;
-  height: 1px;
-  background: var(--global-light-black);
-} */
 #header .has-sub-menu {
   display: flex;
   gap: 5px;
@@ -566,13 +567,15 @@ input[type="range"]:focus::-ms-fill-upper {
   height: 20px;
   bottom: -13px;
 }
-#header .has-sub-menu svg {
+#header .has-sub-menu svg,
+#mobile-navbar .has-sub-menu svg {
   transition: 0.4s;
 }
 #header .top-navbar p:last-child {
   font-size: 15px;
 }
-#header .has-sub-menu.active svg {
+#header .has-sub-menu.active svg,
+#mobile-navbar .has-sub-menu.active svg {
   transform: rotate(180deg);
 }
 #header .top-navbar {
@@ -663,6 +666,8 @@ input[type="range"]:focus::-ms-fill-upper {
 #mobile-navbar .mobile-nav-container li a {
   font-size: 15px;
   line-height: 1.9em;
+  gap: 10px;
+  align-items: center;
   display: flex;
   text-decoration: underline;
   text-underline-offset: 7px;
@@ -1018,7 +1023,6 @@ input[type="range"]:focus::-ms-fill-upper {
     gap: 15px;
   }
   #skincare {
-    padding-top: 158px;
     max-height: 95vh;
   }
   #skincare .skincare-container {

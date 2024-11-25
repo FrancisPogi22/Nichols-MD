@@ -39,7 +39,7 @@
 #categories .product-widget img {
   max-width: 270px;
   width: 100%;
-  max-height: 253px;
+  height: 253px;
   object-fit: cover;
 }
 #categories .product-widget {
@@ -145,7 +145,7 @@
   }
   #categories .product-widget img {
     max-width: 100%;
-    max-height: 100%;
+    height: 100%;
   }
   #categories .filtering-product-container {
     width: calc(35% - 10px);

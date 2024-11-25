@@ -17,12 +17,12 @@ $(document).ready(() => {
     }
   }
 
-  $(".search").click(function(event) {
+  $(".search").click(function (event) {
     event.stopPropagation();
     $(".search-con").toggle();
   });
 
-  $(".has-sub-menu").each(function () {
+  $("#header .has-sub-menu").each(function () {
     let clicked = false,
       activeDropdown = null;
     const parent = $(this),
@@ -85,6 +85,22 @@ $(document).ready(() => {
     );
   });
 
+  $("#mobile-navbar .has-sub-menu").on("click", function (event) {
+    event.preventDefault();
+    event.stopPropagation();
+    let dropdownMenu = $(this).find(".sub-link-container");
+    let isActive = dropdownMenu.is(":visible");
+    
+    $(this).toggleClass("active");
+    $(".sub-link-container").slideUp();
+
+    if (!isActive) {
+      dropdownMenu.slideDown();
+    } else {
+      window.location.href = $(this).children("a").attr("href");
+    }
+  });
+
   $(".add-to-cart-form").each(function () {
     $(this).on("submit", async function (event) {
       event.preventDefault();
@@ -102,6 +118,10 @@ $(document).ready(() => {
   function checkWindowSize() {
     if ($(window).width() > 1310) {
       $("#mobile-navbar").css("display", "none");
+    }
+
+    if ($(window).width() < 1310) {
+      $("#skincare").css("display", "none");
     }
   }
 

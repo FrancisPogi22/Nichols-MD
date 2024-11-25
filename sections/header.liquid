@@ -105,7 +105,7 @@
           <a href="#!" class="btn-primary">View Product</a>
         </div>
         <img
-          src="https://cdn.shopify.com/s/files/1/0649/1635/7281/files/Default_Image.webp?v=1731627219"
+          src="https://cdn.shopify.com/s/files/1/0597/1116/0382/files/Default_Image.webp?v=1732132876"
           alt="Clarifying Clay Masque"
         >
       </div>
@@ -116,30 +116,56 @@
   <div class="wrapper">
     <div class="mobile-nav-container">
       <ul class="navbar">
-        <li>
-          <a href="">Skincare</a>
-        </li>
-        <li>
-          <a href="">Treatments</a>
-        </li>
-        <li>
-          <a href="">Vitamins &amp; Supplements</a>
-        </li>
-        <li>
-          <a href="">Giftcards</a>
-        </li>
-        <li>
-          <a href="">Makeup</a>
-        </li>
-        <li>
-          <a href="">Hair</a>
-        </li>
-        <li>
-          <a href="">Body Skincare</a>
-        </li>
-        <li>
-          <a href="">Skincare Accessories</a>
-        </li>
+        {% for link in linklists[section.settings.menu].links %}
+          {% if link.title == 'Skincare' %}
+            <li class="has-sub-menu">
+              <a href="{{ link.url }}" data-title="{{ link.title | downcase}}">
+                {{ link.title }}
+                {% render 'icon_caret' %}
+              </a>
+              <div class="sub-link-container">
+                <ul>
+                  <div class="header-container">
+                    <h4>Skintype</h4>
+                  </div>
+                  {% for link in linklists.skintype.links %}
+                    <li>
+                      <a href="{{ link.url }}" title="{{ link.title }}">{{ link.title }}</a>
+                    </li>
+                  {% endfor %}
+                </ul>
+                <ul>
+                  <div class="header-container">
+                    <h4>Skin Condition</h4>
+                  </div>
+                  {% for link in linklists['skin-condition'].links %}
+                    <li>
+                      <a href="{{ link.url }}" title="{{ link.title }}">{{ link.title }}</a>
+                    </li>
+                  {% endfor %}
+                </ul>
+                <ul>
+                  <div class="header-container">
+                    <h4>Product Type</h4>
+                  </div>
+                  <div class="double-side-links">
+                    {% for link in linklists['product-type'].links %}
+                      <li>
+                        <a href="{{ link.url }}" title="{{ link.title }}">{{ link.title }}</a>
+                      </li>
+                    {% endfor %}
+                  </div>
+                </ul>
+              </div>
+            </li>
+          {% else %}
+            <li>
+              <a href="{{ link.url }}" class="{% if link.url == request.path %}current-page{% endif %}">
+                {{ link.title }}
+              </a>
+            </li>
+          {% endif %}
+        {% endfor %}
         <div class="auth-container">
           <li>
             {{ 'Sign In' | customer_login_link }}

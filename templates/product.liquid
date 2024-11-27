@@ -24,8 +24,6 @@
         <div class="product-details">
           {% if product.type != blank %}
             <p class="light-gray">{{ product.type | escape }}</p>
-          {% else %}
-            <p class="light-gray">Type of Product Here</p>
           {% endif %}
           {% if product.title != blank %}
             <h2>{{ product.title | escape }}</h2>
@@ -34,8 +32,6 @@
           {% endif %}
           {% if product.description != blank %}
             <p class="light-gray product-description">{{ product.description | strip_html }}</p>
-          {% else %}
-            <h2>Product Name</h2>
           {% endif %}
         </div>
         <div class="product-variants-container">
@@ -52,27 +48,23 @@
           </p>
           <form class="add-to-cart-form quantity-container">
             <input type="hidden" name="id" value="{{ product.variants.first.id }}">
-            <div class="product-quantity">
-              <input type="button" value="-" class="minus">
-              <input type="number" class="quantity" name="quantity" value="1" min="1">
-              <input type="button" value="+" class="plus">
-            </div>
-            <button
-              type="submit"
-              name="add"
-              class="btn-primary"
-              id="AddToCart"
-              {% if product.available == false %}
-                disabled
-                aria-disabled="true"
-              {% endif %}
-            >
-              {% if product.available == false %}
-                Out of Stock
-              {% else %}
+            {% if product.available != false %}
+              <div class="product-quantity">
+                <input type="button" value="-" class="minus">
+                <input type="number" class="quantity" name="quantity" value="1" min="1">
+                <input type="button" value="+" class="plus">
+              </div>
+              <button
+                type="submit"
+                name="add"
+                class="btn-primary"
+                id="AddToCart"
+              >
                 Add to Cart
-              {% endif %}
-            </button>
+              </button>
+            {% else %}
+              <p>Out of stock</p>
+            {% endif %}
           </form>
           <div class="recommendation-container">
             <p><strong>Recommended Skin Types:</strong></p>

@@ -15,20 +15,24 @@
         {% assign collection = collections[section.settings.collection] %}
         {% for product in collection.products limit: 3 %}
           <div class="product-widget">
-            {% if product.featured_image != blank %}
-              <img
-                class="product-img"
-                src="{{ product.featured_image.src | img_url: '2048x' }}"
-                alt="{{ product.featured_image.alt | escape }}"
-              >
-            {% else %}
-              <img
-                class="product-img"
-                src="https://cdn.shopify.com/s/files/1/0597/1116/0382/files/Default_Image.webp?v=1732132876"
-                alt="Default Image"
-              >
-            {% endif %}
-            <h4 class="dark-gray">{{ product.title | escape }}</h4>
+            <a href="{{ product.url }}">
+              {% if product.featured_image != blank %}
+                <img
+                  class="product-img"
+                  src="{{ product.featured_image.src | img_url: '2048x' }}"
+                  alt="{{ product.featured_image.alt | escape }}"
+                >
+              {% else %}
+                <img
+                  class="product-img"
+                  src="https://cdn.shopify.com/s/files/1/0597/1116/0382/files/Default_Image.webp?v=1732132876"
+                  alt="Default Image"
+                >
+              {% endif %}
+            </a>
+            <a href="{{ product.url }}">
+              <h4 class="dark-gray">{{ product.title | escape }}</h4>
+            </a>
             <a href="{{ product.url }}" class="semi-gray">Learn More</a>
           </div>
         {% endfor %}

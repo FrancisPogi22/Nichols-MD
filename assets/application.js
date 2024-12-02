@@ -10,14 +10,11 @@ $(document).ready(() => {
   checkHeaderScroll();
 
   function checkHeaderScroll() {
-    if ($(window).scrollTop() > 50) {
-      $("#header").addClass("scrolled");
-    } else {
-      $("#header").removeClass("scrolled");
-    }
+    if ($(window).scrollTop() > 50) $("#header").addClass("scrolled");
+    else $("#header").removeClass("scrolled");
   }
 
-  $(".search").click(function (event) {
+  $(".search").click((event) => {
     event.stopPropagation();
     $(".search-con").toggle();
   });
@@ -88,17 +85,14 @@ $(document).ready(() => {
   $("#mobile-navbar .has-sub-menu").on("click", function (event) {
     event.preventDefault();
     event.stopPropagation();
-    let dropdownMenu = $(this).find(".sub-link-container");
-    let isActive = dropdownMenu.is(":visible");
-    
+    let dropdownMenu = $(this).find(".sub-link-container"),
+      isActive = dropdownMenu.is(":visible");
+
     $(this).toggleClass("active");
     $(".sub-link-container").slideUp();
 
-    if (!isActive) {
-      dropdownMenu.slideDown();
-    } else {
-      window.location.href = $(this).children("a").attr("href");
-    }
+    if (!isActive) dropdownMenu.slideDown();
+    else window.location.href = $(this).children("a").attr("href");
   });
 
   $(".add-to-cart-form").each(function () {
@@ -116,13 +110,9 @@ $(document).ready(() => {
   });
 
   function checkWindowSize() {
-    if ($(window).width() > 1310) {
-      $("#mobile-navbar").css("display", "none");
-    }
+    if ($(window).width() > 1310) $("#mobile-navbar").css("display", "none");
 
-    if ($(window).width() < 1310) {
-      $("#skincare").css("display", "none");
-    }
+    if ($(window).width() < 1310) $("#skincare").css("display", "none");
   }
 
   $(window).on("resize", function () {
@@ -220,10 +210,10 @@ $(document).ready(() => {
     function (event) {
       event.preventDefault();
 
-      const button = $(this);
-      const quantityElement = button
-        .closest(".quantity-text")
-        .find(".quantity-value");
+      const button = $(this),
+        quantityElement = button
+          .closest(".quantity-text")
+          .find(".quantity-value");
       const line = button.data("line"),
         currentQuantity = parseInt(quantityElement.text(), 10),
         newQuantity = button.hasClass("increase-quantity")

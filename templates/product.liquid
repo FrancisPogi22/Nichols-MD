@@ -36,18 +36,21 @@
         </div>
         <div class="product-variants-container">
           <p class="dark-gray"><strong>Choose Your Size</strong></p>
-          <ul>
-            <li class="active">
-              <span>200 mL</span>
-            </li>
-            <li><span>500 mL</span></li>
-            <li><span>750 mL</span></li>
+          <ul id="variant-list">
+            {% for variant in product.variants %}
+              <li
+                class="variant-item {% if variant.id == current_variant.id %}active{% endif %}"
+                data-variant-id="{{ variant.id }}"
+              >
+                <span>{{ variant.title }}</span>
+              </li>
+            {% endfor %}
           </ul>
           <p class="light-blue price">
             <strong>{{ current_variant.price | money_with_currency }}</strong>
           </p>
           <form class="add-to-cart-form quantity-container">
-            <input type="hidden" name="id" value="{{ product.variants.first.id }}">
+            <input type="hidden" id="variant-id" name="id" value="{{ current_variant.id }}">
             {% if product.available != false %}
               <div class="product-quantity">
                 <input type="button" value="-" class="minus">
@@ -159,21 +162,17 @@
 <script>
   $(document).ready(() => {
     $('.minus').click(function () {
-      let input = $(this).siblings('input[type="number"]');
-      let value = parseInt(input.val(), 10);
+      let input = $(this).siblings('input[type="number"]'),
+        value = parseInt(input.val(), 10);
 
-      if (!isNaN(value) && value > 1) {
-        input.val(value - 1);
-      }
+      if (!isNaN(value) && value > 1) input.val(value - 1);
     });
 
     $('.plus').click(function () {
-      let input = $(this).siblings('input[type="number"]');
-      let value = parseInt(input.val(), 10);
+      let input = $(this).siblings('input[type="number"]'),
+        value = parseInt(input.val(), 10);
 
-      if (!isNaN(value)) {
-        input.val(value + 1);
-      }
+      if (!isNaN(value)) input.val(value + 1);
     });
 
     $('.product-sub-details-con li a')
@@ -185,5 +184,15 @@
       })
       .filter('.active')
       .click();
+
+    $('.variant-item').on('click', function () {
+      changeVariant($(this).data('variant-id'));
+      $('.variant-item').removeClass('active');
+      $(this).addClass('active');
+    });
+
+    function changeVariant(selectedVariantId) {
+      if (selectedVariantId) $('#variant-id').val(selectedVariantId);
+    }
   });
 </script>

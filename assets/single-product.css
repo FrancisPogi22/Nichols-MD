@@ -20,7 +20,11 @@
 }
 #single-product .product-variants-container ul {
   display: flex;
+  flex-wrap: wrap;
   gap: 16px;
+}
+#single-product li.variant-item {
+  display: flex;
 }
 #single-product .product-details-flash > div {
   display: none;
@@ -33,6 +37,7 @@
 #single-product .product-variants-container ul li span {
   padding: 10px;
   background: var(--global-color-white);
+  white-space: nowrap;
   display: block;
   color: var(--global-light-gray);
 }
@@ -239,7 +244,7 @@
     width: 100%;
   }
   #single-product .single-product-container .product-image-container img {
-    max-width: 500px;
+    max-width: 250px;
     margin: 0 auto;
   }
   #single-product .product-details p:first-of-type {

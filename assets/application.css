@@ -735,6 +735,10 @@ input[type="range"]:focus::-ms-fill-upper {
   font-size: 16px;
   line-height: 1.75em;
 }
+#footer .footer-container ul:first-of-type li a:hover,
+#footer .footer-container ul:nth-child(3) li a:hover {
+  color: var(--global-primary-blue);
+}
 .product-container {
   grid-template-columns: repeat(3, 1fr);
   display: grid;

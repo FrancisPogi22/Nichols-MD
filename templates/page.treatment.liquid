@@ -89,11 +89,13 @@
                       <img
                         src="{{ product.featured_image | img_url: '2048x' }}"
                         alt="{{ product.featured_image.alt }}"
+                        loading="lazy"
                       >
                     {% else %}
                       <img
                         src="https://cdn.shopify.com/s/files/1/0597/1116/0382/files/NMD_Logo.png?v=1732133643"
                         alt="Default Image"
+                        loading="lazy"
                       >
                     {% endif %}
                   </a>

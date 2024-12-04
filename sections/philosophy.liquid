@@ -8,11 +8,13 @@
           <img
             src="{{ section.settings.featured_image | img_url: "2048x" }}"
             alt="{{ section.settings.featured_image.alt }}"
+            loading="lazy"
           >
         {% else %}
           <img
             src="https://cdn.shopify.com/s/files/1/0597/1116/0382/files/Default_Image.webp?v=1732132876"
             alt="Default Image"
+            loading="lazy"
           >
         {% endif %}
       </div>
@@ -21,6 +23,7 @@
           src="https://cdn.shopify.com/s/files/1/0597/1116/0382/files/Flower.webp?v=1732132876"
           class="flower"
           alt="Flower"
+          loading="lazy"
         >
         {% if section.settings.lead_in_text != blank %}
           <p class="low-white lead-in">{{ section.settings.lead_in_text | escape }}</p>

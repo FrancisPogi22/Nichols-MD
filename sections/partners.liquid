@@ -39,17 +39,20 @@
             src="{{ section.settings.featured_image | img_url: "2048x" }}"
             class="featured-image"
             alt="{{ section.settings.featured_image.alt }}"
+            loading="lazy"
           >
         {% else %}
           <img
             src="https://cdn.shopify.com/s/files/1/0597/1116/0382/files/Default_Image.webp?v=1732132876"
             alt="Default Image"
+            loading="lazy"
           >
         {% endif %}
         <img
           src="https://cdn.shopify.com/s/files/1/0597/1116/0382/files/Blue_Flower.webp?v=1732221567"
           class="flower"
           alt="Blue Flower"
+          loading="lazy"
         >
         <svg
           class="rotatingText"

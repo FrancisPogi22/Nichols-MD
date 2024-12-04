@@ -21,12 +21,14 @@
                   class="product-img"
                   src="{{ product.featured_image.src | img_url: '2048x' }}"
                   alt="{{ product.featured_image.alt | escape }}"
+                  loading="lazy"
                 >
               {% else %}
                 <img
                   class="product-img"
                   src="https://cdn.shopify.com/s/files/1/0597/1116/0382/files/Default_Image.webp?v=1732132876"
                   alt="Default Image"
+                  loading="lazy"
                 >
               {% endif %}
             </a>

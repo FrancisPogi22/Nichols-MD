@@ -27,16 +27,18 @@
         {% endfor %}
       </div>
       <div class="banner-image-container">
-        <img src="https://cdn.shopify.com/s/files/1/0597/1116/0382/files/Flower.webp?v=1732132876" alt="Flower">
+        <img src="https://cdn.shopify.com/s/files/1/0597/1116/0382/files/Flower.webp?v=1732132876" alt="Flower" loading="lazy">
         {% if section.settings.banner_image != blank %}
           <img
             src="{{ section.settings.banner_image | img_url: "2048x" }}"
             alt="Woman Representing Products"
+            loading="lazy"
           >
         {% else %}
           <img
             src="https://cdn.shopify.com/s/files/1/0597/1116/0382/files/Default_Image.webp?v=1732132876"
             alt="Default Image"
+            loading="lazy"
           >
         {% endif %}
       </div>

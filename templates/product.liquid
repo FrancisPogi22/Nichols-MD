@@ -41,6 +41,7 @@
               <li
                 class="variant-item {% if variant.id == current_variant.id %}active{% endif %}"
                 data-variant-id="{{ variant.id }}"
+                data-variant-price="{{ variant.price }}"
               >
                 <span>{{ variant.title }}</span>
               </li>
@@ -186,13 +187,17 @@
       .click();
 
     $('.variant-item').on('click', function () {
-      changeVariant($(this).data('variant-id'));
+      changeVariant($(this).data('variant-id'), $(this).data('variant-price'));
       $('.variant-item').removeClass('active');
       $(this).addClass('active');
     });
 
-    function changeVariant(selectedVariantId) {
-      if (selectedVariantId) $('#variant-id').val(selectedVariantId);
+    function changeVariant(selectedVariantId, variantPrice) {
+      if (selectedVariantId) {
+        $('#variant-id').val(selectedVariantId);
+        const formattedPrice = Shopify.formatMoney(variantPrice);
+        $('.price').text(variantPrice);
+      }
     }
   });
 </script>

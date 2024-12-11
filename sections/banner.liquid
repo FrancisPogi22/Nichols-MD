@@ -4,6 +4,9 @@
   <div class="wrapper">
     <div class="banner-container">
       <div class="banner-details-container">
+        {% if section.settings.lead_in_text != blank %}
+          <p class="lead-in low-white">{{ section.settings.lead_in_text | escape }}</p>
+        {% endif %}
         <h1 class="white">{{ section.settings.heading_text | escape }}</h1>
         <p class="low-white">
           {{ section.settings.sub_text | escape }}
@@ -28,7 +31,7 @@
       </div>
       <div class="banner-image-container">
         <img
-          src="https://cdn.shopify.com/s/files/1/0597/1116/0382/files/Flower.webp?v=1732132876"
+          src="https://cdn.shopify.com/s/files/1/0727/8949/1929/files/Flower.webp?v=1733414521"
           alt="Flower"
           loading="lazy"
         >
@@ -40,7 +43,7 @@
           >
         {% else %}
           <img
-            src="https://cdn.shopify.com/s/files/1/0597/1116/0382/files/Default_Image.webp?v=1732132876"
+            src="https://cdn.shopify.com/s/files/1/0727/8949/1929/files/Default_Image.webp?v=1733414521"
             alt="Default Image"
             loading="lazy"
           >
@@ -66,6 +69,16 @@
       "id": "heading_text",
       "default": "Dermatologist Approved Skincare Products",
       "label": "Heading Text"
+    },
+    {
+      "type": "header",
+      "content": "Lead In Text"
+    },
+    {
+      "type": "text",
+      "id": "lead_in_text",
+      "default": "A Proud Partner",
+      "label": "Lead In"
     },
     {
       "type": "text",

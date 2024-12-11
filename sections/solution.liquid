@@ -1,6 +1,6 @@
 {{ 'solution.css' | asset_url | stylesheet_tag }}
 
-<section id="solution">
+<section id="solution" class="color-{{ section.settings.background_color }}">
   <div class="wrapper">
     <div class="shop-container">
       <div class="shop-header-container">
@@ -12,87 +12,23 @@
         {% endif %}
       </div>
       <div class="product-container">
-        <div class="product-widget">
-          <img
-            src="https://cdn.shopify.com/s/files/1/0597/1116/0382/files/Default_Image.webp?v=1732132876"
-            alt="Four Item Product"
-            loading="lazy"
-          >
-          <h4 class="dark-gray">Title Here</h4>
-          <p class="semi-gray">Learn More</p>
-        </div>
-        <div class="product-widget">
-          <img
-            src="https://cdn.shopify.com/s/files/1/0597/1116/0382/files/Default_Image.webp?v=1732132876"
-            alt="Four Item Product"
-            loading="lazy"
-          >
-          <h4 class="dark-gray">Title Here</h4>
-          <p class="semi-gray">Learn More</p>
-        </div>
-        <div class="product-widget">
-          <img
-            src="https://cdn.shopify.com/s/files/1/0597/1116/0382/files/Default_Image.webp?v=1732132876"
-            alt="Four Item Product"
-            loading="lazy"
-          >
-          <h4 class="dark-gray">Title Here</h4>
-          <p class="semi-gray">Learn More</p>
-        </div>
-        <div class="product-widget">
-          <img
-            src="https://cdn.shopify.com/s/files/1/0597/1116/0382/files/Default_Image.webp?v=1732132876"
-            alt="Four Item Product"
-            loading="lazy"
-          >
-          <h4 class="dark-gray">Title Here</h4>
-          <p class="semi-gray">Learn More</p>
-        </div>
-        <div class="product-widget">
-          <img
-            src="https://cdn.shopify.com/s/files/1/0597/1116/0382/files/Default_Image.webp?v=1732132876"
-            alt="Four Item Product"
-            loading="lazy"
-          >
-          <h4 class="dark-gray">Title Here</h4>
-          <p class="semi-gray">Learn More</p>
-        </div>
-        <div class="product-widget">
-          <img
-            src="https://cdn.shopify.com/s/files/1/0597/1116/0382/files/Default_Image.webp?v=1732132876"
-            alt="Four Item Product"
-            loading="lazy"
-          >
-          <h4 class="dark-gray">Title Here</h4>
-          <p class="semi-gray">Learn More</p>
-        </div>
-        <div class="product-widget">
-          <img
-            src="https://cdn.shopify.com/s/files/1/0597/1116/0382/files/Default_Image.webp?v=1732132876"
-            alt="Four Item Product"
-            loading="lazy"
-          >
-          <h4 class="dark-gray">Title Here</h4>
-          <p class="semi-gray">Learn More</p>
-        </div>
-        <div class="product-widget">
-          <img
-            src="https://cdn.shopify.com/s/files/1/0597/1116/0382/files/Default_Image.webp?v=1732132876"
-            alt="Four Item Product"
-            loading="lazy"
-          >
-          <h4 class="dark-gray">Title Here</h4>
-          <p class="semi-gray">Learn More</p>
-        </div>
-        <div class="product-widget">
-          <img
-            src="https://cdn.shopify.com/s/files/1/0597/1116/0382/files/Default_Image.webp?v=1732132876"
-            alt="Four Item Product"
-            loading="lazy"
-          >
-          <h4 class="dark-gray">Title Here</h4>
-          <p class="semi-gray">Learn More</p>
-        </div>
+        {% for concern in blogs['skin-concerns'].articles %}
+          <div class="product-widget">
+            <a href="{{ concern.url }}">
+              <img
+                src="{{ concern.image | img_url: 'medium' }}"
+                alt="{{ concern.title }}"
+                loading="lazy"
+              >
+            </a>
+            <a href="{{ concern.url }}">
+              <h4 class="dark-gray">{{ concern.title }}</h4>
+            </a>
+            <p class="semi-gray">
+              <a href="{{ concern.url }}" class="learn-more-link">Learn More</a>
+            </p>
+          </div>
+        {% endfor %}
       </div>
     </div>
   </div>
@@ -124,6 +60,12 @@
       "id": "heading_text",
       "default": "Skin Concerns",
       "label": "Heading Text"
+    },
+    {
+      "type": "color_scheme",
+      "id": "background_color",
+      "default": "background_white",
+      "label": "Background Color"
     }
   ],
   "presets": [

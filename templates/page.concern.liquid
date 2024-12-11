@@ -9,69 +9,23 @@
         <h2>Skin Concerns</h2>
       </div>
       <div class="concern-list-container">
-        <div class="concern-widget">
-          <img src="https://cdn.shopify.com/s/files/1/0597/1116/0382/files/Default_Image.webp?v=1732132876" alt="Default Image" loading="lazy">
-          <div class="details-container">
-            <h4 class="dark-gray">Title Here</h4>
-            <a href="#!">View Products</a>
+        {% for concern in blogs['skin-concerns'].articles %}
+          <div class="product-widget">
+            <a href="{{ concern.url }}">
+              <img
+                src="{{ concern.image | img_url: 'medium' }}"
+                alt="{{ concern.title }}"
+                loading="lazy"
+              >
+            </a>
+            <a href="{{ concern.url }}">
+              <h4 class="dark-gray">{{ concern.title }}</h4>
+            </a>
+            <p class="semi-gray">
+              <a href="{{ concern.url }}" class="learn-more-link">Learn More</a>
+            </p>
           </div>
-        </div>
-        <div class="concern-widget">
-          <img src="https://cdn.shopify.com/s/files/1/0597/1116/0382/files/Default_Image.webp?v=1732132876" alt="Default Image" loading="lazy">
-          <div class="details-container">
-            <h4 class="dark-gray">Title Here</h4>
-            <a href="#!">View Products</a>
-          </div>
-        </div>
-        <div class="concern-widget">
-          <img src="https://cdn.shopify.com/s/files/1/0597/1116/0382/files/Default_Image.webp?v=1732132876" alt="Default Image" loading="lazy">
-          <div class="details-container">
-            <h4 class="dark-gray">Title Here</h4>
-            <a href="#!">View Products</a>
-          </div>
-        </div>
-        <div class="concern-widget">
-          <img src="https://cdn.shopify.com/s/files/1/0597/1116/0382/files/Default_Image.webp?v=1732132876" alt="Default Image" loading="lazy">
-          <div class="details-container">
-            <h4 class="dark-gray">Title Here</h4>
-            <a href="#!">View Products</a>
-          </div>
-        </div>
-        <div class="concern-widget">
-          <img src="https://cdn.shopify.com/s/files/1/0597/1116/0382/files/Default_Image.webp?v=1732132876" alt="Default Image" loading="lazy">
-          <div class="details-container">
-            <h4 class="dark-gray">Title Here</h4>
-            <a href="#!">View Products</a>
-          </div>
-        </div>
-        <div class="concern-widget">
-          <img src="https://cdn.shopify.com/s/files/1/0597/1116/0382/files/Default_Image.webp?v=1732132876" alt="Default Image" loading="lazy">
-          <div class="details-container">
-            <h4 class="dark-gray">Title Here</h4>
-            <a href="#!">View Products</a>
-          </div>
-        </div>
-        <div class="concern-widget">
-          <img src="https://cdn.shopify.com/s/files/1/0597/1116/0382/files/Default_Image.webp?v=1732132876" alt="Default Image" loading="lazy">
-          <div class="details-container">
-            <h4 class="dark-gray">Title Here</h4>
-            <a href="#!">View Products</a>
-          </div>
-        </div>
-        <div class="concern-widget">
-          <img src="https://cdn.shopify.com/s/files/1/0597/1116/0382/files/Default_Image.webp?v=1732132876" alt="Default Image" loading="lazy">
-          <div class="details-container">
-            <h4 class="dark-gray">Title Here</h4>
-            <a href="#!">View Products</a>
-          </div>
-        </div>
-        <div class="concern-widget">
-          <img src="https://cdn.shopify.com/s/files/1/0597/1116/0382/files/Default_Image.webp?v=1732132876" alt="Default Image" loading="lazy">
-          <div class="details-container">
-            <h4 class="dark-gray">Title Here</h4>
-            <a href="#!">View Products</a>
-          </div>
-        </div>
+        {% endfor %}
       </div>
     </div>
   </div>

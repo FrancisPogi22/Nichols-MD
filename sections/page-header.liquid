@@ -32,18 +32,22 @@
         </span>
       </p>
       <h1 class="white">
-        {{
-          page.title
-          | default: collection.title
-          | default: product.title
-          | default: blog.title
-          | default: cart.title
-          | default: article.title
-          | default: 'Home'
-        }}
+        {% if page.handle == 'about' %}
+          {{ page.title }} NicholsMD
+        {% else %}
+          {{
+            page.title
+            | default: collection.title
+            | default: product.title
+            | default: blog.title
+            | default: cart.title
+            | default: article.title
+            | default: 'Home'
+          }}
+        {% endif %}
       </h1>
       <img
-        src="https://cdn.shopify.com/s/files/1/0597/1116/0382/files/Flower.webp?v=1732132876"
+        src="https://cdn.shopify.com/s/files/1/0727/8949/1929/files/Flower.webp?v=1733414521"
         class="flower"
         alt="Flower"
         loading="lazy"

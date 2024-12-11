@@ -1,1 +1,26 @@
-#solution{background:var(--global-color-white)}#solution .shop-container{padding:81px 0 114px}#solution .shop-header-container h2{margin-bottom:0}#solution .product-widget h4{line-height:1em}#solution .product-widget p:last-of-type{text-transform:uppercase;line-height:1em;letter-spacing:.36em}@media screen and (max-width:767px){#solution .shop-container{padding:50px 0;gap:30px}}
+#solution .shop-container {
+  padding: 81px 0 114px;
+}
+#solution .learn-more-link {
+  color: var(--global-semi-gray);
+}
+#solution .learn-more-link:hover {
+  color: var(--global-light-blue);
+}
+#solution .shop-header-container h2 {
+  margin-bottom: 0;
+}
+#solution .product-widget h4 {
+  line-height: 1em;
+}
+#solution .product-widget p:last-of-type {
+  text-transform: uppercase;
+  line-height: 1em;
+  letter-spacing: 0.36em;
+}
+@media screen and (max-width: 767px) {
+  #solution .shop-container {
+    padding: 50px 0;
+    gap: 30px;
+  }
+}

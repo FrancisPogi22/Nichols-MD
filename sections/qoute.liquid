@@ -1,0 +1,60 @@
+{{ 'qoute.css' | asset_url | stylesheet_tag }}
+
+<section id="qoute">
+  <div class="wrapper">
+    <div class="qoute-container">
+      {% if section.settings.heading_text != blank %}
+        <h2 class="dark-gray">{{ section.settings.heading_text | escape }}</h2>
+      {% endif %}
+      {% if section.settings.author_text != blank %}
+        <p class="light-gray">{{ section.settings.author_text | escape }}</p>
+      {% endif %}
+      <img
+        src="https://cdn.shopify.com/s/files/1/0727/8949/1929/files/Blue_Flower.webp?v=1733414521"
+        loading="lazy"
+        alt="Blue Flower"
+      >
+      <img
+        src="https://cdn.shopify.com/s/files/1/0727/8949/1929/files/Blue_Flower.webp?v=1733414521"
+        loading="lazy"
+        alt="Blue Flower"
+      >
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Qoute",
+  "disabled_on": {
+    "groups": ["header", "footer"]
+  },
+  "settings": [
+    {
+      "type": "header",
+      "content": "Heading Text"
+    },
+    {
+      "type": "text",
+      "id": "heading_text",
+      "default": "“We believe you deserve to look and feel your best today and everyday.”",
+      "label": "Heading Text"
+    },
+    {
+      "type": "header",
+      "content": "Author"
+    },
+    {
+      "type": "text",
+      "id": "author_text",
+      "default": "- Dr. Kim Nichols",
+      "label": "Author Text"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Qoute"
+    }
+  ]
+}
+{% endschema %}

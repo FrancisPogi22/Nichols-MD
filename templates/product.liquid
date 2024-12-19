@@ -37,18 +37,21 @@
           {% endif %}
         </div>
         <div class="product-variants-container">
+        {% if product.variants.size > 1 or product.variants.first.title != 'Default Title' %}
           <p class="dark-gray"><strong>Choose Your Size</strong></p>
-          <ul id="variant-list">
-            {% for variant in product.variants %}
-              <li
-                class="variant-item {% if variant.id == current_variant.id %}active{% endif %}"
-                data-variant-id="{{ variant.id }}"
-                data-variant-price="{{ variant.price }}"
-              >
-                <span>{{ variant.title }}</span>
-              </li>
-            {% endfor %}
-          </ul>
+         
+            <ul id="variant-list">
+              {% for variant in product.variants %}
+                <li
+                  class="variant-item {% if variant.id == current_variant.id %}active{% endif %}"
+                  data-variant-id="{{ variant.id }}"
+                  data-variant-price="{{ variant.price }}"
+                >
+                  <span>{{ variant.title }}</span>
+                </li>
+              {% endfor %}
+            </ul>
+          {% endif %}
           <p class="light-blue price">
             <strong>{{ current_variant.price | money_with_currency }}</strong>
           </p>

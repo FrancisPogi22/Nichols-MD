@@ -1,0 +1,149 @@
+{{ 'categories.css' | asset_url | stylesheet_tag }}
+
+{% section 'page-header' %}
+<section id="categories">
+  <div class="wrapper">
+    {% assign collection = collections['neck-decolletage'] %}
+    <div class="categories-container">
+      <div class="categories-header">
+        <h2 class="dark-gray">{{ page.title }}</h2>
+        <p class="light-gray">{{ page.content | strip_html }}</p>
+      </div>
+      <div class="categories-product-container">
+        <div class="categories-header-container">
+          <p>Showing 1–9 of {{ collection.products_count }} results</p>
+          <div class="filtering-container">
+            <select name="" id="">
+              <option value="">Default Sorting</option>
+            </select>
+          </div>
+        </div>
+      </div>
+      <div class="categories-product-main">
+        <div class="filtering-product-container">
+          <div class="filter-container">
+            <p>Filter by Price ($)</p>
+            <input
+              type="range"
+              min="0"
+              max="3000"
+              value="0"
+              id="priceRange"
+            >
+            <div class="price-range"><span id="minPrice">0</span><span id="maxPrice">3000</span></div>
+          </div>
+          <div class="filter-container">
+            <p>Filter by Skintype</p>
+            <select name="" id="skinTypeFilter">
+              <option value="">Any</option>
+              <option value="dry">Dry</option>
+              <option value="normal">Normal</option>
+              <option value="oily">Oily</option>
+              <option value="sensitive">Sensitive</option>
+            </select>
+          </div>
+          <div class="filter-container">
+            <p>Filter by Product Type</p>
+            <select name="" id="productTypeFilter">
+              <option value="">Select All</option>
+              <option value="serum">Serum</option>
+              <option value="moisturizer">Moisturizer</option>
+              <option value="cleanser">Cleanser</option>
+            </select>
+          </div>
+          <div class="filter-container">
+            <p>Filter by Price ($)</p>
+            <select name="priceFilter" id="priceFilter">
+              <option value="">Select Price Range</option>
+              <option value="0-50">Under $50</option>
+              <option value="50-100">$50 - $100</option>
+              <option value="100-200">$100 - $200</option>
+              <option value="200-500">$200 - $500</option>
+              <option value="500-3000">Over $500</option>
+            </select>
+          </div>
+          <div class="filter-container">
+            <p>Filter by Brand</p>
+            <select name="" id="brandFilter">
+              <option value="">Select All</option>
+              <option value="brand-a">Brand A</option>
+              <option value="brand-b">Brand B</option>
+              <option value="brand-c">Brand C</option>
+            </select>
+          </div>
+          <a class="btn-primary" id="filterBtn">Show Filtered Products</a>
+        </div>
+        <div class="categories-product-list-container">
+          {% paginate collection.products by 9 %}
+            <div class="categories-product-list">
+              {% for product in collection.products %}
+                <div class="product-widget">
+                  <a href="{{ product.url }}">
+                    {% if product.featured_image != blank %}
+                      <img
+                        src="{{ product.featured_image | img_url: '2048x' }}"
+                        alt="{{ product.featured_image.alt }}"
+                        loading="lazy"
+                      >
+                    {% else %}
+                      <img
+                        src="https://cdn.shopify.com/s/files/1/0727/8949/1929/files/Default_Image.webp?v=1733414521"
+                        alt="Default Image"
+                        loading="lazy"
+                      >
+                    {% endif %}
+                  </a>
+                  <div class="product-details">
+                    <a href="{{ product.url }}">
+                      {% if product.title != blank %}
+                        <p>{{ product.title | escape }}</p>
+                      {% else %}
+                        <p>Treatment Name</p>
+                      {% endif %}
+                    </a>
+                    <p class="{% if product.compare_at_price < product.price %}sale{% endif %}">
+                      {% if product.compare_at_price < product.price %}
+                        {{ product.price | money_with_currency }}
+                      {% else %}
+                        {{ product.price | money_with_currency }}
+                      {% endif %}
+                    </p>
+                    <a href="{{ product.url }}" class="btn-secondary">View Product</a>
+                  </div>
+                </div>
+              {% endfor %}
+            </div>
+            <div class="pagination-container">
+              {% if paginate.pages > 1 %}
+                <ul class="pagination">
+                  {% for part in paginate.parts %}
+                    {% if part.is_link %}
+                      <span>
+                        <a href="{{ part.url }}" title="Page {{ part.title }}" class="pagination-link">
+                          {{ part.title }}
+                        </a>
+                      </span>
+                    {% else %}
+                      <span class="pagination-current">
+                        <a href="#!">{{ part.title }}</a>
+                      </span>
+                    {% endif %}
+                  {% endfor %}
+                </ul>
+              {% endif %}
+            </div>
+          {% endpaginate %}
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+{% section 'quiz' %}
+
+{{ 'filterProduct.js' | asset_url | script_tag }}
+
+<script>
+  $(document).ready(() => {
+    new ProductWidget('neck-decolletage');
+  });
+</script>

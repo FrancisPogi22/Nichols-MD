@@ -71,48 +71,49 @@ class ProductWidget {
       p = $("<a>", { href: e, class: "btn-secondary" }).text("View Product");
     return s.append(c, l, p), r.append(s), r;
   }
-  fetchFilteredProducts(t = {}) {
+  fetchFilteredProducts(t = {}, pageInfo = null) {
     this.showLoader();
-    let e = `/collections/${this.collection}/products.json`;
+    let e = `/collections/${this.collection}/products.json?limit=250`;
+    if (pageInfo) {
+      e += `&page_info=${pageInfo}`;
+    }
     $.ajax({
       type: "GET",
       url: e,
       success: (e) => {
         let r = e.products;
-        if (
-          ((this.allProducts = r.filter((e) => {
-            let r = parseFloat(e.variants[0].price),
-              a =
-                (void 0 === t.minPrice || r >= t.minPrice) &&
-                (void 0 === t.maxPrice || r <= t.maxPrice),
-              i = !t.skinType || e.tags?.includes(t.skinType),
-              s = !t.productType || e.tags?.includes(t.productType),
-              c = !t.brand || e.tags?.includes(t.brand);
-            return a && i && s && c;
-          })),
-          t.sortBy)
-        )
-          switch (t.sortBy) {
-            case "title-asc":
-              this.allProducts.sort((t, e) => t.title.localeCompare(e.title));
-              break;
-            case "title-desc":
-              this.allProducts.sort((t, e) => e.title.localeCompare(t.title));
-              break;
-            case "price-asc":
-              this.allProducts.sort(
-                (t, e) =>
-                  parseFloat(t.variants[0].price) -
-                  parseFloat(e.variants[0].price)
-              );
-              break;
-            case "price-desc":
-              this.allProducts.sort(
-                (t, e) =>
-                  parseFloat(e.variants[0].price) -
-                  parseFloat(t.variants[0].price)
-              );
-          }
+        this.allProducts = r.filter((e) => {
+          let r = parseFloat(e.variants[0].price),
+            a =
+              (void 0 === t.minPrice || r >= t.minPrice) &&
+              (void 0 === t.maxPrice || r <= t.maxPrice),
+            i = !t.skinType || e.tags?.includes(t.skinType),
+            s = !t.productType || e.tags?.includes(t.productType),
+            c = !t.brand || e.tags?.includes(t.brand);
+          return a && i && s && c;
+        });
+
+        switch (t.sortBy) {
+          case "title-asc":
+            this.allProducts.sort((t, e) => t.title.localeCompare(e.title));
+            break;
+          case "title-desc":
+            this.allProducts.sort((t, e) => e.title.localeCompare(t.title));
+            break;
+          case "price-asc":
+            this.allProducts.sort(
+              (t, e) =>
+                parseFloat(t.variants[0].price) -
+                parseFloat(e.variants[0].price)
+            );
+            break;
+          case "price-desc":
+            this.allProducts.sort(
+              (t, e) =>
+                parseFloat(e.variants[0].price) -
+                parseFloat(t.variants[0].price)
+            );
+        }
         (this.totalPages = Math.ceil(
           this.allProducts.length / this.productsPerPage
         )),

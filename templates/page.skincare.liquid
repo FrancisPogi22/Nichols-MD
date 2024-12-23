@@ -3,7 +3,7 @@
 {% section 'page-header' %}
 <section id="categories">
   <div class="wrapper">
-    {% assign collection = collections['skincare'] %}
+    {% assign collection = collections.skincare %}
     <div class="categories-container">
       <div class="categories-header">
         <h2 class="dark-gray">{{ page.title }}</h2>
@@ -11,10 +11,14 @@
       </div>
       <div class="categories-product-container">
         <div class="categories-header-container">
-          <p>Showing 1–9 of {{ collection.products_count }} results</p>
+          <p class="dark-gray">Showing 1–9 of {{ collection.products_count }} results</p>
           <div class="filtering-container">
-            <select name="" id="">
+            <select name="sortBy" id="sortBy">
               <option value="">Default Sorting</option>
+              <option value="title-asc">A-Z</option>
+              <option value="title-desc">Z-A</option>
+              <option value="price-asc">Price: Low to High</option>
+              <option value="price-desc">Price: High to Low</option>
             </select>
           </div>
         </div>
@@ -46,9 +50,9 @@
             <p>Filter by Product Type</p>
             <select name="" id="productTypeFilter">
               <option value="">Select All</option>
-              <option value="serum">Serum</option>
+              <option value="serums">Serum</option>
               <option value="moisturizer">Moisturizer</option>
-              <option value="cleanser">Cleanser</option>
+              <option value="cleansers">Cleanser</option>
             </select>
           </div>
           <div class="filter-container">

@@ -141,7 +141,8 @@
     width: calc(65% - 10px);
   }
   #categories .product-widget img {
-    max-width: 100%;
+    margin: 0 auto;
+    max-width: 200px;
     height: 100%;
   }
   #categories .filtering-product-container {
@@ -192,11 +193,15 @@
     width: 100%;
   }
   #categories .product-widget {
-    max-width: 300px;
+    max-width: 250px;
     margin: 0 auto;
+    width: 100%;
   }
   #categories .categories-header-container {
     padding-bottom: 20px;
+  }
+  #categories .product-details {
+    padding: 20px 10px 20px;
   }
 }
 @media screen and (max-width: 500px) {

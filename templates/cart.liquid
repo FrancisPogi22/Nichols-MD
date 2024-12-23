@@ -1,9 +1,10 @@
+{{ 'cart.css' | asset_url | stylesheet_tag }}
+
 {% section 'page-header' %}
 <section id="cart">
   <div class="wrapper">
     <div class="cart-container">
       {% if cart.item_count > 0 %}
-        <h1>cart</h1>
         <form action="/cart" method="post" novalidate>
           <table>
             <thead>

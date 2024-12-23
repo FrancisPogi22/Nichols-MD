@@ -3,6 +3,7 @@
 {% section 'page-header' %}
 <section id="categories">
   <div class="wrapper">
+    {% assign collection = collections['vitamins-supplements'] %}
     <div class="categories-container">
       <div class="categories-header">
         <h2 class="dark-gray">{{ page.title }}</h2>
@@ -10,10 +11,14 @@
       </div>
       <div class="categories-product-container">
         <div class="categories-header-container">
-          <p>Showing 1–9 of {{ collection.products_count }} results</p>
+          <p class="dark-gray">Showing 1–9 of {{ collection.products_count }} results</p>
           <div class="filtering-container">
-            <select name="" id="">
+            <select name="sortBy" id="sortBy">
               <option value="">Default Sorting</option>
+              <option value="title-asc">A-Z</option>
+              <option value="title-desc">Z-A</option>
+              <option value="price-asc">Price: Low to High</option>
+              <option value="price-desc">Price: High to Low</option>
             </select>
           </div>
         </div>
@@ -34,20 +39,14 @@
           <div class="filter-container">
             <p>Filter by Skintype</p>
             <select name="" id="skinTypeFilter">
-              <option value="">Any</option>
-              <option value="dry">Dry</option>
-              <option value="normal">Normal</option>
-              <option value="oily">Oily</option>
-              <option value="sensitive">Sensitive</option>
+              <option value="">Select All</option>
             </select>
           </div>
           <div class="filter-container">
-            <p>Filter by Product Type</p>
+            <p>Filter by Skin Condition</p>
             <select name="" id="productTypeFilter">
               <option value="">Select All</option>
-              <option value="serum">Serum</option>
-              <option value="moisturizer">Moisturizer</option>
-              <option value="cleanser">Cleanser</option>
+              <option value="mature-skin">Mature Skin</option>
             </select>
           </div>
           <div class="filter-container">
@@ -62,18 +61,16 @@
             </select>
           </div>
           <div class="filter-container">
-            <p>Filter by Brand</p>
+            <p>Filter by Areas of Concern</p>
             <select name="" id="brandFilter">
               <option value="">Select All</option>
-              <option value="brand-a">Brand A</option>
-              <option value="brand-b">Brand B</option>
-              <option value="brand-c">Brand C</option>
+              <option value="scalp">Scalp</option>
             </select>
           </div>
           <a class="btn-primary" id="filterBtn">Show Filtered Products</a>
         </div>
         <div class="categories-product-list-container">
-          {% assign collection = collections['vitamins-supplements'] %}
+          <div class="product-loader"></div>
           {% paginate collection.products by 9 %}
             <div class="categories-product-list">
               {% for product in collection.products %}

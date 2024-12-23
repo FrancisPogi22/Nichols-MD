@@ -12,22 +12,25 @@
         {% endif %}
       </div>
       <div class="product-container">
-        {% for concern in blogs['skin-concerns'].articles %}
-          <div class="product-widget">
-            <a href="{{ concern.url }}">
-              <img
-                src="{{ concern.image | img_url: 'medium' }}"
-                alt="{{ concern.title }}"
-                loading="lazy"
-              >
-            </a>
-            <a href="{{ concern.url }}">
-              <h4 class="dark-gray">{{ concern.title }}</h4>
-            </a>
-            <p class="semi-gray">
-              <a href="{{ concern.url }}" class="learn-more-link">Learn More</a>
-            </p>
-          </div>
+        {% for block in section.blocks %}
+          {% case block.type %}
+            {% when 'widget' %}
+              <div class="product-widget">
+                <a href="{{ block.settings.widget_link }}">
+                  <img
+                    src="{{ block.settings.widget_image | img_url: 'medium' }}"
+                    alt="{{ block.settings.widget_text }}"
+                    loading="lazy"
+                  >
+                </a>
+                <a href="{{ block.settings.widget_link }}">
+                  <h4 class="dark-gray">{{ block.settings.widget_text }}</h4>
+                </a>
+                <p class="semi-gray">
+                  <a href="{{ block.settings.widget_link }}" class="learn-more-link">Learn More</a>
+                </p>
+              </div>
+          {% endcase %}
         {% endfor %}
       </div>
     </div>
@@ -58,7 +61,7 @@
     {
       "type": "text",
       "id": "heading_text",
-      "default": "Skin Concerns",
+      "default": "Shop by skintype",
       "label": "Heading Text"
     },
     {
@@ -66,6 +69,34 @@
       "id": "background_color",
       "default": "background_white",
       "label": "Background Color"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "widget",
+      "name": "Widget",
+      "settings": [
+        {
+          "type": "header",
+          "content": "Widget Image"
+        },
+        {
+          "type": "image_picker",
+          "id": "widget_image",
+          "label": "Widget Image"
+        },
+        {
+          "type": "text",
+          "id": "widget_text",
+          "label": "Widget Image Text",
+          "default": "Learn More"
+        },
+        {
+          "type": "url",
+          "id": "widget_link",
+          "label": "Widget Link"
+        }
+      ]
     }
   ],
   "presets": [

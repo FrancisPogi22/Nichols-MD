@@ -3,6 +3,7 @@
 {% section 'page-header' %}
 <section id="categories">
   <div class="wrapper">
+    {% assign collection = collections['skincare-kits'] %}
     <div class="categories-container">
       <div class="categories-header">
         <h2 class="dark-gray">{{ page.title }}</h2>
@@ -10,10 +11,14 @@
       </div>
       <div class="categories-product-container">
         <div class="categories-header-container">
-          <p>Showing 1–9 of {{ collection.products_count }} results</p>
+          <p class="dark-gray">Showing 1–9 of {{ collection.products_count }} results</p>
           <div class="filtering-container">
-            <select name="" id="">
+            <select name="sortBy" id="sortBy">
               <option value="">Default Sorting</option>
+              <option value="title-asc">A-Z</option>
+              <option value="title-desc">Z-A</option>
+              <option value="price-asc">Price: Low to High</option>
+              <option value="price-desc">Price: High to Low</option>
             </select>
           </div>
         </div>
@@ -25,15 +30,15 @@
             <input
               type="range"
               min="0"
-              max="2500"
+              max="3000"
               value="0"
               id="priceRange"
             >
-            <div class="price-range"><span id="minPrice">0</span><span id="maxPrice">2500</span></div>
+            <div class="price-range"><span id="minPrice">0</span><span id="maxPrice">3000</span></div>
           </div>
           <div class="filter-container">
             <p>Filter by Skintype</p>
-            <select name="" id="">
+            <select name="" id="skinTypeFilter">
               <option value="">Any</option>
               <option value="dry">Dry</option>
               <option value="normal">Normal</option>
@@ -43,144 +48,112 @@
           </div>
           <div class="filter-container">
             <p>Filter by Product Type</p>
-            <select name="" id="">
-              <option value="">Select All</option>
+            <select name="" id="productTypeFilter">
+              <option value="">Any</option>
+              <option value="serums">Serum</option>
+              <option value="moisturizers">Moisturizer</option>
+              <option value="masques">Masques</option>
+              <option value="spf">SPF</option>
+              <option value="cleansers">Cleansers</option>
+              <option value="eye-care">Eye Care</option>
+              <option value="toners">Toners</option>
+              <option value="neck-decolletage">Neck and Decolletage</option>
             </select>
           </div>
           <div class="filter-container">
             <p>Filter by Price ($)</p>
-            <select name="" id="">
-              <option value="">Select All</option>
+            <select name="priceFilter" id="priceFilter">
+              <option value="">Select Price Range</option>
+              <option value="0-50">Under $50</option>
+              <option value="50-100">$50 - $100</option>
+              <option value="100-200">$100 - $200</option>
+              <option value="200-500">$200 - $500</option>
+              <option value="500-3000">Over $500</option>
             </select>
           </div>
           <div class="filter-container">
             <p>Filter by Brand</p>
-            <select name="" id="">
+            <select name="" id="brandFilter">
               <option value="">Select All</option>
+              <option value="brand-a">Brand A</option>
+              <option value="brand-b">Brand B</option>
+              <option value="brand-c">Brand C</option>
             </select>
           </div>
-          <a href="#!" class="btn-primary">Show Filtered Products</a>
+          <a class="btn-primary" id="filterBtn">Show Filtered Products</a>
         </div>
         <div class="categories-product-list-container">
-          <div class="categories-product-list">
-            <div class="product-widget">
-              <img
-                src="https://cdn.shopify.com/s/files/1/0727/8949/1929/files/Default_Image.webp?v=1733414521"
-                alt="Default Image"
-                loading="lazy"
-              >
-              <div class="product-details">
-                <p>Treatment Name</p>
-                <p>$100.00</p>
-                <a href="" class="btn-secondary">View Product</a>
-              </div>
+          <div class="product-loader"></div>
+          {% paginate collection.products by 9 %}
+            <div class="categories-product-list">
+              {% for product in collection.products %}
+                <div class="product-widget">
+                  <a href="{{ product.url }}">
+                    {% if product.featured_image != blank %}
+                      <img
+                        src="{{ product.featured_image | img_url: '2048x' }}"
+                        alt="{{ product.featured_image.alt }}"
+                        loading="lazy"
+                      >
+                    {% else %}
+                      <img
+                        src="https://cdn.shopify.com/s/files/1/0727/8949/1929/files/Default_Image.webp?v=1733414521"
+                        alt="Default Image"
+                        loading="lazy"
+                      >
+                    {% endif %}
+                  </a>
+                  <div class="product-details">
+                    <a href="{{ product.url }}">
+                      {% if product.title != blank %}
+                        <p>{{ product.title | escape }}</p>
+                      {% else %}
+                        <p>Treatment Name</p>
+                      {% endif %}
+                    </a>
+                    <p class="{% if product.compare_at_price < product.price %}sale{% endif %}">
+                      {% if product.compare_at_price < product.price %}
+                        {{ product.price | money_with_currency }}
+                      {% else %}
+                        {{ product.price | money_with_currency }}
+                      {% endif %}
+                    </p>
+                    <a href="{{ product.url }}" class="btn-secondary">View Product</a>
+                  </div>
+                </div>
+              {% endfor %}
             </div>
-            <div class="product-widget">
-              <img
-                src="https://cdn.shopify.com/s/files/1/0727/8949/1929/files/Default_Image.webp?v=1733414521"
-                alt="Default Image"
-                loading="lazy"
-              >
-              <div class="product-details">
-                <p>Treatment Name</p>
-                <p>$100.00</p>
-                <a href="" class="btn-secondary">View Product</a>
-              </div>
+            <div class="pagination-container">
+              {% if paginate.pages > 1 %}
+                <ul class="pagination">
+                  {% for part in paginate.parts %}
+                    {% if part.is_link %}
+                      <span>
+                        <a href="{{ part.url }}" title="Page {{ part.title }}" class="pagination-link">
+                          {{ part.title }}
+                        </a>
+                      </span>
+                    {% else %}
+                      <span class="pagination-current">
+                        <a href="#!">{{ part.title }}</a>
+                      </span>
+                    {% endif %}
+                  {% endfor %}
+                </ul>
+              {% endif %}
             </div>
-            <div class="product-widget">
-              <img
-                src="https://cdn.shopify.com/s/files/1/0727/8949/1929/files/Default_Image.webp?v=1733414521"
-                alt="Default Image"
-                loading="lazy"
-              >
-              <div class="product-details">
-                <p>Treatment Name</p>
-                <p>$100.00</p>
-                <a href="" class="btn-secondary">View Product</a>
-              </div>
-            </div>
-            <div class="product-widget">
-              <img
-                src="https://cdn.shopify.com/s/files/1/0727/8949/1929/files/Default_Image.webp?v=1733414521"
-                alt="Default Image"
-                loading="lazy"
-              >
-              <div class="product-details">
-                <p>Treatment Name</p>
-                <p>$100.00</p>
-                <a href="" class="btn-secondary">View Product</a>
-              </div>
-            </div>
-            <div class="product-widget">
-              <img
-                src="https://cdn.shopify.com/s/files/1/0727/8949/1929/files/Default_Image.webp?v=1733414521"
-                alt="Default Image"
-                loading="lazy"
-              >
-              <div class="product-details">
-                <p>Treatment Name</p>
-                <p>$100.00</p>
-                <a href="" class="btn-secondary">View Product</a>
-              </div>
-            </div>
-            <div class="product-widget">
-              <img
-                src="https://cdn.shopify.com/s/files/1/0727/8949/1929/files/Default_Image.webp?v=1733414521"
-                alt="Default Image"
-                loading="lazy"
-              >
-              <div class="product-details">
-                <p>Treatment Name</p>
-                <p>$100.00</p>
-                <a href="" class="btn-secondary">View Product</a>
-              </div>
-            </div>
-            <div class="product-widget">
-              <img
-                src="https://cdn.shopify.com/s/files/1/0727/8949/1929/files/Default_Image.webp?v=1733414521"
-                alt="Default Image"
-                loading="lazy"
-              >
-              <div class="product-details">
-                <p>Treatment Name</p>
-                <p>$100.00</p>
-                <a href="" class="btn-secondary">View Product</a>
-              </div>
-            </div>
-            <div class="product-widget">
-              <img
-                src="https://cdn.shopify.com/s/files/1/0727/8949/1929/files/Default_Image.webp?v=1733414521"
-                alt="Default Image"
-                loading="lazy"
-              >
-              <div class="product-details">
-                <p>Treatment Name</p>
-                <p>$100.00</p>
-                <a href="" class="btn-secondary">View Product</a>
-              </div>
-            </div>
-            <div class="product-widget">
-              <img
-                src="https://cdn.shopify.com/s/files/1/0727/8949/1929/files/Default_Image.webp?v=1733414521"
-                alt="Default Image"
-                loading="lazy"
-              >
-              <div class="product-details">
-                <p>Treatment Name</p>
-                <p>$100.00</p>
-                <a href="" class="btn-secondary">View Product</a>
-              </div>
-            </div>
-          </div>
-          <div class="pagination-container">
-            <span>1</span>
-            <span>2</span>
-            <span>3</span>
-            <span>4</span>
-          </div>
+          {% endpaginate %}
         </div>
       </div>
     </div>
   </div>
 </section>
 {% section 'quiz' %}
+
+{{ 'filterProduct.js' | asset_url | script_tag }}
+
+<script>
+  $(document).ready(() => {
+    new ProductWidget('skincare-kits');
+  });
+</script>

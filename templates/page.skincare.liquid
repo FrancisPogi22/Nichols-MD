@@ -39,7 +39,7 @@
           <div class="filter-container">
             <p>Filter by Skintype</p>
             <select name="" id="skinTypeFilter">
-              <option value="">Any</option>
+              <option value="">Select All</option>
               <option value="dry">Dry</option>
               <option value="normal">Normal</option>
               <option value="oily">Oily</option>
@@ -47,12 +47,18 @@
             </select>
           </div>
           <div class="filter-container">
-            <p>Filter by Product Type</p>
+            <p>Filter by Type</p>
             <select name="" id="productTypeFilter">
               <option value="">Select All</option>
               <option value="serums">Serum</option>
-              <option value="moisturizer">Moisturizer</option>
+              <option value="moisturizers">Moisturizer</option>
               <option value="cleansers">Cleanser</option>
+              <option value="spf">SPF</option>
+              <option value="cleansers">Cleanser</option>
+              <option value="masques">Masques</option>
+              <option value="toners">Toners</option>
+              <option value="eye-care">Eye Care</option>
+              <option value="neck-decolletage">Neck and Decolletage</option>
             </select>
           </div>
           <div class="filter-container">
@@ -78,6 +84,7 @@
           <a class="btn-primary" id="filterBtn">Show Filtered Products</a>
         </div>
         <div class="categories-product-list-container">
+          <div class="product-loader"></div>
           {% paginate collection.products by 9 %}
             <div class="categories-product-list">
               {% for product in collection.products %}

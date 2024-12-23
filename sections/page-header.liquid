@@ -20,20 +20,30 @@
           />
         </svg>
         <span class="semi-gray">
-          {{
-            page.title
-            | default: collection.title
-            | default: product.title
-            | default: blog.title
-            | default: cart.title
-            | default: article.title
-            | default: 'Home'
-          }}
+          {% if template.name == 'cart' %}
+            {{ template.name | capitalize }}
+          {% elsif template.name == '404' %}
+            Not Found
+          {% else %}
+            {{
+              page.title
+              | default: collection.title
+              | default: product.title
+              | default: blog.title
+              | default: cart.title
+              | default: article.title
+              | default: 'Home'
+            }}
+          {% endif %}
         </span>
       </p>
       <h1 class="white">
         {% if page.handle == 'about' %}
           {{ page.title }} NicholsMD
+        {% elsif template.name == 'cart' %}
+          {{ template.name | capitalize }}
+        {% elsif template.name == '404' %}
+          Not Found
         {% else %}
           {{
             page.title

@@ -303,6 +303,9 @@ input[type="range"]:focus::-ms-fill-upper {
   z-index: 99;
   background-color: var(--global-low-white);
 }
+#header {
+  overflow-y: visible;
+}
 #header,
 #skincare,
 .loader {
@@ -413,7 +416,7 @@ input[type="range"]:focus::-ms-fill-upper {
   min-width: 110px;
 }
 #skincare ul:nth-child(2) {
-  min-width: 179px;
+  min-width: 150px;
 }
 #mobile-navbar .sub-link-container {
   display: none;

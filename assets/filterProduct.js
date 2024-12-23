@@ -1,8 +1,8 @@
 class ProductWidget {
-  constructor(t) {
+  constructor(t, page = 9) {
     (this.collection = t || "treatments"),
       (this.productList = $(".categories-product-list")),
-      (this.productsPerPage = 9),
+      (this.productsPerPage = page),
       (this.currentPage = 1),
       (this.allProducts = []),
       (this.totalPages = 0),
@@ -19,15 +19,30 @@ class ProductWidget {
     }),
       $("#filterBtn").click((t) => {
         t.preventDefault();
+
         let e = $("#skinTypeFilter").val(),
           r = $("#productTypeFilter").val(),
-          a = $("#brandFilter").val();
-        this.fetchFilteredProducts({ skinType: e, productType: r, brand: a });
-      }),
-      $("#sortBy").change((t) => {
-        let e = $(t.currentTarget).val();
-        this.fetchFilteredProducts({ sortBy: e });
+          a = $("#brandFilter").val(),
+          priceFilterValue = $("#priceFilter").val(),
+          priceRange = {};
+
+        if (priceFilterValue) {
+          const [minPrice, maxPrice] = priceFilterValue.split("-").map(Number);
+          priceRange = { minPrice, maxPrice };
+        }
+
+        this.fetchFilteredProducts({
+          skinType: e,
+          productType: r,
+          brand: a,
+          ...priceRange,
+        });
       });
+
+    $("#sortBy").change((t) => {
+      let e = $(t.currentTarget).val();
+      this.fetchFilteredProducts({ sortBy: e });
+    });
   }
   createProductWidget(t) {
     let e = `/products/${t.handle}`,

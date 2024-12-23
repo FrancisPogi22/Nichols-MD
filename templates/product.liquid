@@ -37,9 +37,8 @@
           {% endif %}
         </div>
         <div class="product-variants-container">
-        {% if product.variants.size > 1 or product.variants.first.title != 'Default Title' %}
-          <p class="dark-gray"><strong>Choose Your Size</strong></p>
-         
+          {% if product.variants.size > 1 or product.variants.first.title != 'Default Title' %}
+            <p class="dark-gray"><strong>Choose Your Size</strong></p>
             <ul id="variant-list">
               {% for variant in product.variants %}
                 <li
@@ -76,17 +75,13 @@
             {% endif %}
           </form>
           <div class="recommendation-container">
-            <p><strong>Recommended Skin Types:</strong></p>
-            <p>For all skin types.</p>
-            <p><strong>Directions for Use:</strong></p>
-            {% if product.metafields.custom.direction != blank %}
-              <p>{{ product.metafields.custom.direction | metafield_tag }}</p>
-            {% else %}
-              <p>
-                Apply a small amount to damp skin, rinse well and pat dry. Because drying of the skin can occur, start
-                by using once daily, then gradually increase to 2 or 3x daily if needed. If bothersome dryness or
-                peeling occurs, reduce usage to once daily or every other day.
-              </p>
+            {% if product.type != 'Gift Card' %}
+              <p><strong>Recommended Skin Types:</strong></p>
+              <p>For all skin types.</p>
+              {% if product.metafields.custom.direction != blank %}
+                <p><strong>Directions for Use:</strong></p>
+                <p>{{ product.metafields.custom.direction | metafield_tag }}</p>
+              {% endif %}
             {% endif %}
           </div>
         </div>
@@ -158,7 +153,7 @@
               <a href="{{ related_product.url }}">
                 <h6 class="low-white">{{ related_product.title }}</h6>
               </a>
-              <p class="white">{{ related_product.price | money_with_currency }}</p>
+              <p class="white">{{ related_product.price | money }}</p>
             </div>
           {% endif %}
         {% endfor %}
@@ -202,8 +197,13 @@
     function changeVariant(selectedVariantId, variantPrice) {
       if (selectedVariantId) {
         $('#variant-id').val(selectedVariantId);
-        const formattedPrice = Shopify.formatMoney(variantPrice);
-        $('.price').text(variantPrice);
+
+        const formattedPrice = (variantPrice / 100).toLocaleString('en-US', {
+          style: 'currency',
+          currency: 'USD',
+        });
+
+        $('.price strong').text(`${formattedPrice}`);
       }
     }
   });

@@ -133,6 +133,11 @@
   padding-bottom: 26px;
   border-bottom: 3px solid #e0e0e0;
 }
+#single-product .metafield-rich_text_field ul {
+  max-width: 958px;
+  margin: 0 auto;
+  flex-direction: column;
+}
 #single-product .product-information-container ul li {
   min-width: 100px;
   width: calc(100% / 5);
@@ -142,6 +147,15 @@
 }
 #single-product .product-information-container {
   padding-bottom: 113px;
+}
+#single-product .metafield-rich_text_field ul li {
+  list-style: disc;
+  color: #424242;
+  min-width: unset;
+  width: 100%;
+}
+#single-product .metafield-rich_text_field ul li:not(:last-of-type) {
+  margin-bottom: 15px;
 }
 #single-product .product-information-container p {
   padding: 28px 0;

@@ -136,7 +136,7 @@ $(document).ready(() => {
       let a = $(this).find(".sub-link-container"),
         e = a.is(":visible");
       $(this).toggleClass("active"),
-        $(".sub-link-container").slideUp(),
+        $("#mobile-navbar .sub-link-container").slideUp(),
         e
           ? (window.location.href = $(this).children("a").attr("href"))
           : a.slideDown();
@@ -187,7 +187,6 @@ $(document).ready(() => {
           },
         });
       }
-    );
+    ),
+    $(".year").text(new Date().getFullYear());
 });
-
-

@@ -1,0 +1,13 @@
+#cart .cart-container {
+  padding: 100px 0;
+}
+@media screen and (max-width: 1024px) {
+    #cart .cart-container {
+      padding: 80px 0;
+    }
+  }
+@media screen and (max-width: 767px) {
+  #cart .cart-container {
+    padding: 50px 0;
+  }
+}

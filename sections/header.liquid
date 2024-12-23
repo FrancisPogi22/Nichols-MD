@@ -17,7 +17,7 @@
             </p>
             {% render 'icon_cart' %}
           </div>
-          <p>$0.00</p>
+          <p>{{ cart.total_price | money }}</p>
         </div>
         {% if section.settings.header_logo != blank %}
           <a href="{{ routes.root_url }}">
@@ -65,7 +65,7 @@
       <div class="sub-link-container">
         <ul>
           <div class="header-container">
-            <h4>Skintype</h4>
+            <h4>Shop by Skintype</h4>
           </div>
           {% for link in linklists.skintype.links %}
             <li>
@@ -97,17 +97,24 @@
         </ul>
       </div>
       <div class="featured-product">
-        <div class="featured-product-container">
-          <p class="lead-in light-blue">Featured Product</p>
-          <h5>Product Name</h5>
-          <p>$10.00</p>
-          <a href="#!" class="btn-primary">View Product</a>
-        </div>
-        <img
-          src="https://cdn.shopify.com/s/files/1/0727/8949/1929/files/Default_Image.webp?v=1733414521"
-          alt="Clarifying Clay Masque"
-          loading="lazy"
-        >
+        {% assign collection = collections['skincare'] %}
+        {% assign specific_product_id = 9082159497433 %}
+        {% for product in collection.products %}
+          {% if product.id == specific_product_id %}
+            <div class="featured-product-container">
+              <p class="lead-in light-blue">Featured Product</p>
+              <h5>{{ product.title }}</h5>
+              <p>{{ product.price | money }}</p>
+              <a href="{{ product.url }}" class="btn-primary">View Product</a>
+            </div>
+            <img
+              src="{{ product.featured_image | img_url: '2048x' }}"
+              alt="{{ product.featured_image.alt | escape }}"
+              loading="lazy"
+            >
+            {% break %}
+          {% endif %}
+        {% endfor %}
       </div>
     </div>
   </div>

@@ -3,7 +3,7 @@
 {% section 'page-header' %}
 <section id="categories">
   <div class="wrapper">
-    {% assign collection = collections['normal'] %}
+    {% assign collection = collections.normal %}
     <div class="categories-container">
       <div class="categories-header">
         <h2 class="dark-gray">{{ page.title }}</h2>
@@ -11,10 +11,14 @@
       </div>
       <div class="categories-product-container">
         <div class="categories-header-container">
-          <p>Showing 1–9 of {{ collection.products_count }} results</p>
+          <p class="dark-gray">Showing 1–9 of {{ collection.products_count }} results</p>
           <div class="filtering-container">
-            <select name="" id="">
+            <select name="sortBy" id="sortBy">
               <option value="">Default Sorting</option>
+              <option value="title-asc">A-Z</option>
+              <option value="title-desc">Z-A</option>
+              <option value="price-asc">Price: Low to High</option>
+              <option value="price-desc">Price: High to Low</option>
             </select>
           </div>
         </div>
@@ -45,10 +49,15 @@
           <div class="filter-container">
             <p>Filter by Product Type</p>
             <select name="" id="productTypeFilter">
-              <option value="">Select All</option>
-              <option value="serum">Serum</option>
-              <option value="moisturizer">Moisturizer</option>
-              <option value="cleanser">Cleanser</option>
+              <option value="">Any</option>
+              <option value="serums">Serum</option>
+              <option value="moisturizers">Moisturizer</option>
+              <option value="masques">Masques</option>
+              <option value="spf">SPF</option>
+              <option value="cleansers">Cleansers</option>
+              <option value="eye-care">Eye Care</option>
+              <option value="toners">Toners</option>
+              <option value="neck-decolletage">Neck and Decolletage</option>
             </select>
           </div>
           <div class="filter-container">
@@ -74,6 +83,7 @@
           <a class="btn-primary" id="filterBtn">Show Filtered Products</a>
         </div>
         <div class="categories-product-list-container">
+          <div class="product-loader"></div>
           {% paginate collection.products by 9 %}
             <div class="categories-product-list">
               {% for product in collection.products %}

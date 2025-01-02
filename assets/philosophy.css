@@ -77,7 +77,7 @@
     width: calc(100% + 40px);
     height: 450px;
     left: -20px;
-    object-position: 35% 15%;
+    object-position: 35% 20%;
     border-radius: 0 0 0 150px;
   }
   #philosophy .philosophy-details-container::before {

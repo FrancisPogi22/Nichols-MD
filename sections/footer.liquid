@@ -9,14 +9,12 @@
   <div class="wrapper">
     <div class="footer-container">
       {% if section.settings.footer_logo != blank %}
-        <a href="{{ routes.root_url }}">
-          <img
-            class="footer-logo"
-            src="{{ section.settings.footer_logo | img_url: "2048x" }}"
-            alt="{{ section.settings.footer_logo.alt }}"
-            loading="lazy"
-          >
-        </a>
+        <img
+          class="footer-logo"
+          src="{{ section.settings.footer_logo | img_url: "2048x" }}"
+          alt="{{ section.settings.footer_logo.alt }}"
+          loading="lazy"
+        >
       {% else %}
         <img
           src="https://cdn.shopify.com/s/files/1/0727/8949/1929/files/Default_Image.webp?v=1733414521"
@@ -27,17 +25,31 @@
       <ul>
         <h6>Contact Details</h6>
         <li>
-          <a href="https://maps.app.goo.gl/KPmxMeVX1Z5JMLAE6" target="__blank"
-            >50 Old Field Point Road, Third Floor, Greenwich, CT 06830</a
-          >
+          <span>NicholsMD | <a href="tel:1-203-862-4000">(203) 862-4000</a></span>
+          <span>
+            <a href="https://maps.app.goo.gl/iavvUs9dKa26arUG8" target="__blank"
+              >50 Old Field Point Road, Third Floor, Greenwich, CT 06830</a
+            >
+          </span>
         </li>
-        {% comment %}
-          <li>
-            <a href="#!">email@yourdomain.com</a>
-          </li>
-        {% endcomment %}
         <li>
-          <a href="tel:+12038624000">(203) 862-4000</a>
+          <span>
+            <a href="https://nicholsmdskinlab.com/" target="__blank">SkinLab</a> |
+            <a href="tel:1-203-862-4006">(203) 862-4006</a>
+          </span>
+          <span>
+            <a href="https://maps.app.goo.gl/ZyGXAtEGeGb2tcQ26" target="__blank"
+              >24 Harbor Point Road, Stamford, CT 06902</a
+            >
+          </span>
+        </li>
+        <li>
+          <span>NicholsMD of Fairfield | <a href="tel:1-203-862-4009">(203) 862-4009</a></span>
+          <span>
+            <a href="https://maps.app.goo.gl/bVMjyzz5qJ4mzBwx6" target="__blank"
+              >1215 Post Road Fairfield, CT 06824</a
+            ></span
+          >
         </li>
       </ul>
       <ul>

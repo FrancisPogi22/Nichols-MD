@@ -24,9 +24,9 @@
       </div>
       <div class="product-details-container">
         <div class="product-details">
-          {% if product.type != blank %}
+          {% comment %} {% if product.type != blank %}
             <p class="light-gray">{{ product.type | escape }}</p>
-          {% endif %}
+          {% endif %} {% endcomment %}
           {% if product.title != blank %}
             <h2>{{ product.title | escape }}</h2>
           {% else %}
@@ -38,7 +38,9 @@
         </div>
         <div class="product-variants-container">
           {% if product.variants.size > 1 or product.variants.first.title != 'Default Title' %}
-            <p class="dark-gray"><strong>Choose Your Size</strong></p>
+            {% unless product.tags contains 'Treatments' %}
+              <p class="dark-gray"><strong>Choose Your Size</strong></p>
+            {% endunless %}
             <ul id="variant-list">
               {% for variant in product.variants %}
                 <li
@@ -98,9 +100,11 @@
         <li>
           <a href="#!" data-id="benefits">Benefits</a>
         </li>
-        <li>
-          <a href="#!" data-id="ingredient-iist">Ingredients List</a>
-        </li>
+        {% unless product.tags contains 'Treatments' %}
+          <li>
+            <a href="#!" data-id="ingredient-iist">Ingredients List</a>
+          </li>
+        {% endunless %}
         <li>
           <a href="#!" data-id="indications">Indications</a>
         </li>
@@ -115,9 +119,11 @@
         <div id="benefits">
           {{ product.metafields.custom.sub_benefit | metafield_tag }}
         </div>
-        <div id="ingredient-iist">
-          {{ product.metafields.custom.sub_ingredient | metafield_tag }}
-        </div>
+        {% unless product.tags contains 'Treatments' %}
+          <div id="ingredient-iist">
+            {{ product.metafields.custom.sub_ingredient | metafield_tag }}
+          </div>
+        {% endunless %}
         <div id="indications">
           {{ product.metafields.custom.sub_indication | metafield_tag }}
         </div>

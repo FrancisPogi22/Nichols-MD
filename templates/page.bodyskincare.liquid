@@ -21,7 +21,7 @@
       </div>
       <div class="categories-product-main">
         <div class="filtering-product-container">
-          <div class="filter-container">
+          {% comment %} <div class="filter-container">
             <p>Filter by Price ($)</p>
             <input
               type="range"
@@ -31,9 +31,9 @@
               id="priceRange"
             >
             <div class="price-range"><span id="minPrice">0</span><span id="maxPrice">3000</span></div>
-          </div>
+          </div> {% endcomment %}
           <div class="filter-container">
-            <p>Filter by Skintype</p>
+            <p>Filter by Skin Type</p>
             <select name="" id="skinTypeFilter">
               <option value="">Any</option>
               <option value="dry">Dry</option>

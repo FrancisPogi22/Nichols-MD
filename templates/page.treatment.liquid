@@ -9,7 +9,6 @@
         <h2 class="dark-gray">{{ page.title | escape }}s</h2>
         <p class="light-gray">{{ page.content | strip_html }}</p>
       </div>
-
       <div class="categories-product-container">
         <div class="categories-header-container">
           <p class="dark-gray">Showing 1–9 of {{ collection.products_count }} results</p>
@@ -26,17 +25,17 @@
       </div>
       <div class="categories-product-main">
         <div class="filtering-product-container">
-          <div class="filter-container">
+          {% comment %} <div class="filter-container">
             <p>Filter by Price ($)</p>
             <input
               type="range"
-              min="0"
-              max="3000"
-              value="0"
+              min="100"
+              max="8000"
+              value="100"
               id="priceRange"
             >
-            <div class="price-range"><span id="minPrice">0</span><span id="maxPrice">3000</span></div>
-          </div>
+            <div class="price-range"><span id="minPrice">100</span><span id="maxPrice">8000</span></div>
+          </div> {% endcomment %}
           <div class="filter-container">
             <p>Filter by Skintype</p>
             <select name="" id="skinTypeFilter">
@@ -47,16 +46,18 @@
               <option value="sensitive">Sensitive</option>
             </select>
           </div>
-          <div class="filter-container">
-            <p>Filter by Skin Condition</p>
-            <select name="" id="productTypeFilter">
-              <option value="">Select All</option>
-              <option value="mature-skin">Mature Skin</option>
-              <option value="acne-prone-skin">Acne-Prone Skin</option>
-              <option value="dehydrated">Dehydrated</option>
-              <option value="discoloration">Discoloration</option>
-            </select>
-          </div>
+          {% comment %}
+            <div class="filter-container">
+              <p>Filter by Skin Condition</p>
+              <select name="" id="productTypeFilter">
+                <option value="">Select All</option>
+                <option value="mature-skin">Mature Skin</option>
+                <option value="acne-prone-skin">Acne-Prone Skin</option>
+                <option value="dehydrated">Dehydrated</option>
+                <option value="discoloration">Discoloration</option>
+              </select>
+            </div>
+          {% endcomment %}
           <div class="filter-container">
             <p>Filter by Price ($)</p>
             <select name="priceFilter" id="priceFilter">
@@ -78,6 +79,16 @@
               <option value="arms">Arms</option>
               <option value="chest">Chest</option>
               <option value="leg">Legs</option>
+            </select>
+          </div>
+          <div class="filter-container">
+            <p>Treatment Category</p>
+            <select name="" id="treatmentFilter">
+              <option value="">Select All</option>
+              <option value="aesthetic-treatments">Aesthetic Treatments</option>
+              <option value="beauty-treatments">Beauty Treatments</option>
+              <option value="injectables">Injectables</option>
+              <option value="laser-treatments">Laser Treatments</option>
             </select>
           </div>
           <a class="btn-primary" id="filterBtn">Show Filtered Products</a>
@@ -118,7 +129,7 @@
                         {{ product.price | money_with_currency }}
                       {% endif %}
                     </p>
-                    <a href="{{ product.url }}" class="btn-secondary">View Product</a>
+                    <a href="{{ product.url }}" class="btn-secondary">View Service</a>
                   </div>
                 </div>
               {% endfor %}

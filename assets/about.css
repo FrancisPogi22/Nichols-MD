@@ -4,6 +4,26 @@
   position: absolute;
   content: "";
 }
+.swiper {
+  width: 790px;
+  height: 300px;
+}
+.swiper-pagination-container .swiper-button-next,
+.swiper-pagination-container .swiper-button-prev {
+  width: calc(var(--swiper-navigation-size) / 19 * 11);
+}
+.swiper-pagination-container {
+  justify-content: center;
+  display: flex;
+  gap: 20px;
+}
+.swiper-pagination-container > div {
+  top: 0;
+  right: 0;
+  margin: 0;
+  left: 0;
+  position: relative;
+}
 #apart .apart-container > div,
 #passion .passion-details p {
   width: calc(100% / 2 - 20px);
@@ -28,11 +48,15 @@
 }
 #passion .passion-details {
   display: flex;
+  align-items: center;
   justify-content: space-between;
   gap: 10px;
 }
 #passion .passion-details p {
   opacity: 1;
+}
+.swiper-slide h4 {
+  font-size: 28px;
 }
 #about .about-details-container {
   padding: 127px 24px 99px 295px;
@@ -295,6 +319,9 @@
   #consult:after {
     transform: translateY(45%) translateX(-50%);
   }
+  .swiper-slide h4 {
+    font-size: 24px;
+  }
 }
 @media screen and (max-width: 767px) {
   #passion .passion-details {
@@ -316,6 +343,9 @@
     width: 100%;
     max-width: 300px;
     height: 400px;
+  }
+  .swiper-slide h4 {
+    font-size: 20px;
   }
   #about .about-details-container {
     padding: 100px 25px 50px 40px;

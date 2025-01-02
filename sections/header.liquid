@@ -50,7 +50,7 @@
           {% endfor %}
         </ul>
         <div class="btn-container">
-          <a href="#vf-696bwf7z-p-r" class="btn-primary">Take the Skintype Quiz</a>
+          {% comment %} <a href="#vf-696bwf7z-p-r" class="btn-primary">Take the Skin Type Quiz</a> {% endcomment %}
           <div class="mobile-btn-container">
             {% render 'icon_burger' %}
           </div>
@@ -63,7 +63,7 @@
   <div class="wrapper">
     <div class="skincare-container">
       <div class="sub-link-container">
-        <ul>
+        {% comment %} <ul>
           <div class="header-container">
             <h4>Shop by Skintype</h4>
           </div>
@@ -82,7 +82,7 @@
               <a href="{{ link.url }}" title="{{ link.title }}">{{ link.title }}</a>
             </li>
           {% endfor %}
-        </ul>
+        </ul> {% endcomment %}
         <ul>
           <div class="header-container">
             <h4>Product Type</h4>
@@ -97,15 +97,15 @@
         </ul>
       </div>
       <div class="featured-product">
-        {% assign collection = collections['skincare'] %}
-        {% assign specific_product_id = 9082159497433 %}
+        {% assign collection = collections['skincare-kits'] %}
+        {% assign specific_product_id = 9082164281561 %}
         {% for product in collection.products %}
           {% if product.id == specific_product_id %}
             <div class="featured-product-container">
-              <p class="lead-in light-blue">Featured Product</p>
+              <p class="lead-in light-blue">Shop Skincare Kits</p>
               <h5>{{ product.title }}</h5>
               <p>{{ product.price | money }}</p>
-              <a href="{{ product.url }}" class="btn-primary">View Product</a>
+              <a href="{{ collection.url }}" class="btn-primary">See all</a>
             </div>
             <img
               src="{{ product.featured_image | img_url: '2048x' }}"
@@ -181,7 +181,7 @@
             {{ 'Register' | customer_register_link }}
           </li>
         </div>
-        <a href="#vf-696bwf7z-p-r" class="btn-primary">Take the Skintype Quiz</a>
+        {% comment %} <a href="#vf-696bwf7z-p-r" class="btn-primary">Take the Skintype Quiz</a> {% endcomment %}
       </ul>
     </div>
   </div>

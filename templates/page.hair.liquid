@@ -25,7 +25,7 @@
       </div>
       <div class="categories-product-main">
         <div class="filtering-product-container">
-          <div class="filter-container">
+          {% comment %} <div class="filter-container">
             <p>Filter by Price ($)</p>
             <input
               type="range"
@@ -35,19 +35,23 @@
               id="priceRange"
             >
             <div class="price-range"><span id="minPrice">0</span><span id="maxPrice">3000</span></div>
-          </div>
-          <div class="filter-container">
+          </div> {% endcomment %}
+          {% comment %} <div class="filter-container">
             <p>Filter by Skintype</p>
             <select name="" id="skinTypeFilter">
               <option value="">Any</option>
+              <option value="dry">Dry</option>
+              <option value="normal">Normal</option>
+              <option value="oily">Oily</option>
+              <option value="sensitive">Sensitive</option>
             </select>
-          </div>
-          <div class="filter-container">
+          </div> {% endcomment %}
+          {% comment %} <div class="filter-container">
             <p>Filter by Skin Condition</p>
             <select name="" id="productTypeFilter">
               <option value="">Select All</option>
             </select>
-          </div>
+          </div> {% endcomment %}
           <div class="filter-container">
             <p>Filter by Price ($)</p>
             <select name="priceFilter" id="priceFilter">
@@ -59,13 +63,13 @@
               <option value="500-3000">Over $500</option>
             </select>
           </div>
-          <div class="filter-container">
+          {% comment %} <div class="filter-container">
             <p>Filter by Areas of Concern</p>
             <select name="" id="brandFilter">
               <option value="">Select All</option>
               <option value="scalp">Scalp</option>
             </select>
-          </div>
+          </div> {% endcomment %}
           <a class="btn-primary" id="filterBtn">Show Filtered Products</a>
         </div>
         <div class="categories-product-list-container">

@@ -12,7 +12,7 @@
       <div class="categories-product-container">
         <div class="categories-header-container">
           <p class="dark-gray">Showing 1–9 of {{ collection.products_count }} results</p>
-          <div class="filtering-container">
+          {% comment %} <div class="filtering-container">
             <select name="sortBy" id="sortBy">
               <option value="">Default Sorting</option>
               <option value="title-asc">A-Z</option>
@@ -20,12 +20,12 @@
               <option value="price-asc">Price: Low to High</option>
               <option value="price-desc">Price: High to Low</option>
             </select>
-          </div>
+          </div> {% endcomment %}
         </div>
       </div>
       <div class="categories-product-main">
-        <div class="filtering-product-container">
-          <div class="filter-container">
+        {% comment %} <div class="filtering-product-container">
+          {% comment %} <div class="filter-container">
             <p>Filter by Price ($)</p>
             <input
               type="range"
@@ -35,7 +35,7 @@
               id="priceRange"
             >
             <div class="price-range"><span id="minPrice">0</span><span id="maxPrice">3000</span></div>
-          </div>
+          </div> {% endcomment %}
           {% comment %} <div class="filter-container">
             <p>Filter by Skintype</p>
             <select name="" id="skinTypeFilter">
@@ -60,7 +60,7 @@
               <option value="neck-decolletage">Neck and Decolletage</option>
             </select>
           </div> {% endcomment %}
-          <div class="filter-container">
+          {% comment %} <div class="filter-container">
             <p>Filter by Price ($)</p>
             <select name="priceFilter" id="priceFilter">
               <option value="">Select Price Range</option>
@@ -70,7 +70,7 @@
               <option value="200-500">$200 - $500</option>
               <option value="500-3000">Over $500</option>
             </select>
-          </div>
+          </div> {% endcomment %}
           {% comment %} <div class="filter-container">
             <p>Filter by Brand</p>
             <select name="" id="brandFilter">
@@ -80,9 +80,9 @@
               <option value="brand-c">Brand C</option>
             </select>
           </div> {% endcomment %}
-          <a class="btn-primary" id="filterBtn">Show Filtered Products</a>
-        </div>
-        <div class="categories-product-list-container">
+          {% comment %} <a class="btn-primary" id="filterBtn">Show Filtered Products</a> {% endcomment %}
+        </div> {% endcomment %}
+        <div class="categories-product-list-container giftcards">
           <div class="product-loader"></div>
           {% paginate collection.products by 9 %}
             <div class="categories-product-list">

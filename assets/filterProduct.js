@@ -23,6 +23,8 @@ class ProductWidget {
         let e = $("#skinTypeFilter").val(),
           r = $("#productTypeFilter").val(),
           a = $("#brandFilter").val(),
+          d = $("#typeFilter").val(),
+          p = $("#treatmentFilter").val(),
           priceFilterValue = $("#priceFilter").val(),
           priceRange = {};
 
@@ -31,12 +33,22 @@ class ProductWidget {
           priceRange = { minPrice, maxPrice };
         }
 
-        this.fetchFilteredProducts({
+        let filters = {
           skinType: e,
           productType: r,
           brand: a,
           ...priceRange,
-        });
+        };
+
+        if (d) {
+          filters.type = d;
+        }
+
+        if (p) {
+          filters.treatment = p;
+        }
+
+        this.fetchFilteredProducts(filters);
       });
 
     $("#sortBy").change((t) => {
@@ -61,6 +73,7 @@ class ProductWidget {
           })),
       a.append(i),
       r.append(a);
+
     let s = $("<div>", { class: "product-details" }),
       c = $("<a>", { href: e }).append(
         $("<p>").text(t.title || "Treatment Name")
@@ -82,10 +95,15 @@ class ProductWidget {
                 .css("text-decoration", "line-through"),
             ]
           : $("<span>").text("$" + d.toFixed(2))
-      ),
-      p = $("<a>", { href: e, class: "btn-secondary" }).text("View Product");
+      );
+
+    let buttonText =
+      this.collection === "treatments" ? "View Service" : "View Product";
+    let p = $("<a>", { href: e, class: "btn-secondary" }).text(buttonText);
+
     return s.append(c, l, p), r.append(s), r;
   }
+
   fetchFilteredProducts(t = {}, pageInfo = null) {
     this.showLoader();
     let e = `/collections/${this.collection}/products.json?limit=250`;
@@ -104,8 +122,10 @@ class ProductWidget {
               (void 0 === t.maxPrice || r <= t.maxPrice),
             i = !t.skinType || e.tags?.includes(t.skinType),
             s = !t.productType || e.tags?.includes(t.productType),
-            c = !t.brand || e.tags?.includes(t.brand);
-          return a && i && s && c;
+            c = !t.brand || e.tags?.includes(t.brand),
+            d = !t.type || e.tags?.includes(t.type),
+            p = !t.treatment || e.tags?.includes(t.treatment);
+          return a && i && s && c && d && p;
         });
 
         switch (t.sortBy) {
@@ -128,6 +148,11 @@ class ProductWidget {
                 parseFloat(e.variants[0].price) -
                 parseFloat(t.variants[0].price)
             );
+          case "best-seller":
+            this.allProducts = this.allProducts.filter((t) =>
+              t.tags?.includes("Best Seller")
+            );
+            break;
         }
         (this.totalPages = Math.ceil(
           this.allProducts.length / this.productsPerPage

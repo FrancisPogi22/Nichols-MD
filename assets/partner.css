@@ -111,6 +111,7 @@
 @media screen and (max-width: 767px) {
   #partner .partner-container {
     flex-direction: column;
+    gap: 50px;
     padding: 150px 0 100px;
   }
   #partner .partner-details-container,

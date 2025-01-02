@@ -1,5 +1,5 @@
 #quiz .quiz-container {
-  padding: 108px 0 101px;
+  padding: 150px 0 150px;
   text-align: center;
   position: relative;
 }
@@ -40,7 +40,7 @@
   left: -120px;
 }
 #quiz .quiz-container img:not(.flower):nth-child(3) {
-  width: 201px;
+  width: 185px;
   bottom: 0;
   right: 126px;
 }
@@ -55,8 +55,8 @@
   fill: var(--global-color-white);
 }
 #quiz .rotatingText {
-  top: -95px;
-  left: -205px;
+  top: -140px;
+  left: -208px;
 }
 #quiz .quiz-container img:not(.flower):nth-child(5) {
   width: 84px;
@@ -85,5 +85,9 @@
   }
   #quiz .rotatingText {
     left: -125px;
+    top: -100px;
+  }
+  #quiz .quiz-container {
+    padding: 100px 0;
   }
 }

@@ -29,6 +29,9 @@
   width: calc(75% - 10px);
   position: relative;
 }
+#categories .categories-product-list-container.giftcards {
+  width: 100%;
+}
 #categories .categories-product-list {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -39,6 +42,7 @@
   max-width: 270px;
   width: 100%;
   height: 253px;
+  margin: 0 auto;
   object-fit: cover;
 }
 #categories .product-widget {

@@ -194,7 +194,7 @@
 }
 #related-products .related-products img {
   width: 100%;
-  height: 401px;
+  height: 350px;
   object-fit: cover;
 }
 #related-products .related-products .related-product p:last-child {

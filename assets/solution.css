@@ -7,6 +7,20 @@
 #solution .learn-more-link:hover {
   color: var(--global-light-blue);
 }
+#solution .product-container {
+  grid-template-columns: repeat(2, 1fr);
+}
+#solution .product-container .product-widget {
+  padding: 0 25px;
+}
+#solution .shop-container .btn-primary {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto;
+  max-width: 300px;
+  width: 100%;
+}
 #solution .shop-header-container h2 {
   margin-bottom: 0;
 }
@@ -22,5 +36,14 @@
   #solution .shop-container {
     padding: 50px 0;
     gap: 30px;
+  }
+  #solution .product-container .product-widget {
+    padding: 0;
+  }
+  #solution .learn-more-link {
+    font-size: 12px;
+  }
+  #solution .product-container {
+    grid-template-columns: 1fr;
   }
 }

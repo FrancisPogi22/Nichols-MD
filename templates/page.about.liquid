@@ -1,5 +1,7 @@
 {{ 'about.css' | asset_url | stylesheet_tag }}
 {{ 'philosophy.css' | asset_url | stylesheet_tag }}
+{{ 'swiper-bundle.min.css' | asset_url | stylesheet_tag }}
+{{ 'swiper-bundle.min.js' | asset_url | script_tag }}
 
 {% section 'page-header' %}
 <section id="passion">
@@ -7,30 +9,31 @@
     <div class="passion-container">
       <div class="passion-header">
         <p class="lead-in light-blue">A Passion for skincare</p>
-        <h2 class="dark-gray">Introduction Text of How It All Started</h2>
+        <h2 class="dark-gray">How it all started</h2>
       </div>
       <div class="passion-details">
         <p class="light-gray">
-          Duis vitae mollis ipsum. Nullam et erat nec mauris accumsan imperdiet. Vestibulum egetsas et eros a iaculis.
-          Nulla placerat consequat blandit. In sit amet tellus sed mauris accumsna feugiat ac non nisl. Fusce tempor
-          vitae libero at semper. Phasellus suscipit et risus vel posuere. In pretium metus quis rutrum aliquam. Quisque
-          vestibulum urna id malesuada maximus. In interdum diam sodales ullamcorper dapibus. <br>
+          NicholsMD of Greenwich was founded by Dr. Kim Nichols, a board-certified dermatologist with a vision to
+          redefine personalized skincare. Inspired by her passion for helping clients achieve radiant, healthy skin, Dr.
+          Nichols opened the boutique dermatology practice to deliver cutting-edge treatments and expert care in a
+          welcoming environment. What began as a small, dedicated team has grown into a trusted name in cosmetic
+          dermatology, offering a wide range of services tailored to individual needs.<br>
           <br>
-          Duis vitae mollis ipsum. Nullam et erat nec mauris accumsan imperdiet. Vestibulum egetsas et eros a iaculis.
-          Nulla placerat consequat blandit. In sit amet tellus sed mauris accumsna feugiat ac non nisl. Fusce tempor
-          vitae libero at semper. Phasellus suscipit et risus vel posuere. In pretium metus quis rutrum aliquam. Quisque
-          vestibulum urna id malesuada maximus. In interdum diam sodales ullamcorper dapibus.
+          Driven by her belief that everyone deserves to feel confident in their skin, Dr. Nichols built NicholsMD on
+          the foundation of excellence, innovation, and a commitment to enhancing natural beauty. Today, the practice
+          continues to thrive, helping clients look and feel their best.
         </p>
         <p class="light-gray">
-          Duis vitae mollis ipsum. Nullam et erat nec mauris accumsan imperdiet. Vestibulum egetsas et eros a iaculis.
-          Nulla placerat consequat blandit. In sit amet tellus sed mauris accumsna feugiat ac non nisl. Fusce tempor
-          vitae libero at semper. Phasellus suscipit et risus vel posuere. In pretium metus quis rutrum aliquam. Quisque
-          vestibulum urna id malesuada maximus. In interdum diam sodales ullamcorper dapibus.<br>
+          From its inception, NicholsMD of Greenwich has been dedicated to delivering more than just exceptional
+          skincare results—it’s been about building lasting relationships with every client. Dr. Kim Nichols’ passion
+          for blending medical expertise with an artistic touch quickly earned the practice a reputation for excellence
+          in cosmetic dermatology. Over the years, NicholsMD expanded its offerings to include advanced laser
+          treatments, body contouring, and hormone replacement therapy, always staying at the forefront of innovation.<br>
           <br>
-          Duis vitae mollis ipsum. Nullam et erat nec mauris accumsan imperdiet. Vestibulum egetsas et eros a iaculis.
-          Nulla placerat consequat blandit. In sit amet tellus sed mauris accumsna feugiat ac non nisl. Fusce tempor
-          vitae libero at semper. Phasellus suscipit et risus vel posuere. In pretium metus quis rutrum aliquam. Quisque
-          vestibulum urna id malesuada maximus. In interdum diam sodales ullamcorper dapibus.
+          The boutique approach, paired with state-of-the-art technology and a personalized experience, has made
+          NicholsMD a trusted destination for clients seeking comprehensive skin health and aesthetic solutions. Dr.
+          Nichols’ unwavering dedication continues to shape the practice, fostering confidence and beauty for clients
+          every step of the way.
         </p>
       </div>
     </div>
@@ -48,12 +51,12 @@
         >
       </div>
       <div class="about-details-container have-overlay">
-        <p class="lead-in low-white">Meet the Doctor</p>
-        <h2 class="white">Dr. Kim Nichols</h2>
+        <p class="lead-in low-white">About</p>
+        <h2 class="white">Dr. Nichols Feature</h2>
         <p class="low-white">
-          Kim Nichols, MD, FAAD is a Harvard-trained, board-certified, celebrity dermatologist that treats both cosmetic
-          and medical skincare concerns. She has been recognized world-wide for her artistic expertise in administering
-          injectables that yield natural-looking results for clients to look and feel their best.
+          This space is reserved for your unique and captivating header text. Let your creativity flow and set the tone
+          for what follows. Your header is the gateway to your content – make it compelling and unforgettable. Add your
+          header text now!"
         </p>
         <a href="#!" class="btn-primary">Learn More</a>
       </div>
@@ -67,33 +70,37 @@
         <p class="lead-in light-blue">what sets us apart?</p>
         <h2 class="dark-gray">What Makes Our Approach Unique</h2>
         <p class="light-gray">
-          Duis vitae mollis ipsum. Nullam et erat nec mauris accumsan imperdiet. Vestibulum egetsas et eros a iaculis.
-          Nulla placerat consequat blandit. In sit amet tellus sed mauris accumsna feugiat ac non nisl. Fusce tempor
-          vitae libero at semper.
+          At NicholsMD of Greenwich, skincare is more than a routine—it’s a transformative journey tailored to each
+          individual. Our commitment to providing high-quality, science-backed products ensures that every customer
+          experiences noticeable, lasting results. Here’s what sets us apart:
         </p>
         <ul>
           <li>
             <p class="light-gray">
-              In nisi nisl convallis eget mi vel lacinia dictum metus. Suspendisse dui nibh auctor quis ornare in
-              imperdiet vitae odio.
+              <strong>Customized Skincare Solutions</strong><br>
+              We believe every complexion is unique, which is why our curated product recommendations are tailored to
+              address your specific concerns and goals.
             </p>
           </li>
           <li>
             <p class="light-gray">
-              In nisi nisl convallis eget mi vel lacinia dictum metus. Suspendisse dui nibh auctor quis ornare in
-              imperdiet vitae odio.
+              <strong>Clinically Proven Formulations</strong><br>
+              Our products are hand-selected by Dr. Kim Nichols for their advanced ingredients and proven effectiveness,
+              ensuring optimal results for all skin types.
             </p>
           </li>
           <li>
             <p class="light-gray">
-              In nisi nisl convallis eget mi vel lacinia dictum metus. Suspendisse dui nibh auctor quis ornare in
-              imperdiet vitae odio.
+              <strong>Focus on Skin Health</strong><br>
+              We prioritize maintaining and enhancing the health of your skin, creating a foundation for glowing,
+              resilient beauty.
             </p>
           </li>
           <li>
             <p class="light-gray">
-              In nisi nisl convallis eget mi vel lacinia dictum metus. Suspendisse dui nibh auctor quis ornare in
-              imperdiet vitae odio.
+              <strong>Expert Guidance</strong><br>
+              With decades of dermatology expertise, we provide trusted advice and education to help you build a
+              skincare routine that truly works.
             </p>
           </li>
         </ul>
@@ -125,11 +132,11 @@
           loading="lazy"
         >
         <p class="low-white lead-in">About Our Philosophy</p>
-        <h2 class="white">It’s More Than Skin Deep</h2>
+        <h2 class="white">So what do we believe about skincare?</h2>
         <p class="low-white">
-          This space is reserved for your unique and captivating header text. Let your creativity flow and set the tone
-          for what follows. Your header is the gateway to your content – make it compelling and unforgettable. Add your
-          header text now!"
+          TAt NicholsMD, we believe skincare is the foundation of confidence. It’s about more than beauty—it’s about
+          health, consistency, and choosing products designed to nourish, protect, and enhance your skin for radiant,
+          long-term results you can see and feel.
         </p>
         <a href="#!" class="btn-primary">Learn More</a>
       </div>
@@ -143,8 +150,8 @@
         <p class="lead-in light-blue">meet the team</p>
         <h2 class="dark-gray">Our Expert Team</h2>
         <p class="light-gray">
-          Duis vitae mollis ipsum. Nullam et erat nec mauris accumsan imperdiet. Vestibulum egetsas et eros a iaculis.
-          Nulla placerat consequat bland.
+          The NicholsMD team, led by Dr. Kim Nichols, combines dermatology expertise with personalized care to deliver
+          exceptional skincare solutions for every unique need.
         </p>
       </div>
       <div class="team-container">
@@ -373,41 +380,125 @@
     <div class="consult-container">
       <div class="consult-details">
         <h3>What our patients say about us</h3>
-        <svg
-          class="ratings"
-          width="120"
-          height="21"
-          viewBox="0 0 120 21"
-          fill="none"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <path
-            d="M10.6299 0L13.5269 6.07118L20.1962 6.95032L15.3174 11.5816L16.5422 18.1962L10.6299 14.9873L4.71759 18.1962L5.9424 11.5816L1.06359 6.95032L7.73286 6.07118L10.6299 0Z"
-            fill="#EDAA00"
-          />
-          <path
-            d="M35.3154 0L38.2125 6.07118L44.8817 6.95032L40.0029 11.5816L41.2277 18.1962L35.3154 14.9873L29.4031 18.1962L30.6279 11.5816L25.7491 6.95032L32.4184 6.07118L35.3154 0Z"
-            fill="#EDAA00"
-          />
-          <path
-            d="M60.001 0L62.898 6.07118L69.5673 6.95032L64.6885 11.5816L65.9133 18.1962L60.001 14.9873L54.0887 18.1962L55.3135 11.5816L50.4347 6.95032L57.104 6.07118L60.001 0Z"
-            fill="#EDAA00"
-          />
-          <path
-            d="M84.6865 0L87.5835 6.07118L94.2528 6.95032L89.374 11.5816L90.5988 18.1962L84.6865 14.9873L78.7742 18.1962L79.999 11.5816L75.1202 6.95032L81.7895 6.07118L84.6865 0Z"
-            fill="#EDAA00"
-          />
-          <path
-            d="M109.372 0L112.269 6.07118L118.938 6.95032L114.06 11.5816L115.284 18.1962L109.372 14.9873L103.46 18.1962L104.685 11.5816L99.8058 6.95032L106.475 6.07118L109.372 0Z"
-            fill="#EDAA00"
-          />
-        </svg>
-        <p class="white">
-          “In sit amet tellus sed mauris accumsna feugiat ac non nisl. Fusce tempor vitae libero at semper. Phasellus
-          suscipit et risus vel posuere. In pretium metus quis rutrum aliquam. Quisque vestibulum urna id malesuada
-          maximus. In interdum diam sodales ullamcorper dapibus.”
-        </p>
-        <h4 class="white">Jane Doe</h4>
+        <div class="swiper">
+          <div class="swiper-wrapper">
+            <div class="swiper-slide">
+              <svg
+                class="ratings"
+                width="120"
+                height="21"
+                viewBox="0 0 120 21"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M10.6299 0L13.5269 6.07118L20.1962 6.95032L15.3174 11.5816L16.5422 18.1962L10.6299 14.9873L4.71759 18.1962L5.9424 11.5816L1.06359 6.95032L7.73286 6.07118L10.6299 0Z"
+                  fill="#EDAA00"
+                />
+                <path
+                  d="M35.3154 0L38.2125 6.07118L44.8817 6.95032L40.0029 11.5816L41.2277 18.1962L35.3154 14.9873L29.4031 18.1962L30.6279 11.5816L25.7491 6.95032L32.4184 6.07118L35.3154 0Z"
+                  fill="#EDAA00"
+                />
+                <path
+                  d="M60.001 0L62.898 6.07118L69.5673 6.95032L64.6885 11.5816L65.9133 18.1962L60.001 14.9873L54.0887 18.1962L55.3135 11.5816L50.4347 6.95032L57.104 6.07118L60.001 0Z"
+                  fill="#EDAA00"
+                />
+                <path
+                  d="M84.6865 0L87.5835 6.07118L94.2528 6.95032L89.374 11.5816L90.5988 18.1962L84.6865 14.9873L78.7742 18.1962L79.999 11.5816L75.1202 6.95032L81.7895 6.07118L84.6865 0Z"
+                  fill="#EDAA00"
+                />
+                <path
+                  d="M109.372 0L112.269 6.07118L118.938 6.95032L114.06 11.5816L115.284 18.1962L109.372 14.9873L103.46 18.1962L104.685 11.5816L99.8058 6.95032L106.475 6.07118L109.372 0Z"
+                  fill="#EDAA00"
+                />
+              </svg>
+              <p class="white">
+                “In sit amet tellus sed mauris accumsna feugiat ac non nisl. Fusce tempor vitae libero at semper.
+                Phasellus suscipit et risus vel posuere. In pretium metus quis rutrum aliquam. Quisque vestibulum urna
+                id malesuada maximus. In interdum diam sodales ullamcorper dapibus.”
+              </p>
+              <h4 class="white">Jane Doe</h4>
+            </div>
+            <div class="swiper-slide">
+              <svg
+                class="ratings"
+                width="120"
+                height="21"
+                viewBox="0 0 120 21"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M10.6299 0L13.5269 6.07118L20.1962 6.95032L15.3174 11.5816L16.5422 18.1962L10.6299 14.9873L4.71759 18.1962L5.9424 11.5816L1.06359 6.95032L7.73286 6.07118L10.6299 0Z"
+                  fill="#EDAA00"
+                />
+                <path
+                  d="M35.3154 0L38.2125 6.07118L44.8817 6.95032L40.0029 11.5816L41.2277 18.1962L35.3154 14.9873L29.4031 18.1962L30.6279 11.5816L25.7491 6.95032L32.4184 6.07118L35.3154 0Z"
+                  fill="#EDAA00"
+                />
+                <path
+                  d="M60.001 0L62.898 6.07118L69.5673 6.95032L64.6885 11.5816L65.9133 18.1962L60.001 14.9873L54.0887 18.1962L55.3135 11.5816L50.4347 6.95032L57.104 6.07118L60.001 0Z"
+                  fill="#EDAA00"
+                />
+                <path
+                  d="M84.6865 0L87.5835 6.07118L94.2528 6.95032L89.374 11.5816L90.5988 18.1962L84.6865 14.9873L78.7742 18.1962L79.999 11.5816L75.1202 6.95032L81.7895 6.07118L84.6865 0Z"
+                  fill="#EDAA00"
+                />
+                <path
+                  d="M109.372 0L112.269 6.07118L118.938 6.95032L114.06 11.5816L115.284 18.1962L109.372 14.9873L103.46 18.1962L104.685 11.5816L99.8058 6.95032L106.475 6.07118L109.372 0Z"
+                  fill="#EDAA00"
+                />
+              </svg>
+              <p class="white">
+                “In sit amet tellus sed mauris accumsna feugiat ac non nisl. Fusce tempor vitae libero at semper.
+                Phasellus suscipit et risus vel posuere. In pretium metus quis rutrum aliquam. Quisque vestibulum urna
+                id malesuada maximus. In interdum diam sodales ullamcorper dapibus.”
+              </p>
+              <h4 class="white">Jane Doe</h4>
+            </div>
+            <div class="swiper-slide">
+              <svg
+                class="ratings"
+                width="120"
+                height="21"
+                viewBox="0 0 120 21"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M10.6299 0L13.5269 6.07118L20.1962 6.95032L15.3174 11.5816L16.5422 18.1962L10.6299 14.9873L4.71759 18.1962L5.9424 11.5816L1.06359 6.95032L7.73286 6.07118L10.6299 0Z"
+                  fill="#EDAA00"
+                />
+                <path
+                  d="M35.3154 0L38.2125 6.07118L44.8817 6.95032L40.0029 11.5816L41.2277 18.1962L35.3154 14.9873L29.4031 18.1962L30.6279 11.5816L25.7491 6.95032L32.4184 6.07118L35.3154 0Z"
+                  fill="#EDAA00"
+                />
+                <path
+                  d="M60.001 0L62.898 6.07118L69.5673 6.95032L64.6885 11.5816L65.9133 18.1962L60.001 14.9873L54.0887 18.1962L55.3135 11.5816L50.4347 6.95032L57.104 6.07118L60.001 0Z"
+                  fill="#EDAA00"
+                />
+                <path
+                  d="M84.6865 0L87.5835 6.07118L94.2528 6.95032L89.374 11.5816L90.5988 18.1962L84.6865 14.9873L78.7742 18.1962L79.999 11.5816L75.1202 6.95032L81.7895 6.07118L84.6865 0Z"
+                  fill="#EDAA00"
+                />
+                <path
+                  d="M109.372 0L112.269 6.07118L118.938 6.95032L114.06 11.5816L115.284 18.1962L109.372 14.9873L103.46 18.1962L104.685 11.5816L99.8058 6.95032L106.475 6.07118L109.372 0Z"
+                  fill="#EDAA00"
+                />
+              </svg>
+              <p class="white">
+                “In sit amet tellus sed mauris accumsna feugiat ac non nisl. Fusce tempor vitae libero at semper.
+                Phasellus suscipit et risus vel posuere. In pretium metus quis rutrum aliquam. Quisque vestibulum urna
+                id malesuada maximus. In interdum diam sodales ullamcorper dapibus.”
+              </p>
+              <h4 class="white">Jane Doe</h4>
+            </div>
+          </div>
+          <div class="swiper-pagination-container">
+            <div class="swiper-button-prev"></div>
+            <div class="swiper-button-next"></div>
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -425,8 +516,8 @@
         <p class="lead-in light-blue">Need Extra Help?</p>
         <h2 class="dark-gray">Consult With Our Team</h2>
         <p class="light-gray">
-          Duis vitae mollis ipsum. Nullam et erat nec mauris accumsan imperdiet. Vestibulum egetsas et eros a iaculis.
-          Nulla placerat consequat bland.
+          Your journey to radiant skin starts here. Book an in-office consultation with our experts to discover
+          personalized treatments that transform your skincare goals into reality.
         </p>
       </div>
       <ul class="help-list-container">
@@ -457,7 +548,8 @@
           </svg>
           <h3 class="dark-gray">Consultation</h3>
           <p class="light-gray">
-            In nisi nisl convallis eget mi vel lacinia dictum metus. Suspendisse dui nibh auctor quis ornare in.
+            Meet with our dermatology experts to assess your skin’s unique needs. We’ll create a customized treatment
+            plan designed to deliver stunning, long-lasting results.
           </p>
         </li>
         <li>
@@ -475,7 +567,8 @@
           </svg>
           <h3 class="dark-gray">Schedule</h3>
           <p class="light-gray">
-            In nisi nisl convallis eget mi vel lacinia dictum metus. Suspendisse dui nibh auctor quis ornare in.
+            Convenient and flexible scheduling ensures you can prioritize your skincare goals without compromising your
+            busy lifestyle.
           </p>
         </li>
         <li>
@@ -491,10 +584,10 @@
               fill="#4DB4BD"
             />
           </svg>
-
           <h3 class="dark-gray">Glow</h3>
           <p class="light-gray">
-            In nisi nisl convallis eget mi vel lacinia dictum metus. Suspendisse dui nibh auctor quis ornare in.
+            Experience the glow of confidence with treatments tailored to enhance your natural beauty. Let us guide you
+            to skin that looks and feels its absolute best.
           </p>
         </li>
       </ul>
@@ -502,3 +595,16 @@
   </div>
 </section>
 {% section 'quiz' %}
+
+<script>
+  $(document).ready(function () {
+    const swiper = new Swiper('.swiper', {
+      direction: 'horizontal',
+      loop: true,
+      navigation: {
+        nextEl: '.swiper-button-next',
+        prevEl: '.swiper-button-prev',
+      },
+    });
+  });
+</script>

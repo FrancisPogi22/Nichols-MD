@@ -27,12 +27,15 @@
                   <h4 class="dark-gray">{{ block.settings.widget_text }}</h4>
                 </a>
                 <p class="semi-gray">
-                  <a href="{{ block.settings.widget_link }}" class="learn-more-link">Learn More</a>
+                  <a href="{{ block.settings.widget_link }}" class="learn-more-link">Need Guidance? See Definition</a>
                 </p>
               </div>
           {% endcase %}
         {% endfor %}
       </div>
+      <a href="{{ section.settings.browse_all }}" class="btn-primary">
+        {{ section.settings.browse_all_text | escape }}
+      </a>
     </div>
   </div>
 </section>
@@ -69,6 +72,17 @@
       "id": "background_color",
       "default": "background_white",
       "label": "Background Color"
+    },
+    {
+      "type": "url",
+      "id": "browse_all",
+      "label": "Browse All Link"
+    },
+    {
+      "type": "text",
+      "id": "browse_all_text",
+      "default": "Browse all Skincare",
+      "label": "Button Text"
     }
   ],
   "blocks": [

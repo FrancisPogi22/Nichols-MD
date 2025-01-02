@@ -132,14 +132,25 @@ $(document).ready(() => {
       );
     }),
     $("#mobile-navbar .has-sub-menu").on("click", function (t) {
-      t.preventDefault(), t.stopPropagation();
-      let a = $(this).find(".sub-link-container"),
-        e = a.is(":visible");
-      $(this).toggleClass("active"),
-        $("#mobile-navbar .sub-link-container").slideUp(),
-        e
-          ? (window.location.href = $(this).children("a").attr("href"))
-          : a.slideDown();
+      t.preventDefault();
+      t.stopPropagation();
+
+      let parentLink = $(this).children("a").attr("href");
+      let subMenu = $(this).find(".sub-link-container");
+      let isVisible = subMenu.is(":visible");
+
+      $(this).toggleClass("active");
+      $("#mobile-navbar .sub-link-container").not(subMenu).slideUp();
+
+      if (isVisible) {
+        window.location.href = parentLink;
+      } else {
+        subMenu.slideDown();
+      }
+    }),
+    $("#mobile-navbar .sub-link-container a").on("click", function (e) {
+      e.stopPropagation(); // Prevent closing the parent menu when a sub-link is clicked
+      // Add any additional behavior here if needed
     }),
     $(".add-to-cart-form").each(function () {
       $(this).on("submit", async function (t) {

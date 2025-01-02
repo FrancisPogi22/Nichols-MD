@@ -8,7 +8,9 @@
           <p class="light-blue lead-in">{{ section.settings.lead_in_text | escape }}</p>
         {% endif %}
         {% if section.settings.heading_text != blank %}
-          <h2 class="dark-gray">{{ section.settings.heading_text | escape }}</h2>
+          <a href="{{ section.settings.heading_url }}">
+            <h2 class="dark-gray">{{ section.settings.heading_text | escape }}</h2>
+          </a>
         {% endif %}
       </div>
       <div class="product-container">
@@ -69,6 +71,11 @@
       "id": "heading_text",
       "default": "Shop by Category",
       "label": "Heading Text"
+    },
+    {
+      "type": "url",
+      "id": "heading_url",
+      "label": "Heading Text Link"
     },
     {
       "id": "collection",

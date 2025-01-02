@@ -63,26 +63,28 @@
   <div class="wrapper">
     <div class="skincare-container">
       <div class="sub-link-container">
-        {% comment %} <ul>
-          <div class="header-container">
-            <h4>Shop by Skintype</h4>
-          </div>
-          {% for link in linklists.skintype.links %}
-            <li>
-              <a href="{{ link.url }}" title="{{ link.title }}">{{ link.title }}</a>
-            </li>
-          {% endfor %}
-        </ul>
-        <ul>
-          <div class="header-container">
-            <h4>Skin Condition</h4>
-          </div>
-          {% for link in linklists['skin-condition'].links %}
-            <li>
-              <a href="{{ link.url }}" title="{{ link.title }}">{{ link.title }}</a>
-            </li>
-          {% endfor %}
-        </ul> {% endcomment %}
+        {% comment %}
+          <ul>
+            <div class="header-container">
+              <h4>Shop by Skintype</h4>
+            </div>
+            {% for link in linklists.skintype.links %}
+              <li>
+                <a href="{{ link.url }}" title="{{ link.title }}">{{ link.title }}</a>
+              </li>
+            {% endfor %}
+          </ul>
+          <ul>
+            <div class="header-container">
+              <h4>Skin Condition</h4>
+            </div>
+            {% for link in linklists['skin-condition'].links %}
+              <li>
+                <a href="{{ link.url }}" title="{{ link.title }}">{{ link.title }}</a>
+              </li>
+            {% endfor %}
+          </ul>
+        {% endcomment %}
         <ul>
           <div class="header-container">
             <h4>Product Type</h4>
@@ -187,7 +189,7 @@
   </div>
 </section>
 
-{{ 'predictive-search.js' | asset_url | script_tag }}
+<script src="{{ 'predictive-search.js' | asset_url }}" defer="defer"></script>
 
 {% schema %}
 {

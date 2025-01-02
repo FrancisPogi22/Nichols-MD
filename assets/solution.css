@@ -13,6 +13,9 @@
 #solution .product-container .product-widget {
   padding: 0 25px;
 }
+#solution .product-container .product-widget img {
+  max-width: 400px;
+}
 #solution .shop-container .btn-primary {
   display: inline-flex;
   justify-content: center;

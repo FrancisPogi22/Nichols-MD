@@ -24,9 +24,11 @@
       </div>
       <div class="product-details-container">
         <div class="product-details">
-          {% comment %} {% if product.type != blank %}
-            <p class="light-gray">{{ product.type | escape }}</p>
-          {% endif %} {% endcomment %}
+          {% comment %}
+            {% if product.type != blank %}
+              <p class="light-gray">{{ product.type | escape }}</p>
+            {% endif %}
+          {% endcomment %}
           {% if product.title != blank %}
             <h2>{{ product.title | escape }}</h2>
           {% else %}
@@ -91,9 +93,11 @@
     </div>
     <div class="product-information-container">
       <ul class="product-sub-details-con">
-        <li>
-          <a href="#!" class="active" data-id="description">Product Description</a>
-        </li>
+        {% unless product.tags contains 'Treatments' %}
+          <li>
+            <a href="#!" class="active" data-id="description">Product Description</a>
+          </li>
+        {% endunless %}
         <li>
           <a href="#!" data-id="details">Details</a>
         </li>
@@ -104,15 +108,17 @@
           <li>
             <a href="#!" data-id="ingredient-iist">Ingredients List</a>
           </li>
+          <li>
+            <a href="#!" data-id="indications">Indications</a>
+          </li>
         {% endunless %}
-        <li>
-          <a href="#!" data-id="indications">Indications</a>
-        </li>
       </ul>
       <div class="product-details-flash">
-        <div id="description" class="active">
-          {{ product.metafields.custom.sub_description | metafield_tag }}
-        </div>
+        {% unless product.tags contains 'Treatments' %}
+          <div id="description" class="active">
+            {{ product.metafields.custom.sub_description | metafield_tag }}
+          </div>
+        {% endunless %}
         <div id="details">
           {{ product.metafields.custom.sub_details | metafield_tag }}
         </div>
@@ -123,10 +129,10 @@
           <div id="ingredient-iist">
             {{ product.metafields.custom.sub_ingredient | metafield_tag }}
           </div>
+          <div id="indications">
+            {{ product.metafields.custom.sub_indication | metafield_tag }}
+          </div>
         {% endunless %}
-        <div id="indications">
-          {{ product.metafields.custom.sub_indication | metafield_tag }}
-        </div>
       </div>
     </div>
   </div>

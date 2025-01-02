@@ -107,14 +107,15 @@
     flex-wrap: wrap;
     padding-bottom: 50px;
   }
-}
-@media screen and (max-width: 767px) {
   #partner .partner-container {
     flex-direction: column;
     gap: 50px;
     padding: 150px 0 100px;
   }
-  #partner .partner-details-container,
+  #partner .partner-details-container {
+    width: 80%;
+    align-self: baseline;
+  }
   #partner .partner-effect-container li {
     width: 100%;
   }
@@ -127,5 +128,10 @@
   #partner .rotatingText {
     top: -45px;
     left: 185px;
+  }
+}
+@media screen and (max-width: 767px) {
+  #partner .partner-details-container {
+    width: 100%;
   }
 }

@@ -26,9 +26,9 @@
                 <a href="{{ block.settings.widget_link }}">
                   <h4 class="dark-gray">{{ block.settings.widget_text }}</h4>
                 </a>
-                <p class="semi-gray">
+                {% comment %} <p class="semi-gray">
                   <a href="{{ block.settings.widget_link }}" class="learn-more-link">Need Guidance? See Definition</a>
-                </p>
+                </p> {% endcomment %}
               </div>
           {% endcase %}
         {% endfor %}

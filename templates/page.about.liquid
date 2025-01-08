@@ -3,7 +3,7 @@
 {{ 'swiper-bundle.min.css' | asset_url | stylesheet_tag }}
 {{ 'swiper-bundle.min.js' | asset_url | script_tag }}
 
-{% section 'page-header' %}
+{% comment %} {% section 'page-header' %}
 <section id="passion">
   <div class="wrapper">
     <div class="passion-container">
@@ -502,7 +502,7 @@
       </div>
     </div>
   </div>
-</section>
+</section> {% endcomment %}
 <section id="help">
   <div class="wrapper">
     <div class="help-container">
@@ -596,7 +596,7 @@
 </section>
 {% section 'quiz' %}
 
-<script>
+{% comment %} <script>
   $(document).ready(function () {
     const swiper = new Swiper('.swiper', {
       direction: 'horizontal',
@@ -607,4 +607,4 @@
       },
     });
   });
-</script>
+</script> {% endcomment %}

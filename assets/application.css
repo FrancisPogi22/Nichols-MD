@@ -711,7 +711,7 @@ input[type="range"]:focus::-ms-fill-upper {
 }
 #footer .footer-logo {
   width: 277px;
-  height: 131px;
+  height: 100%;
 }
 #footer .footer-copyright {
   padding: 27px 0 49px;
@@ -960,7 +960,6 @@ input[type="range"]:focus::-ms-fill-upper {
   }
   #footer .footer-logo {
     width: 220px;
-    height: 104px;
   }
   .product-container {
     grid-template-columns: repeat(2, 1fr);
@@ -1061,7 +1060,6 @@ input[type="range"]:focus::-ms-fill-upper {
   }
   #footer .footer-logo {
     width: 277px;
-    height: 131px;
   }
   #skincare .sub-link-container ul:last-of-type {
     max-width: 100%;

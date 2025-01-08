@@ -1,0 +1,41 @@
+{{ 'about.css' | asset_url | stylesheet_tag }}
+
+<section id="about">
+  <div class="wrapper">
+    <div class="about-container">
+      <div class="about-image-container">
+        <img
+          src="https://cdn.shopify.com/s/files/1/0597/1116/0382/files/Women_Holding_Coffee.webp?v=1732133491"
+          class="about-image"
+          alt="Women Holding Coffee"
+          loading="lazy"
+        >
+      </div>
+      <div class="about-details-container have-overlay">
+        <p class="lead-in low-white">About</p>
+        <h2 class="white">Dr. Nichols Feature</h2>
+        <p class="low-white">
+          Kim Nichols, MD, FAAD is a Harvard-trained, board-certified, celebrity dermatologist that treats a wide range
+          of cosmetic, medical, and holistic skincare concerns. She has been recognized world-wide for her artistic
+          expertise in administering injectables that yield natural-looking results for clients to look and feel their
+          best.
+        </p>
+        <a href="#!" class="btn-primary">Learn More</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "About",
+  "disabled_on": {
+    "groups": ["header", "footer"]
+  },
+  "presets": [
+    {
+      "name": "About"
+    }
+  ]
+}
+{% endschema %}

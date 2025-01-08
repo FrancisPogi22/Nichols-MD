@@ -53,11 +53,13 @@
                   <span>{{ variant.title }}</span>
                 </li>
               {% endfor %}
-              {% comment %} {% if product.type == 'Gift Card' %}
-                <li class="variant-item">
-                  <span>Custom</span>
-                </li>
-              {% endif %} {% endcomment %}
+              {% comment %}
+                {% if product.type == 'Gift Card' %}
+                  <li class="variant-item">
+                    <span>Custom</span>
+                  </li>
+                {% endif %}
+              {% endcomment %}
             </ul>
           {% endif %}
           <p class="light-blue price">
@@ -65,17 +67,19 @@
           </p>
           <form class="add-to-cart-form quantity-container">
             <input type="hidden" id="variant-id" name="id" value="{{ current_variant.id }}">
-            {% comment %} {% if product.type == 'Gift Card' %}
-              <input
-                type="number"
-                id="custom_price"
-                name="properties[Custom Price]"
-                min="1"
-                step="1"
-                placeholder="Enter price"
-                hidden
-              >
-            {% endif %} {% endcomment %}
+            {% comment %}
+              {% if product.type == 'Gift Card' %}
+                <input
+                  type="number"
+                  id="custom_price"
+                  name="properties[Custom Price]"
+                  min="1"
+                  step="1"
+                  placeholder="Enter price"
+                  hidden
+                >
+              {% endif %}
+            {% endcomment %}
             {% if product.available != false %}
               <div class="product-quantity">
                 <input type="button" value="-" class="minus">
@@ -109,46 +113,54 @@
     </div>
     <div class="product-information-container">
       <ul class="product-sub-details-con">
-        {% unless product.tags contains 'Treatments' %}
-          <li>
-            <a href="#!" class="active" data-id="description">Product Description</a>
-          </li>
-        {% endunless %}
+        {% comment %}
+          {% unless product.tags contains 'Treatments' %}
+            <li>
+              <a href="#!" class="active" data-id="description">Product Description</a>
+            </li>
+            <li>
+              <a href="#!" data-id="details">Details</a>
+            </li>
+            <li>
+              <a href="#!" data-id="benefits">Benefits</a>
+            </li>
+            <li>
+              <a href="#!" data-id="ingredient-iist">Ingredients List</a>
+            </li>
+            <li>
+              <a href="#!" data-id="indications">Indications</a>
+            </li>
+          {% else %}
+        {% endcomment %}
         <li>
-          <a href="#!" data-id="details">Details</a>
+          <a href="#!" class="active" data-id="details">Details</a>
         </li>
         <li>
           <a href="#!" data-id="benefits">Benefits</a>
         </li>
-        {% unless product.tags contains 'Treatments' %}
-          <li>
-            <a href="#!" data-id="ingredient-iist">Ingredients List</a>
-          </li>
-          <li>
-            <a href="#!" data-id="indications">Indications</a>
-          </li>
-        {% endunless %}
+        {% comment %} {% endunless %} {% endcomment %}
       </ul>
       <div class="product-details-flash">
-        {% unless product.tags contains 'Treatments' %}
-          <div id="description" class="active">
-            {{ product.metafields.custom.sub_description | metafield_tag }}
-          </div>
-        {% endunless %}
-        <div id="details">
+        {% comment %}
+          {% unless product.tags contains 'Treatments' %}
+            <div id="description" class="active">
+              {{ product.metafields.custom.sub_description | metafield_tag }}
+            </div>
+            <div id="ingredient-iist">
+              {{ product.metafields.custom.sub_ingredient | metafield_tag }}
+            </div>
+            <div id="indications">
+              {{ product.metafields.custom.sub_indication | metafield_tag }}
+            </div>
+          {% else %}
+        {% endcomment %}
+        <div id="details" class="active">
           {{ product.metafields.custom.sub_details | metafield_tag }}
         </div>
         <div id="benefits">
           {{ product.metafields.custom.sub_benefit | metafield_tag }}
         </div>
-        {% unless product.tags contains 'Treatments' %}
-          <div id="ingredient-iist">
-            {{ product.metafields.custom.sub_ingredient | metafield_tag }}
-          </div>
-          <div id="indications">
-            {{ product.metafields.custom.sub_indication | metafield_tag }}
-          </div>
-        {% endunless %}
+        {% comment %} {% endunless %} {% endcomment %}
       </div>
     </div>
   </div>

@@ -1,0 +1,52 @@
+#help .help-header {
+  text-align: center;
+  max-width: 800px;
+  margin: 0 auto 71px;
+}
+#help .help-container {
+  position: relative;
+  padding: 150px 0 178px;
+}
+#help .help-container .flower {
+  opacity: 0.08;
+  position: absolute;
+  z-index: -1;
+  transform: translateX(-50%);
+  left: 50%;
+}
+#help .help-list-container {
+  display: flex;
+  gap: 20px;
+  justify-content: space-between;
+}
+#help .help-list-container li {
+  text-align: center;
+  width: calc(100% / 3 - 20px);
+}
+#help .help-list-container li svg {
+  margin-bottom: 37px;
+}
+#help .help-list-container li h3 {
+  margin-bottom: 18px;
+}
+@media screen and (max-width: 1024px) {
+  #help .help-container {
+    padding: 100px 0;
+  }
+}
+@media screen and (max-width: 767px) {
+  #help .help-list-container li,
+  #help .help-header {
+    margin-bottom: 50px;
+  }
+  #help .help-container {
+    padding: 50px 0;
+  }
+  #help .help-list-container {
+    flex-direction: column;
+    gap: 30px;
+  }
+  #help .help-list-container li {
+    width: 100%;
+  }
+}

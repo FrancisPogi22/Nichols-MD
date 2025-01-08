@@ -1,0 +1,51 @@
+{{ 'passion.css' |  asset_url |  stylesheet_tag }}
+
+<section id="passion">
+  <div class="wrapper">
+    <div class="passion-container">
+      <div class="passion-header">
+        <p class="lead-in light-blue">A Passion for skincare</p>
+        <h2 class="dark-gray">How it all started</h2>
+      </div>
+      <div class="passion-details">
+        <p class="light-gray">
+          NicholsMD of Greenwich was founded by Dr. Kim Nichols, a board-certified dermatologist with a vision to
+          redefine personalized skincare. Inspired by her passion for helping clients achieve radiant, healthy skin, Dr.
+          Nichols opened the boutique dermatology practice to deliver cutting-edge treatments and expert care in a
+          welcoming environment. What began as a small, dedicated team has grown into a trusted name in cosmetic
+          dermatology, offering a wide range of services tailored to individual needs.<br>
+          <br>
+          Driven by her belief that everyone deserves to feel confident in their skin, Dr. Nichols built NicholsMD on
+          the foundation of excellence, innovation, and a commitment to enhancing natural beauty. Today, the practice
+          continues to thrive, helping clients look and feel their best.
+        </p>
+        <p class="light-gray">
+          From its inception, NicholsMD of Greenwich has been dedicated to delivering more than just exceptional
+          skincare results—it’s been about building lasting relationships with every client. Dr. Kim Nichols’ passion
+          for blending medical expertise with an artistic touch quickly earned the practice a reputation for excellence
+          in cosmetic dermatology. Over the years, NicholsMD expanded its offerings to include advanced laser
+          treatments, body contouring, and hormone replacement therapy, always staying at the forefront of innovation.<br>
+          <br>
+          The boutique approach, paired with state-of-the-art technology and a personalized experience, has made
+          NicholsMD a trusted destination for clients seeking comprehensive skin health and aesthetic solutions. Dr.
+          Nichols’ unwavering dedication continues to shape the practice, fostering confidence and beauty for clients
+          every step of the way.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Passion",
+  "disabled_on": {
+    "groups": ["header", "footer"]
+  },
+  "presets": [
+    {
+      "name": "Passion"
+    }
+  ]
+}
+{% endschema %}

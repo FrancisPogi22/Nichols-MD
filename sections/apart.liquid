@@ -1,0 +1,67 @@
+{{ 'apart.css' | asset_url | stylesheet_tag }}
+
+<section id="apart">
+  <div class="wrapper">
+    <div class="apart-container">
+      <div class="apart-details-container">
+        <p class="lead-in light-blue">what sets us apart?</p>
+        <h2 class="dark-gray">What Makes Our Approach Unique</h2>
+        <p class="light-gray">
+          At NicholsMD of Greenwich, skincare is more than a routine—it’s a transformative journey tailored to each
+          individual. Our commitment to providing high-quality, science-backed products ensures that every customer
+          experiences noticeable, lasting results. Here’s what sets us apart:
+        </p>
+        <ul>
+          <li>
+            <p class="light-gray">
+              <strong>Customized Skincare Solutions</strong><br>
+              We believe every complexion is unique, which is why our curated product recommendations are tailored to
+              address your specific concerns and goals.
+            </p>
+          </li>
+          <li>
+            <p class="light-gray">
+              <strong>Clinically Proven Formulations</strong><br>
+              Our products are hand-selected by Dr. Kim Nichols for their advanced ingredients and proven effectiveness,
+              ensuring optimal results for all skin types.
+            </p>
+          </li>
+          <li>
+            <p class="light-gray">
+              <strong>Focus on Skin Health</strong><br>
+              We prioritize maintaining and enhancing the health of your skin, creating a foundation for glowing,
+              resilient beauty.
+            </p>
+          </li>
+          <li>
+            <p class="light-gray">
+              <strong>Expert Guidance</strong><br>
+              With decades of dermatology expertise, we provide trusted advice and education to help you build a
+              skincare routine that truly works.
+            </p>
+          </li>
+        </ul>
+      </div>
+      <div class="apart-image-container">
+        <img
+          src="https://cdn.shopify.com/s/files/1/0727/8949/1929/files/Apart_Image.webp?v=1733414524"
+          alt="Apart Image"
+        >
+      </div>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Apart",
+  "disabled_on": {
+    "groups": ["header", "footer"]
+  },
+  "presets": [
+    {
+      "name": "Apart"
+    }
+  ]
+}
+{% endschema %}

@@ -202,6 +202,10 @@
   line-height: 1em;
   opacity: 1;
 }
+#single-product .product-details-flash > div ul {
+  padding-left: 20px;
+  margin-top: 20px;
+}
 @media screen and (max-width: 1024px) {
   #single-product .product-image-container {
     padding: 30px 50px;

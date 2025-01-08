@@ -1,0 +1,37 @@
+#passion .passion-details p {
+  width: calc(100% / 2 - 20px);
+}
+#passion .passion-container {
+  padding: 100px 0;
+}
+#passion .passion-header {
+  max-width: 700px;
+  width: 100%;
+  margin: 0 auto 32px;
+  text-align: center;
+}
+#passion .passion-header .lead-in,
+#passion .passion-header h2 {
+  opacity: 1;
+}
+#passion .passion-details {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+}
+#passion .passion-details p {
+  opacity: 1;
+}
+@media screen and (max-width: 767px) {
+  #passion .passion-details {
+    flex-direction: column;
+    gap: 25px;
+  }
+  #passion .passion-details p {
+    width: 100%;
+  }
+  #passion .passion-container {
+    padding: 50px 0;
+  }
+}

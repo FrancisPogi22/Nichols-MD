@@ -1,0 +1,93 @@
+{{ 'about.css' | asset_url | stylesheet_tag }}
+{{ 'philosophy.css' | asset_url | stylesheet_tag }}
+{{ 'swiper-bundle.min.css' | asset_url | stylesheet_tag }}
+{{ 'swiper-bundle.min.js' | asset_url | script_tag }}
+{{ 'page-header.css' | asset_url | stylesheet_tag }}
+
+<section id="page-header">
+  <div class="wrapper">
+    <div class="page-header-container">
+      <p>
+        <a href="{{ routes.root_url }}">
+          <span class="white">Home</span>
+        </a>
+        <svg
+          width="10"
+          height="11"
+          viewBox="0 0 10 11"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M5.00586 5.83203L2.34961 8.48828C2.16602 8.67187 1.86914 8.67187 1.6875 8.48828L1.24609 8.04687C1.0625 7.86328 1.0625 7.56641 1.24609 7.38477L3.12891 5.50195L1.24609 3.61914C1.0625 3.43555 1.0625 3.13867 1.24609 2.95703L1.68555 2.51172C1.86914 2.32812 2.16602 2.32812 2.34766 2.51172L5.00391 5.16797C5.18945 5.35156 5.18945 5.64844 5.00586 5.83203ZM8.75586 5.16797L6.09961 2.51172C5.91602 2.32812 5.61914 2.32812 5.4375 2.51172L4.99609 2.95312C4.8125 3.13672 4.8125 3.43359 4.99609 3.61523L6.87891 5.49805L4.99609 7.38086C4.8125 7.56445 4.8125 7.86133 4.99609 8.04297L5.4375 8.48437C5.62109 8.66797 5.91797 8.66797 6.09961 8.48437L8.75586 5.82812C8.93945 5.64844 8.93945 5.35156 8.75586 5.16797Z"
+            fill="white"
+          />
+        </svg>
+        <span class="semi-gray"> About </span>
+      </p>
+      <h1 class="white">About NicholsMD</h1>
+      <img
+        src="https://cdn.shopify.com/s/files/1/0727/8949/1929/files/Flower.webp?v=1733414521"
+        class="flower"
+        alt="Flower"
+        loading="lazy"
+      >
+    </div>
+  </div>
+</section>
+
+{% comment %} <section id="philosophy">
+  <div class="wrapper">
+    <div class="philosophy-container">
+      <div class="philosophy-image-container">
+        <img
+          src="https://cdn.shopify.com/s/files/1/0727/8949/1929/files/Woman_Sharing_Details.webp?v=1733414524"
+          alt="Woman Sharing Details"
+          loading="lazy"
+        >
+      </div>
+      <div class="philosophy-details-container">
+        <img
+          src="https://cdn.shopify.com/s/files/1/0727/8949/1929/files/Flower.webp?v=1733414521"
+          class="flower"
+          alt="Flower"
+          loading="lazy"
+        >
+        <p class="low-white lead-in">About Our Philosophy</p>
+        <h2 class="white">So what do we believe about skincare?</h2>
+        <p class="low-white">
+          TAt NicholsMD, we believe skincare is the foundation of confidence. It’s about more than beauty—it’s about
+          health, consistency, and choosing products designed to nourish, protect, and enhance your skin for radiant,
+          long-term results you can see and feel.
+        </p>
+        <a href="#!" class="btn-primary">Learn More</a>
+      </div>
+    </div>
+  </div>
+</section> {% endcomment %}
+
+<script>
+  $(document).ready(function () {
+    const swiper = new Swiper('.swiper', {
+      direction: 'horizontal',
+      loop: true,
+      navigation: {
+        nextEl: '.swiper-button-next',
+        prevEl: '.swiper-button-prev',
+      },
+    });
+  });
+</script>
+
+{% schema %}
+{
+  "name": "Main Page",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Page Text"
+    }
+  ],
+  "blocks": []
+}
+{% endschema %}

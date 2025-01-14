@@ -20,14 +20,12 @@
           <p>{{ cart.total_price | money }}</p>
         </div>
         {% if section.settings.header_logo != blank %}
-          <a href="{{ routes.root_url }}">
-            <img
-              class="logo"
-              src="{{ section.settings.header_logo | img_url: '2048x' }}"
-              alt="Logo"
-              loading="lazy"
-            >
-          </a>
+          <img
+            class="logo"
+            src="{{ section.settings.header_logo | img_url: '2048x' }}"
+            alt="Logo"
+            loading="lazy"
+          >
         {% else %}
           <p class="logo">{{ shop.name }}</p>
         {% endif %}

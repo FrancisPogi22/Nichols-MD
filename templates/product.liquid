@@ -35,7 +35,7 @@
             <h2>Product Name</h2>
           {% endif %}
           {% if product.description != blank %}
-            <p class="light-gray product-description">{{ product.description | strip_html }}</p>
+            <p class="light-gray product-description">{{ product.description | strip_html | newline_to_br }}</p>
           {% endif %}
         </div>
         <div class="product-variants-container">
@@ -155,10 +155,10 @@
           {% else %}
         {% endcomment %}
         <div id="details" class="active">
-          {{ product.metafields.custom.sub_details | metafield_tag }}
+          {{ product.metafields.custom.sub_details | metafield_tag | newline_to_br }}
         </div>
         <div id="benefits">
-          {{ product.metafields.custom.sub_benefit | metafield_tag }}
+          {{ product.metafields.custom.sub_benefit | metafield_tag | newline_to_br }}
         </div>
         {% comment %} {% endunless %} {% endcomment %}
       </div>

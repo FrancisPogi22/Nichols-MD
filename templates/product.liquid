@@ -24,11 +24,6 @@
       </div>
       <div class="product-details-container">
         <div class="product-details">
-          {% comment %}
-            {% if product.type != blank %}
-              <p class="light-gray">{{ product.type | escape }}</p>
-            {% endif %}
-          {% endcomment %}
           {% if product.title != blank %}
             <h2>{{ product.title | escape }}</h2>
           {% else %}
@@ -53,13 +48,6 @@
                   <span>{{ variant.title }}</span>
                 </li>
               {% endfor %}
-              {% comment %}
-                {% if product.type == 'Gift Card' %}
-                  <li class="variant-item">
-                    <span>Custom</span>
-                  </li>
-                {% endif %}
-              {% endcomment %}
             </ul>
           {% endif %}
           <p class="light-blue price">
@@ -67,19 +55,6 @@
           </p>
           <form class="add-to-cart-form quantity-container">
             <input type="hidden" id="variant-id" name="id" value="{{ current_variant.id }}">
-            {% comment %}
-              {% if product.type == 'Gift Card' %}
-                <input
-                  type="number"
-                  id="custom_price"
-                  name="properties[Custom Price]"
-                  min="1"
-                  step="1"
-                  placeholder="Enter price"
-                  hidden
-                >
-              {% endif %}
-            {% endcomment %}
             {% if product.available != false %}
               <div class="product-quantity">
                 <input type="button" value="-" class="minus">

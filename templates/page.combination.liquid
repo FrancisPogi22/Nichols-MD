@@ -3,7 +3,7 @@
 {% section 'page-header' %}
 <section id="categories">
   <div class="wrapper">
-    {% assign collection = collections.spf %}
+    {% assign collection = collections.dehydrated %}
     <div class="categories-container">
       <div class="categories-header">
         <h2 class="dark-gray">{{ page.title }}</h2>
@@ -35,16 +35,6 @@
               id="priceRange"
             >
             <div class="price-range"><span id="minPrice">0</span><span id="maxPrice">3000</span></div>
-          </div>
-          <div class="filter-container">
-            <p>Filter by Skintype</p>
-            <select name="" id="typeFilter">
-              <option value="">Any</option>
-              <option value="chemical">Chemical</option>
-              <option value="mineral">Mineral</option>
-              <option value="tinted">Tinted</option>
-              <option value="not-tinted">Not Tinted</option>
-            </select>
           </div>
           <div class="filter-container">
             <p>Filter by Skintype</p>
@@ -170,6 +160,6 @@
 
 <script>
   $(document).ready(() => {
-    new ProductWidget('spf');
+    new ProductWidget('combination');
   });
 </script>

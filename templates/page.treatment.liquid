@@ -25,17 +25,6 @@
       </div>
       <div class="categories-product-main">
         <div class="filtering-product-container">
-          {% comment %} <div class="filter-container">
-            <p>Filter by Price ($)</p>
-            <input
-              type="range"
-              min="100"
-              max="8000"
-              value="100"
-              id="priceRange"
-            >
-            <div class="price-range"><span id="minPrice">100</span><span id="maxPrice">8000</span></div>
-          </div> {% endcomment %}
           <div class="filter-container">
             <p>Filter by Skintype</p>
             <select name="" id="skinTypeFilter">
@@ -46,18 +35,6 @@
               <option value="sensitive">Sensitive</option>
             </select>
           </div>
-          {% comment %}
-            <div class="filter-container">
-              <p>Filter by Skin Condition</p>
-              <select name="" id="productTypeFilter">
-                <option value="">Select All</option>
-                <option value="mature-skin">Mature Skin</option>
-                <option value="acne-prone-skin">Acne-Prone Skin</option>
-                <option value="dehydrated">Dehydrated</option>
-                <option value="discoloration">Discoloration</option>
-              </select>
-            </div>
-          {% endcomment %}
           <div class="filter-container">
             <p>Filter by Price ($)</p>
             <select name="priceFilter" id="priceFilter">
@@ -85,10 +62,10 @@
             <p>Treatment Category</p>
             <select name="" id="treatmentFilter">
               <option value="">Select All</option>
-              <option value="aesthetic-treatments">Aesthetic Treatments</option>
-              <option value="beauty-treatments">Beauty Treatments</option>
+              <option value="aesthetic treatments">Aesthetic Treatments</option>
+              <option value="beauty treatments">Beauty Treatments</option>
               <option value="injectables">Injectables</option>
-              <option value="laser-treatments">Laser Treatments</option>
+              <option value="laser treatments">Laser Treatments</option>
             </select>
           </div>
           <a class="btn-primary" id="filterBtn">Show Filtered Products</a>

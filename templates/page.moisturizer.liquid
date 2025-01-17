@@ -25,17 +25,6 @@
       </div>
       <div class="categories-product-main">
         <div class="filtering-product-container">
-          {% comment %} <div class="filter-container">
-            <p>Filter by Price ($)</p>
-            <input
-              type="range"
-              min="0"
-              max="3000"
-              value="0"
-              id="priceRange"
-            >
-            <div class="price-range"><span id="minPrice">0</span><span id="maxPrice">3000</span></div>
-          </div> {% endcomment %}
           <div class="filter-container">
             <p>Filter by Skintype</p>
             <select name="" id="skinTypeFilter">
@@ -46,20 +35,6 @@
               <option value="sensitive">Sensitive</option>
             </select>
           </div>
-          {% comment %} <div class="filter-container">
-            <p>Filter by Product Type</p>
-            <select name="" id="productTypeFilter">
-              <option value="">Any</option>
-              <option value="serums">Serum</option>
-              <option value="moisturizers">Moisturizer</option>
-              <option value="masques">Masques</option>
-              <option value="spf">SPF</option>
-              <option value="cleansers">Cleansers</option>
-              <option value="eye-care">Eye Care</option>
-              <option value="toners">Toners</option>
-              <option value="neck-decolletage">Neck and Decolletage</option>
-            </select>
-          </div> {% endcomment %}
           <div class="filter-container">
             <p>Filter by Price ($)</p>
             <select name="priceFilter" id="priceFilter">
@@ -71,15 +46,6 @@
               <option value="500-3000">Over $500</option>
             </select>
           </div>
-          {% comment %} <div class="filter-container">
-            <p>Filter by Brand</p>
-            <select name="" id="brandFilter">
-              <option value="">Select All</option>
-              <option value="brand-a">Brand A</option>
-              <option value="brand-b">Brand B</option>
-              <option value="brand-c">Brand C</option>
-            </select>
-          </div> {% endcomment %}
           <a class="btn-primary" id="filterBtn">Show Filtered Products</a>
         </div>
         <div class="categories-product-list-container">

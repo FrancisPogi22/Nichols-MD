@@ -620,7 +620,7 @@ input[type="range"]:focus::-ms-fill-upper {
 }
 #header .logo {
   width: 147px;
-  height: 62px;
+  height: auto;
 }
 #header .search-con {
   margin-left: 25px;
@@ -981,7 +981,6 @@ input[type="range"]:focus::-ms-fill-upper {
   }
   #header .logo {
     object-fit: contain;
-    height: 50px;
     width: 100px;
   }
   .btn-primary,

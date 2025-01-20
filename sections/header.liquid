@@ -1,4 +1,16 @@
 <section id="header">
+  {% if section.settings.show_announcement_text %}
+    {{ 'announcement-bar.css' | asset_url | stylesheet_tag }}
+    <a href="{{ section.settings.announcement_link }}">
+      <section id="announcement">
+        <div class="wrapper">
+          <div class="announcement-container">
+            <p>{{ section.settings.announcement_text | escape }}</p>
+          </div>
+        </div>
+      </section>
+    </a>
+  {% endif %}
   <div class="wrapper">
     <div class="header-container">
       <div class="main-header-cotainer">
@@ -19,16 +31,18 @@
           </div>
           <p>{{ cart.total_price | money }}</p>
         </div>
-        {% if section.settings.header_logo != blank %}
-          <img
-            class="logo"
-            src="{{ section.settings.header_logo | img_url: '2048x' }}"
-            alt="Logo"
-            loading="lazy"
-          >
-        {% else %}
-          <p class="logo">{{ shop.name }}</p>
-        {% endif %}
+        <a href="{{ routes.root_url }}">
+          {% if section.settings.header_logo != blank %}
+            <img
+              class="logo"
+              src="{{ section.settings.header_logo | img_url: '2048x' }}"
+              alt="Logo"
+              loading="lazy"
+            >
+          {% else %}
+            <p class="logo">{{ shop.name }}</p>
+          {% endif %}
+        </a>
         <ul class="navbar">
           {% for link in linklists[section.settings.menu].links %}
             {% if link.title == 'Skincare' %}
@@ -207,6 +221,26 @@
       "type": "link_list",
       "default": "main-menu",
       "label": "Header Menu"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_announcement_text",
+      "label": "Show Announcement Bar"
+    },
+    {
+      "type": "header",
+      "content": "Announcement Bar"
+    },
+    {
+      "type": "text",
+      "default": "Announcement Bar",
+      "id": "announcement_text",
+      "label": "Announcement Bar Text"
+    },
+    {
+      "type": "url",
+      "id": "announcement_link",
+      "label": "Announcement Link"
     }
   ]
 }

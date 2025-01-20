@@ -12,15 +12,6 @@
       <div class="categories-product-container">
         <div class="categories-header-container">
           <p class="dark-gray">Showing 1–9 of {{ collection.products_count }} results</p>
-          {% comment %} <div class="filtering-container">
-            <select name="sortBy" id="sortBy">
-              <option value="">Default Sorting</option>
-              <option value="title-asc">A-Z</option>
-              <option value="title-desc">Z-A</option>
-              <option value="price-asc">Price: Low to High</option>
-              <option value="price-desc">Price: High to Low</option>
-            </select>
-          </div> {% endcomment %}
         </div>
       </div>
       <div class="categories-product-main">
@@ -29,7 +20,7 @@
           {% paginate collection.products by 9 %}
             <div class="categories-product-list">
               {% for product in collection.products %}
-                <div class="product-widget">
+                <div class="product-widget gift-card">
                   <a href="{{ product.url }}">
                     {% if product.featured_image != blank %}
                       <img

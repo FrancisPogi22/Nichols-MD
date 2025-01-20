@@ -1,0 +1,15 @@
+#announcement {
+    background-color: var(--global-primary-blue);
+    z-index: 1000;
+    position: relative;
+}
+#announcement .announcement-container {
+    display: flex;
+    justify-content: center;
+    padding: 5px;
+}
+#announcement p {
+    text-align: center;
+    font-size: 14px;
+    color: var(--global-color-white);
+}

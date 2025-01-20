@@ -8,25 +8,20 @@
           <p class="light-blue lead-in">{{ section.settings.lead_in_text | escape }}</p>
         {% endif %}
         {% if section.settings.heading_text != blank %}
-          <a href="{{ section.settings.heading_url }}">
-            <h2 class="dark-gray">{{ section.settings.heading_text | escape }}</h2>
-          </a>
+          <h2 class="dark-gray">{{ section.settings.heading_text | escape }}</h2>
         {% endif %}
       </div>
       <div class="product-container">
         {% for block in section.blocks %}
           <div class="product-widget">
-            <a href="{{ block.settings.featured_product.url }}">
+            <a href="{{ block.settings.featured_product_link }}">
               <img
                 src="{{ block.settings.featured_product | img_url: '2048x' }}"
                 alt="{{ block.settings.widget_text }}"
                 loading="lazy"
               >
             </a>
-            <a href="{{ block.settings.featured_product.url }}">
-              <h4 class="dark-gray">{{ block.settings.featured_product.title | escape }}</h4>
-            </a>
-            <a href="{{ block.settings.featured_product.url }}" class="semi-gray">{{ block.settings.link_text }}</a>
+            <a href="{{ block.settings.featured_product_link }}" class="semi-gray">{{ block.settings.link_text }}</a>
           </div>
         {% endfor %}
       </div>
@@ -36,7 +31,7 @@
 
 {% schema %}
 {
-  "name": "Shop",
+  "name": "Antioxidants Products",
   "disabled_on": {
     "groups": ["header", "footer"]
   },
@@ -58,13 +53,8 @@
     {
       "type": "text",
       "id": "heading_text",
-      "default": "Shop by Category",
+      "default": "Which one is right for you",
       "label": "Heading Text"
-    },
-    {
-      "type": "url",
-      "id": "heading_url",
-      "label": "Heading Text Link"
     }
   ],
   "blocks": [
@@ -84,6 +74,15 @@
           "label": "Link Text"
         },
         {
+          "type": "header",
+          "content": "Featured Product Link"
+        },
+        {
+          "type": "url",
+          "id": "featured_product_link",
+          "label": "Featured Product Link"
+        },
+        {
           "type": "product",
           "id": "featured_product",
           "label": "Featured Product"
@@ -93,7 +92,7 @@
   ],
   "presets": [
     {
-      "name": "Shop"
+      "name": "Antioxidants Products"
     }
   ]
 }

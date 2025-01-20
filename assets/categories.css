@@ -136,6 +136,9 @@
   line-height: 1em;
   color: var(--global-dark-gray);
 }
+#categories .categories-product-list-container.giftcards .product-widget:first-of-type {
+  order: 1;
+}
 @media screen and (max-width: 1024px) {
   #categories .categories-product-list {
     grid-template-columns: repeat(2, 1fr);

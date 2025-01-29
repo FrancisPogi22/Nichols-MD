@@ -168,7 +168,7 @@ $(document).ready(() => {
       a();
     }),
     $(".mobile-btn-container").click(function () {
-      $("#mobile-navbar").slideToggle();
+      $('#mobile-navbar').toggleClass('active');
     }),
     s(),
     $('#header a[href="/cart"]').on("click", (t) => {

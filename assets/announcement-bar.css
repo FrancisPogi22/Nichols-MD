@@ -13,3 +13,8 @@
     font-size: 14px;
     color: var(--global-color-white);
 }
+@media screen and (max-width: 767px) {
+    #announcement p {
+        font-size: 12px;
+    }
+}

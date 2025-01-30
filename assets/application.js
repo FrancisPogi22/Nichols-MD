@@ -79,7 +79,10 @@ $(document).ready(() => {
     }),
     t(),
     $(".search").click((t) => {
-      t.stopPropagation(), $(".search-con").toggle();
+      t.stopPropagation(), $(".search-con").toggleClass('active');
+    }),
+    $(".search-con svg").click(() => {
+      $("#searchInput").val(''), $(".search-con").removeClass('active'), $('#search-details-con').empty();
     }),
     $("#header .has-sub-menu").each(function () {
       let t = !1,
@@ -149,8 +152,7 @@ $(document).ready(() => {
       }
     }),
     $("#mobile-navbar .sub-link-container a").on("click", function (e) {
-      e.stopPropagation(); // Prevent closing the parent menu when a sub-link is clicked
-      // Add any additional behavior here if needed
+      e.stopPropagation();
     }),
     $(".add-to-cart-form").each(function () {
       $(this).on("submit", async function (t) {

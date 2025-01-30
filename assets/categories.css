@@ -149,6 +149,7 @@
   }
   #categories .product-widget img {
     margin: 0 auto;
+    min-height: 150px;
     max-width: 200px;
     height: 100%;
   }
@@ -211,8 +212,8 @@
     padding: 20px 10px 20px;
   }
 }
-@media screen and (max-width: 500px) {
+/* @media screen and (max-width: 500px) {
   #categories .categories-product-list {
     grid-template-columns: 1fr;
   }
-}
+} */

@@ -540,7 +540,11 @@ input[type="range"]:focus::-ms-fill-upper {
   margin-bottom: -3px;
 }
 #header #searchInput {
-  padding: 10px;
+  padding: 15px;
+  transition: 0.3s;
+  font-size: 14px;
+  border-bottom: 1px solid var(--global-primary-blue);
+  width: 100%;
   line-height: 1em;
 }
 #header .top-navbar li:first-of-type::after {
@@ -624,11 +628,37 @@ input[type="range"]:focus::-ms-fill-upper {
   height: auto;
 }
 #header .search-con {
-  margin-left: 25px;
+  /* margin-left: 25px;
   display: none;
   position: absolute;
   left: -240px;
-  top: -8px;
+  top: -8px; */
+  position: fixed;
+  border-bottom: 1px solid var(--global-primary-blue);
+  filter: drop-shadow(0 10px 8px rgb(0 0 0 / .04)) drop-shadow(0 4px 3px rgb(0 0 0 / .1));
+  z-index: 20000;
+  top: 92px;
+  right: 0;
+  left: 0;
+  width: 100%;
+  max-width: 800px;
+  visibility: hidden;
+  /* overflow: hidden;
+  overflow-y: auto; */
+  /* max-height: 100%; */
+  align-items: center;
+  flex-direction: column;
+  /* padding-top: 89px; */
+  display: flex;
+  margin: 0 auto;
+  opacity: 0;
+  transition: opacity .2s ease, transform .3s ease, visibility 0s;
+  transform: translate3d(0, -100%, 0);
+}
+#header .search-con.active {
+  transform: translateZ(0);
+  opacity: 1;
+  visibility: visible;
 }
 #header .search-con .search-widget img {
   width: 50px;
@@ -636,13 +666,15 @@ input[type="range"]:focus::-ms-fill-upper {
 #search-details-con {
   padding: 20px;
   display: none;
-  position: absolute;
+  /* position: absolute; */
+  position: relative;
   z-index: 9999;
-  width: 300px;
-  overflow: auto;
   max-height: 400px;
-  left: -130px;
-  top: 65px;
+  width: 100%;
+  overflow-y: auto;
+  /* max-height: 400px; */
+  /* left: -130px;
+  top: 65px; */
 }
 #mobile-navbar,
 .cart-drawer {
@@ -669,9 +701,11 @@ input[type="range"]:focus::-ms-fill-upper {
   color: var(--global-primary-blue);
 }
 #header .search-con svg {
+  height: 10px;
   position: absolute;
-  right: 10px;
-  top: 17px;
+  width: 10px;
+  right: 20px;
+  top: 18px
 }
 #header .main-header-cotainer .btn-primary {
   margin-top: 0;
@@ -1013,10 +1047,10 @@ input[type="range"]:focus::-ms-fill-upper {
   .btn-secondary {
     font-size: 14px;
   }
-  #header .search-con {
+  /* #header .search-con {
     left: -120px;
     top: 30px;
-  }
+  } */
   #header .main-header-cotainer .btn-primary,
   #header .right-panel #customer_login_link,
   #header .right-panel #customer_register_link {
@@ -1031,10 +1065,10 @@ input[type="range"]:focus::-ms-fill-upper {
     margin-top: 10px;
     border-top: 1px solid;
   }
-  #search-details-con {
+  /* #search-details-con {
     left: -54px;
     top: 50px;
-  }
+  } */
   #header .left-panel {
     gap: 15px;
   }
@@ -1066,7 +1100,8 @@ input[type="range"]:focus::-ms-fill-upper {
   .product-container .product-widget img {
     height: 100%;
     max-width: 500px;
-    height: 250px;
+    height: 100%;
+    max-height: 250px;
   }
   #skincare .sub-link-container {
     max-width: 100%;

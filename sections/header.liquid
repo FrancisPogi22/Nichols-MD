@@ -16,11 +16,12 @@
       <div class="main-header-cotainer">
         <div class="top-navbar">
           <div class="search-con">
+            {% render 'icon_close' %}
             <input type="text" id="searchInput" placeholder="Search...">
             <div id="search-details-con"></div>
           </div>
           <a class="search">
-            {% render 'icon_search' %}
+            {% render 'icon_search' class: 'close-search' %}
           </a>
           {% render 'icon_login' %}
           <div class="cart-container">

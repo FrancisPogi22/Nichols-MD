@@ -16,6 +16,9 @@
 #solution .product-container .product-widget img {
   max-width: 400px;
 }
+#solution .product-container .product-widget a {
+  display: contents;
+}
 #solution .shop-container .btn-primary {
   display: inline-flex;
   justify-content: center;
@@ -46,7 +49,10 @@
   #solution .learn-more-link {
     font-size: 12px;
   }
-  #solution .product-container {
-    grid-template-columns: 1fr;
+  #solution .product-widget h4 {
+    font-size: 20px;
   }
+  /* #solution .product-container {
+    grid-template-columns: 1fr;
+  } */
 }

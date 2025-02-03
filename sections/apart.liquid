@@ -1,4 +1,5 @@
-{{ 'apart.css' | asset_url | stylesheet_tag }}
+<link rel="preload" href="{{ 'apart.css' | asset_url }}" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript>{{ 'apart.css' | asset_url | stylesheet_tag }}</noscript>
 
 <section id="apart">
   <div class="wrapper">
@@ -46,6 +47,7 @@
         <img
           src="https://cdn.shopify.com/s/files/1/0727/8949/1929/files/Apart_Image.webp?v=1733414524"
           alt="Apart Image"
+          loading="lazy"
         >
       </div>
     </div>

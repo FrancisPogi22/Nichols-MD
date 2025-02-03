@@ -1,7 +1,7 @@
 <section id="header">
   {% if section.settings.show_announcement_text %}
     {{ 'announcement-bar.css' | asset_url | stylesheet_tag }}
-    <a href="{{ section.settings.announcement_link }}">
+    <a href="{{ section.settings.announcement_link }}" aria-label="{{ section.settings.announcement_text | escape }}">
       <section id="announcement">
         <div class="wrapper">
           <div class="announcement-container">
@@ -20,9 +20,9 @@
             <input type="text" id="searchInput" placeholder="Search...">
             <div id="search-details-con"></div>
           </div>
-          <a class="search">
+          <div class="search">
             {% render 'icon_search' class: 'close-search' %}
-          </a>
+          </div>
           {% render 'icon_login' %}
           <div class="cart-container">
             <p class="cart-item-count">
@@ -194,14 +194,14 @@
             </li>
           {% endif %}
         {% endfor %}
-        <div class="auth-container">
+        <ul class="auth-container">
           <li>
             {{ 'Sign In' | customer_login_link }}
           </li>
           <li>
             {{ 'Register' | customer_register_link }}
           </li>
-        </div>
+        </ul>
         {% comment %} <a href="#vf-696bwf7z-p-r" class="btn-primary">Take the Skintype Quiz</a> {% endcomment %}
       </ul>
     </div>

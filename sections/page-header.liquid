@@ -1,4 +1,5 @@
-{{ 'page-header.css' | asset_url | stylesheet_tag }}
+<link rel="preload" href="{{ 'page-header.css' | asset_url }}" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript>{{ 'page-header.css' | asset_url | stylesheet_tag }}</noscript>
 
 <section id="page-header">
   <div class="wrapper">

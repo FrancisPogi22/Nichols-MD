@@ -1,4 +1,5 @@
-{{ 'partner.css' | asset_url | stylesheet_tag }}
+<link rel="preload" href="{{ 'partner.css' | asset_url }}" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript>{{ 'partner.css' | asset_url | stylesheet_tag }}</noscript>
 
 <section id="partner">
   <div class="wrapper">
@@ -26,6 +27,7 @@
                     href="{{ block.settings.primary_button_link }}"
                   {% endif %}
                   class="btn-primary"
+                  aria-label="{{ block.settings.primary_button_link_text | escape }}"
                 >
                   {{ block.settings.primary_button_link_text | escape }}
                 </a>
@@ -35,8 +37,10 @@
       </div>
       <div class="partner-featured-image">
         {% if section.settings.featured_image != blank %}
+          <link rel="preload" href="{{ section.settings.featured_image | img_url: '2048x' }}" as="image">
+
           <img
-            src="{{ section.settings.featured_image | img_url: "2048x" }}"
+            src="{{ section.settings.featured_image | img_url: '2048x' }}"
             class="featured-image"
             alt="{{ section.settings.featured_image.alt }}"
             loading="lazy"
@@ -48,6 +52,11 @@
             loading="lazy"
           >
         {% endif %}
+        <link
+          rel="preload"
+          href="https://cdn.shopify.com/s/files/1/0727/8949/1929/files/Blue_Flower.webp?v=1733414521"
+          as="image"
+        >
         <img
           src="https://cdn.shopify.com/s/files/1/0727/8949/1929/files/Blue_Flower.webp?v=1733414521"
           class="flower"

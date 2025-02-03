@@ -1,4 +1,5 @@
-{{ 'shop.css' | asset_url | stylesheet_tag }}
+<link rel="preload" href="{{ 'shop.css' | asset_url }}" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript>{{ 'shop.css' | asset_url | stylesheet_tag }}</noscript>
 
 <section id="shop">
   <div class="wrapper">
@@ -14,14 +15,14 @@
       <div class="product-container">
         {% for block in section.blocks %}
           <div class="product-widget">
-            <a href="{{ block.settings.featured_product_link }}">
+            <a href="{{ block.settings.featured_product_link }}" aria-label="{{ block.settings.featured_product.title }}">
               <img
                 src="{{ block.settings.featured_product | img_url: '2048x' }}"
                 alt="{{ block.settings.widget_text }}"
                 loading="lazy"
               >
             </a>
-            <a href="{{ block.settings.featured_product_link }}" class="semi-gray">{{ block.settings.link_text }}</a>
+            <a href="{{ block.settings.featured_product_link }}" class="semi-gray" aria-label="{{ block.settings.featured_product.title }}">{{ block.settings.link_text }}</a>
           </div>
         {% endfor %}
       </div>

@@ -138,18 +138,17 @@ $(document).ready(() => {
       t.preventDefault();
       t.stopPropagation();
 
-      let parentLink = $(this).children("a").attr("href");
-      let subMenu = $(this).find(".sub-link-container");
-      let isVisible = subMenu.is(":visible");
+      let parentLink = $(this).children("a").attr("href"),
+        subMenu = $(this).find(".sub-link-container"),
+        isVisible = subMenu.is(":visible");
 
       $(this).toggleClass("active");
       $("#mobile-navbar .sub-link-container").not(subMenu).slideUp();
 
-      if (isVisible) {
+      if (isVisible)
         window.location.href = parentLink;
-      } else {
+      else
         subMenu.slideDown();
-      }
     }),
     $("#mobile-navbar .sub-link-container a").on("click", function (e) {
       e.stopPropagation();

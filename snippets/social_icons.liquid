@@ -1,16 +1,16 @@
-<div class="social-links">
+<ul class="social-links">
   {% if settings.social_facebook != blank %}
     <li>
-      <a href="https://www.facebook.com/nicholsmd/" target="__blank">
+      <a href="https://www.facebook.com/nicholsmd/" target="__blank" aria-label="facebook">
         {% render 'icon_facebook' %}
       </a>
     </li>
   {% endif %}
   {% if settings.social_instagram != blank %}
     <li>
-      <a href="https://www.instagram.com/nicholsmd_dermatology/" target="__blank">
+      <a href="https://www.instagram.com/nicholsmd_dermatology/" target="__blank" aria-label="instagram">
         {% render 'icon_instagram' %}
       </a>
     </li>
   {% endif %}
-</div>
+</ul>

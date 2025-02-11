@@ -30,7 +30,7 @@
                     {% unless item.variant.title == 'Default Title' %}
                       {{ item.variant.title }}
                     {% endunless %}
-                    {% comment %} <a href="/cart/change?line={{ forloop.index }}&amp;quantity=0">remove</a> {% endcomment %}
+                    <a href="/cart/change?line={{ forloop.index }}&amp;quantity=0">remove</a>
                   </td>
                   <td>{{ item.price | money_with_currency }}</td>
                   <td>

@@ -1,0 +1,45 @@
+<div class="product-recommendation-container">
+  {% for block in section.blocks %}
+    {% if block.settings.product %}
+      <div class="product-widget">
+        <img
+          src="{{ block.settings.product.featured_image | img_url: '2048x' }}"
+          alt="{{ block.settings.product.title | escape }}"
+        >
+        <div class="product-content">
+          <a href="{{ block.settings.product.url }}" aria-label="{{ block.settings.product.title | escape }}">
+            <h4>{{ block.settings.product.title | escape }}</h4>
+          </a>
+        </div>
+      </div>
+    {% endif %}
+  {% endfor %}
+</div>
+
+{% schema %}
+{
+  "name": "Product Recommendation",
+  "disabled_on": {
+    "groups": ["header", "footer"]
+  },
+  "blocks": [
+    {
+      "type": "product_widget",
+      "name": "Product Widget",
+      "limit": 3,
+      "settings": [
+        {
+          "type": "product",
+          "id": "product",
+          "label": "Product Recommended"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Product Recommendation"
+    }
+  ]
+}
+{% endschema %}

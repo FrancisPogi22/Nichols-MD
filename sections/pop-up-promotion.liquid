@@ -1,0 +1,85 @@
+{% if section.settings.show_promotion %}
+  <div class="promotion-container">
+    <div class="promotion-content">
+      <link
+        rel="preload"
+        href="https://cdn.shopify.com/s/files/1/0727/8949/1929/files/Flower.webp?v=1733414521"
+        as="image"
+      >
+      <img
+        src="https://cdn.shopify.com/s/files/1/0727/8949/1929/files/Flower.webp?v=1733414521"
+        class="flower"
+        alt="Blue Flower"
+        loading="lazy"
+      >
+      <link
+        rel="preload"
+        href="https://cdn.shopify.com/s/files/1/0727/8949/1929/files/Flower.webp?v=1733414521"
+        as="image"
+      >
+      <img
+        src="https://cdn.shopify.com/s/files/1/0727/8949/1929/files/Flower.webp?v=1733414521"
+        class="flower"
+        alt="Blue Flower"
+        loading="lazy"
+      >
+      {% render 'icon_close' %}
+      {% if section.settings.heading_text != blank %}
+        <h4>{{ section.settings.heading_text | escape }}</h4>
+      {% endif %}
+      {% if section.settings.paragraph_text != blank %}
+        <p>{{ section.settings.paragraph_text | escape }}</p>
+      {% endif %}
+      {% if section.settings.promotion_link != blank %}
+        <a href="{{ section.settings.promotion_link }}" class="btn-primary">
+          {{- section.settings.button_text | escape -}}
+        </a>
+      {% endif %}
+    </div>
+  </div>
+{% endif %}
+
+{% schema %}
+{
+  "name": "Pop up Promotion",
+  "disabled_on": {
+    "groups": ["header", "footer"]
+  },
+  "settings": [
+    {
+      "type": "header",
+      "content": "Pop up Promotion"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_promotion",
+      "label": "Show Promotion"
+    },
+    {
+      "type": "text",
+      "id": "heading_text",
+      "label": "Heading Text"
+    },
+    {
+      "type": "text",
+      "id": "paragraph_text",
+      "label": "Body Text"
+    },
+    {
+      "type": "url",
+      "id": "promotion_link",
+      "label": "Promotion Link"
+    },
+    {
+      "type": "text",
+      "id": "button_text",
+      "label": "Link Text"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Pop up Promotion"
+    }
+  ]
+}
+{% endschema %}

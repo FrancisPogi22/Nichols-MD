@@ -17,6 +17,7 @@
 #header svg *,
 #mobile-navbar .has-sub-menu svg,
 .cart-drawer svg path,
+.cart-drawer svg circle,
 a,
 button {
   transition: 0.4s;
@@ -164,7 +165,8 @@ p {
 }
 #footer svg:hover path,
 #header svg:hover *,
-.cart-drawer svg:hover path {
+.cart-drawer svg:hover path,
+.cart-drawer svg:hover circle {
   fill: var(--global-primary-blue);
 }
 li {
@@ -827,6 +829,54 @@ input[type="range"]:focus::-ms-fill-upper {
   align-items: stretch;
   transition: transform 0.4s;
 }
+.cart-drawer .product-recommendation {
+  margin-top: 30px;
+}
+.cart-drawer .product-recommendation-container img {
+  width: 80px;
+}
+.cart-drawer .product-recommendation-container .add-to-cart-form button {
+  background: none;
+  padding: 0;
+  margin: 0;
+}
+.cart-drawer .product-recommendation-container .add-to-cart-form button:hover {
+  box-shadow: none !important;
+}
+.cart-drawer .product-recommendation-container .add-to-cart-form svg {
+  width: 20px;
+  height: 20px;
+  fill: var(--global-light-gray);
+}
+.cart-drawer .product-recommendation-container {
+  margin-top: 30px;
+}
+.cart-drawer .product-widget {
+  display: flex;
+  gap: 10px;
+}
+.cart-drawer
+  .product-recommendation-container
+  .product-widget:not(:last-of-type) {
+  margin-bottom: 10px;
+}
+.cart-drawer .quantity-container {
+  display: flex;
+  margin-left: auto;
+}
+.cart-drawer .product-recommendation h3 {
+  font-size: 20px;
+  font-weight: 700;
+}
+.cart-drawer .product-content h4 {
+  font-size: 14px;
+  margin-bottom: 5px;
+  color: var(--global-slate-gray);
+}
+.cart-drawer .product-content p {
+  font-size: 12px;
+  color: var(--global-slate-gray);
+}
 .cart-drawer.active {
   transform: translateX(0);
   display: flex;
@@ -930,6 +980,63 @@ input[type="range"]:focus::-ms-fill-upper {
   width: 72px;
   height: 72px;
 }
+.promotion-container {
+  position: fixed;
+  background: rgba(0, 0, 0, 0.5);
+  height: 100%;
+  width: 100%;
+  z-index: 9999;
+  top: 0;
+  display: none;
+}
+.promotion-content {
+  max-width: 800px;
+  background: var(--global-primary-blue);
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  display: flex;
+  width: 100%;
+  color: var(--global-color-white);
+  overflow: hidden;
+  padding: 20px;
+  top: 50%;
+  left: 50%;
+  text-align: center;
+  position: fixed;
+  transform: translate(-50%, -50%);
+  max-height: 500px;
+  flex-direction: column;
+  margin: 0 auto;
+}
+.promotion-content .flower:last-of-type,
+.promotion-content .flower:first-of-type {
+  position: absolute;
+  opacity: 0.1;
+  width: 500px;
+  z-index: -1;
+}
+.promotion-content a {
+  margin-top: 50px;
+}
+.promotion-content .flower:first-of-type {
+  top: -150px;
+  left: -150px;
+}
+.promotion-content .flower:last-of-type {
+  bottom: -220px;
+  right: -150px;
+}
+.promotion-container svg path {
+  stroke: var(--global-color-white);
+}
+.promotion-container svg {
+  position: absolute;
+  top: 20px;
+
+  cursor: pointer;
+  right: 20px;
+}
 @keyframes rotate-circle {
   to {
     transform: rotate(1turn);
@@ -1003,6 +1110,9 @@ input[type="range"]:focus::-ms-fill-upper {
   }
   .product-container {
     grid-template-columns: repeat(2, 1fr);
+  }
+  .promotion-content {
+    width: calc(100% - 40px);
   }
 }
 @media screen and (max-width: 767px) {
@@ -1091,5 +1201,9 @@ input[type="range"]:focus::-ms-fill-upper {
   }
   #skincare .sub-link-container ul:last-of-type {
     max-width: 100%;
+  }
+  .promotion-content {
+    max-height: 400px;
+    max-width: 600px;
   }
 }

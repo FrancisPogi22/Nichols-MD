@@ -9,7 +9,9 @@
           {% for item in cart.items %}
             <div class="cart-drawer-item" data-line-item-key="{{ item.key }}">
               <div class="cart-drawer-item-image">
-                <a href="{{ item.url }}"><img src="{{ item.image | img_url: '2048x' }}" alt="{{ item.title }}" loading="lazy"></a>
+                <a href="{{ item.url }}"
+                  ><img src="{{ item.image | img_url: '2048x' }}" alt="{{ item.title }}" loading="lazy"
+                ></a>
                 <div class="item-details">
                   <a href="{{ item.url }}">{{ item.product.title }}</a>
                   <p class="quantity-text">
@@ -29,7 +31,9 @@
           {% endfor %}
         </div>
         <div class="sub-total-con">
-          <p><span>Subtotal: </span> <span class="cart-total-price">{{ cart.total_price | money }}</span></p>
+          <p>
+            <span>Subtotal: </span> <span class="cart-total-price">{{ cart.total_price | money }}</span>
+          </p>
         </div>
         <div class="cart-btn-con">
           <a href="/cart" class="btn-secondary">View Cart</a>
@@ -39,11 +43,76 @@
         <p class="cart-drawer-empty">No products in the cart.</p>
       {% endif %}
     {% endform %}
+    {% if section.settings.show_product_recommendation %}
+      <div class="product-recommendation">
+        <h3>Would you also like to add</h3>
+        <div class="product-recommendation-container">
+          {% for block in section.blocks %}
+            {% if block.settings.product %}
+              <div class="product-widget">
+                <a href="{{ block.settings.product.url }}" aria-label="{{ block.settings.product.title | escape }}">
+                  <img
+                    src="{{ block.settings.product.featured_image | img_url: '2048x' }}"
+                    alt="{{ block.settings.product.title | escape }}"
+                  >
+                </a>
+                <div class="product-content">
+                  <a href="{{ block.settings.product.url }}" aria-label="{{ block.settings.product.title | escape }}">
+                    <h4>{{ block.settings.product.title | escape }}</h4>
+                  </a>
+                  <p>{{ block.settings.product.price | money }}</p>
+                </div>
+                <form class="add-to-cart-form quantity-container">
+                  <input
+                    type="hidden"
+                    id="variant-id"
+                    name="id"
+                    value="{{ block.settings.product.variants.first.id | default: block.settings.product.id }}"
+                  >
+                  <div class="product-quantity" style="display: none;">
+                    <input type="number" class="quantity" name="quantity" value="1" min="1">
+                  </div>
+                  <button
+                    type="submit"
+                    name="add"
+                    class="btn-primary"
+                    id="AddToCart"
+                  >
+                    {% render 'icon_add_to_cart' %}
+                  </button>
+                </form>
+              </div>
+            {% endif %}
+          {% endfor %}
+        </div>
+      </div>
+    {% endif %}
   </div>
 </div>
 
 {% schema %}
 {
-  "name": "Cart drawer"
+  "name": "Cart drawer",
+  "settings": [
+    {
+      "type": "checkbox",
+      "id": "show_product_recommendation",
+      "label": "Show Product Recommendation"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "product_widget",
+      "name": "Product Widget",
+      "limit": 3,
+      "settings": [
+        {
+          "type": "product",
+          "id": "product",
+          "label": "Product Recommended"
+        }
+      ]
+    }
+  ]
 }
 {% endschema %}

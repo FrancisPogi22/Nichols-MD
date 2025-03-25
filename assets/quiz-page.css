@@ -107,19 +107,21 @@
 #product__recommendation .product__container {
   display: flex;
   margin-top: 65px;
-  justify-content: space-between;
-  gap: 20px;
-}
-#product__recommendation .product__container:first-of-type {
-  margin-bottom: 75px;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  row-gap: 50px;
+  column-gap: 20px;
 }
 #product__recommendation h2 {
   font-size: 40px;
   text-align: center;
 }
 #product__recommendation .product__widget {
-  width: min(190px, 100%);
+  width: calc(100% / 5 - 20px);
   text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 #product__recommendation .product__widget img {
   width: 100%;
@@ -129,7 +131,7 @@
 }
 #product__recommendation .product__widget p {
   font-size: 22px;
-  margin-bottom: 24px;
+  margin-top: auto;
 }
 #product__recommendation .product__widget .btn-primary {
   background: transparent;
@@ -197,6 +199,15 @@
   #quiz .rotatingText {
     left: -100px !important;
   }
+  #product__recommendation .product__widget {
+    width: calc(100% / 3 - 20px);
+  }
+  #product__recommendation h2 {
+    font-size: 32px;
+  }
+  #product__recommendation .product__widget p {
+    font-size: 20px;
+  }
 }
 @media screen and (max-width: 767px) {
   #page-header .header__text,
@@ -233,13 +244,6 @@
   #product__recommendation .product__widget {
     width: calc(100% / 2 - 20px);
   }
-  #product__recommendation .product__container:first-of-type,
-  #product__recommendation .product__container:last-of-type {
-    flex-wrap: wrap;
-  }
-  #product__recommendation .product__container:first-of-type {
-    margin-bottom: 30px;
-  }
   #product__recommendation .product__container {
     margin-top: 30px;
   }
@@ -254,5 +258,11 @@
   }
   #quiz .rotatingText {
     left: -125px !important;
+  }
+  #product__recommendation h2 {
+    font-size: 30px;
+  }
+  #product__recommendation .product__widget p {
+    font-size: 18px;
   }
 }

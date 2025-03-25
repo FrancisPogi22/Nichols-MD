@@ -1,0 +1,415 @@
+<link
+  rel="preload"
+  href="{{ 'page-header.css' | asset_url }}"
+  as="style"
+  onload="this.onload=null;this.rel='stylesheet'"
+>
+<noscript>{{ 'page-header.css' | asset_url | stylesheet_tag }}</noscript>
+<link
+  rel="preload"
+  href="{{ 'quiz-page.css' | asset_url }}"
+  as="style"
+  onload="this.onload=null;this.rel='stylesheet'"
+>
+<noscript>{{ 'quiz-page.css' | asset_url | stylesheet_tag }}</noscript>
+<link rel="preload" href="{{ 'quiz.css' | asset_url }}" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript>{{ 'quiz.css' | asset_url | stylesheet_tag }}</noscript>
+
+<section id="page-header">
+  <div class="wrapper">
+    <div class="page-header-container">
+      <h1 class="white">What is your Skincare Product?</h1>
+      <div class="header__text">
+        <p class="white">{Add Skin Type}</p>
+        <p class="white">{Add Age}</p>
+        <p class="white">{Add Concern}</p>
+      </div>
+      <img
+        src="https://cdn.shopify.com/s/files/1/0727/8949/1929/files/Flower.webp?v=1733414521"
+        class="flower"
+        alt="Flower"
+        loading="lazy"
+      >
+    </div>
+  </div>
+</section>
+<section id="result">
+  <div class="wrapper">
+    <div class="result__container">
+      <div class="result__header__description">
+        <p class="lead-in light-blue">Your results</p>
+        <h2>Lorem ipsum dolor sit amet</h2>
+        <p class="light-gray">
+          Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+          Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+        </p>
+      </div>
+      <div class="result__first__row">
+        <div class="result__description__container">
+          <p class="light-gray">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
+            dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex
+            ea commodo consequat.
+            <br>
+            <br>
+            Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+            Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est
+            laborum
+            <br>
+            <br>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
+            dolore magna aliqua.
+          </p>
+          <br>
+          <br>
+          <ul>
+            <li>
+              <p class="light-gray">
+                <strong>Lorem ipsum dolor sit amet</strong><br>
+                Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+                Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est
+                laborum.
+              </p>
+            </li>
+            <li>
+              <p class="light-gray">
+                <strong>Lorem ipsum dolor sit amet</strong><br>
+                Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+                Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est
+                laborum.
+              </p>
+            </li>
+          </ul>
+        </div>
+        <div class="image__container">
+          <img
+            src="https://cdn.shopify.com/s/files/1/0727/8949/1929/files/img.webp?v=1741886155"
+            alt="Image"
+            loading="lazy"
+          >
+        </div>
+      </div>
+    </div>
+  </div>
+  <img
+    class="ellipse"
+    src="https://cdn.shopify.com/s/files/1/0727/8949/1929/files/Ellipse_2.webp?v=1741891264"
+    alt="Ellipse"
+  >
+</section>
+<section id="product__recommendation">
+  <div class="wrapper">
+    <div class="product__recommendation__container">
+      <h2 class="dark-gray">We Recommend the following Products</h2>
+      <div class="product__container">
+        <div class="product__widget">
+          <a href="{{ all_products['clear-daily-soothing-uv-defense-spf-50'].url }}">
+            <img
+              src="{{ all_products['clear-daily-soothing-uv-defense-spf-50'].featured_image | img_url: '2048x' }}"
+              alt="{{ all_products['clear-daily-soothing-uv-defense-spf-50'].featured_image.alt | escape }}"
+              loading="lazy"
+            >
+          </a>
+          <a href="{{ all_products['clear-daily-soothing-uv-defense-spf-50'].url }}">
+            <h5 class="light-gray">{{ all_products['clear-daily-soothing-uv-defense-spf-50'].title }}</h5>
+          </a>
+          <p class="light-blue">{{ all_products['clear-daily-soothing-uv-defense-spf-50'].price | money }}</p>
+          <a href="{{ all_products['clear-daily-soothing-uv-defense-spf-50'].url }}" class="btn-primary">
+            View Product
+          </a>
+        </div>
+        <div class="product__widget">
+          <a href="{{ all_products['skinceuticals-gentle-cleanser'].url }}">
+            <img
+              src="{{ all_products['skinceuticals-gentle-cleanser'].featured_image | img_url: '2048x' }}"
+              alt="{{ all_products['skinceuticals-gentle-cleanser'].featured_image.alt | escape }}"
+              loading="lazy"
+            >
+          </a>
+          <a href="{{ all_products['skinceuticals-gentle-cleanser'].url }}">
+            <h5 class="light-gray">{{ all_products['skinceuticals-gentle-cleanser'].title }}</h5>
+          </a>
+          <p class="light-blue">{{ all_products['skinceuticals-gentle-cleanser'].price | money }}</p>
+          <a href="{{ all_products['skinceuticals-gentle-cleanser'].url }}" class="btn-primary"> View Product </a>
+        </div>
+        <div class="product__widget">
+          <a href="{{ all_products['skinceuticals-phyto-a-brightening-treatment'].url }}">
+            <img
+              src="{{ all_products['skinceuticals-phyto-a-brightening-treatment'].featured_image | img_url: '2048x' }}"
+              alt="{{ all_products['skinceuticals-phyto-a-brightening-treatment'].featured_image.alt | escape }}"
+              loading="lazy"
+            >
+          </a>
+          <a href="{{ all_products['skinceuticals-phyto-a-brightening-treatment'].url }}">
+            <h5 class="light-gray">{{ all_products['skinceuticals-phyto-a-brightening-treatment'].title }}</h5>
+          </a>
+          <p class="light-blue">{{ all_products['skinceuticals-phyto-a-brightening-treatment'].price | money }}</p>
+          <a href="{{ all_products['skinceuticals-phyto-a-brightening-treatment'].url }}" class="btn-primary">
+            View Product
+          </a>
+        </div>
+        <div class="product__widget">
+          <a href="{{ all_products['skinceuticals-silymarin-cf'].url }}">
+            <img
+              src="{{ all_products['skinceuticals-silymarin-cf'].featured_image | img_url: '2048x' }}"
+              alt="{{ all_products['skinceuticals-silymarin-cf'].featured_image.alt | escape }}"
+              loading="lazy"
+            >
+          </a>
+          <a href="{{ all_products['skinceuticals-silymarin-cf'].url }}">
+            <h5 class="light-gray">{{ all_products['skinceuticals-silymarin-cf'].title }}</h5>
+          </a>
+          <p class="light-blue">{{ all_products['skinceuticals-silymarin-cf'].price | money }}</p>
+          <a href="{{ all_products['skinceuticals-silymarin-cf'].url }}" class="btn-primary"> View Product </a>
+        </div>
+        <div class="product__widget">
+          <a href="{{ all_products['skinceuticals-phyto-corrective-gel'].url }}">
+            <img
+              src="{{ all_products['skinceuticals-phyto-corrective-gel'].featured_image | img_url: '2048x' }}"
+              alt="{{ all_products['skinceuticals-phyto-corrective-gel'].featured_image.alt | escape }}"
+              loading="lazy"
+            >
+          </a>
+          <a href="{{ all_products['skinceuticals-phyto-corrective-gel'].url }}">
+            <h5 class="light-gray">{{ all_products['skinceuticals-phyto-corrective-gel'].title }}</h5>
+          </a>
+          <p class="light-blue">{{ all_products['skinceuticals-phyto-corrective-gel'].price | money }}</p>
+          <a href="{{ all_products['skinceuticals-phyto-corrective-gel'].url }}" class="btn-primary"> View Product </a>
+        </div>
+        <div class="product__widget">
+          <a href="{{ all_products['skinceuticals-phyto-corrective-essence-hydrating-mist'].url }}">
+            <img
+              src="{{ all_products['skinceuticals-phyto-corrective-essence-hydrating-mist'].featured_image | img_url: '2048x' }}"
+              alt="{{ all_products['skinceuticals-phyto-corrective-essence-hydrating-mist'].featured_image.alt | escape }}"
+              loading="lazy"
+            >
+          </a>
+          <a href="{{ all_products['skinceuticals-phyto-corrective-essence-hydrating-mist'].url }}">
+            <h5 class="light-gray">
+              {{ all_products['skinceuticals-phyto-corrective-essence-hydrating-mist'].title }}
+            </h5>
+          </a>
+          <p class="light-blue">
+            {{ all_products['skinceuticals-phyto-corrective-essence-hydrating-mist'].price | money }}
+          </p>
+          <a href="{{ all_products['skinceuticals-phyto-corrective-essence-hydrating-mist'].url }}" class="btn-primary">
+            View Product
+          </a>
+        </div>
+        <div class="product__widget">
+          <a href="{{ all_products['redness-neutralizer'].url }}">
+            <img
+              src="{{ all_products['redness-neutralizer'].featured_image | img_url: '2048x' }}"
+              alt="{{ all_products['redness-neutralizer'].featured_image.alt | escape }}"
+              loading="lazy"
+            >
+          </a>
+          <a href="{{ all_products['redness-neutralizer'].url }}">
+            <h5 class="light-gray">{{ all_products['redness-neutralizer'].title }}</h5>
+          </a>
+          <p class="light-blue">{{ all_products['redness-neutralizer'].price | money }}</p>
+          <a href="{{ all_products['redness-neutralizer'].url }}" class="btn-primary"> View Product </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<section id="faqs">
+  <img
+    class="ellipse"
+    src="https://cdn.shopify.com/s/files/1/0727/8949/1929/files/Ellipse_2.webp?v=1741891264"
+    alt="Ellipse"
+  >
+  <div class="wrapper">
+    <div class="faqs__container">
+      <p class="lead-in light-blue">Got Questions?</p>
+      <h2 class="dark-gray">Frequently Asked Questions</h2>
+      <div class="faqs__main__container">
+        <div class="left__faqs__container">
+          <div class="faqs__widget">
+            <div class="faqs__header">
+              <p class="dark-gray">FAQ Question Here</p>
+              {% render 'icon_caret_down' %}
+            </div>
+            <div class="faqs__content">
+              <p class="light-gray">
+                Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quisquam iure, cum exercitationem praesentium
+                doloremque quos.
+              </p>
+            </div>
+          </div>
+          <div class="faqs__widget">
+            <div class="faqs__header">
+              <p class="dark-gray">FAQ Question Here</p>
+              {% render 'icon_caret_down' %}
+            </div>
+            <div class="faqs__content">
+              <p class="light-gray">
+                Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quisquam iure, cum exercitationem praesentium
+                doloremque quos.
+              </p>
+            </div>
+          </div>
+          <div class="faqs__widget">
+            <div class="faqs__header">
+              <p class="dark-gray">FAQ Question Here</p>
+              {% render 'icon_caret_down' %}
+            </div>
+            <div class="faqs__content">
+              <p class="light-gray">
+                Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quisquam iure, cum exercitationem praesentium
+                doloremque quos.
+              </p>
+            </div>
+          </div>
+          <div class="faqs__widget">
+            <div class="faqs__header">
+              <p class="dark-gray">FAQ Question Here</p>
+              {% render 'icon_caret_down' %}
+            </div>
+            <div class="faqs__content">
+              <p class="light-gray">
+                Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quisquam iure, cum exercitationem praesentium
+                doloremque quos.
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="right__faqs__container">
+          <div class="faqs__widget">
+            <div class="faqs__header">
+              <p class="dark-gray">FAQ Question Here</p>
+              {% render 'icon_caret_down' %}
+            </div>
+            <div class="faqs__content">
+              <p class="light-gray">
+                Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quisquam iure, cum exercitationem praesentium
+                doloremque quos.
+              </p>
+            </div>
+          </div>
+          <div class="faqs__widget">
+            <div class="faqs__header">
+              <p class="dark-gray">FAQ Question Here</p>
+              {% render 'icon_caret_down' %}
+            </div>
+            <div class="faqs__content">
+              <p class="light-gray">
+                Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quisquam iure, cum exercitationem praesentium
+                doloremque quos.
+              </p>
+            </div>
+          </div>
+          <div class="faqs__widget">
+            <div class="faqs__header">
+              <p class="dark-gray">FAQ Question Here</p>
+              {% render 'icon_caret_down' %}
+            </div>
+            <div class="faqs__content">
+              <p class="light-gray">
+                Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quisquam iure, cum exercitationem praesentium
+                doloremque quos.
+              </p>
+            </div>
+          </div>
+          <div class="faqs__widget">
+            <div class="faqs__header">
+              <p class="dark-gray">FAQ Question Here</p>
+              {% render 'icon_caret_down' %}
+            </div>
+            <div class="faqs__content">
+              <p class="light-gray">
+                Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quisquam iure, cum exercitationem praesentium
+                doloremque quos.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<section id="quiz">
+  <div class="wrapper">
+    <div class="quiz-container">
+      <img
+        src="https://cdn.shopify.com/s/files/1/0727/8949/1929/files/Flower.webp?v=1733414521"
+        class="flower"
+        alt="Flower"
+        loading="lazy"
+      >
+      <img
+        src="https://cdn.shopify.com/s/files/1/0727/8949/1929/files/Woman_Smiling.webp?v=1733414522"
+        alt="Woman_Smiling"
+        loading="lazy"
+      >
+      <img
+        src="https://cdn.shopify.com/s/files/1/0727/8949/1929/files/Putting_Cream_in_Skin.webp?v=1733427586"
+        alt="Putting_Cream_in_Skin"
+        loading="lazy"
+      >
+      <img
+        src="https://cdn.shopify.com/s/files/1/0727/8949/1929/files/Removing_Object_in_Eye.webp?v=1733427586"
+        alt="Removing_Object_in_Eye"
+        loading="lazy"
+      >
+      <img
+        src="https://cdn.shopify.com/s/files/1/0727/8949/1929/files/Flower.webp?v=1733414521"
+        loading="lazy"
+        alt="Flower"
+      >
+      <div class="quiz-details-container">
+        <svg
+          class="rotatingText"
+          viewBox="0 0 200 200"
+          width="200"
+          height="200"
+        >
+          <circle cx="100" cy="100" r="12" fill="white" stroke-width="2" />
+          <defs>
+            <path
+              id="circle"
+              d="M 100, 100
+                    m -75, 0
+                    a 75, 75 0 1, 0 150, 0
+                    a 75, 75 0 1, 0 -150, 0
+                    "
+            ></path>
+          </defs>
+          <text width="200">
+            <textPath
+              href="#circle"
+              class="text"
+              startOffset="50%"
+              text-anchor="middle"
+              dominant-baseline="middle"
+            >
+              You came to the right place
+            </textPath>
+          </text>
+        </svg>
+        <h2 class="white">Don’t know your skin type? Take the Quiz!</h2>
+        <p class="low-white">
+          Rediscover your natural beauty with personalized treatments. From skincare rejuvenation to innovative
+          procedures, experience transformative results and embrace a new level of confidence.
+        </p>
+        <a href="#!" class="btn-primary">Take the Quiz</a>
+      </div>
+    </div>
+  </div>
+</section>
+<script>
+  $(document).ready(function () {
+    $('.faqs__header').click(function () {
+      $('.faqs__content').slideUp(200);
+      $('.faqs__widget').removeClass('active');
+      $('.faqs__header svg').css('transform', 'rotate(0deg)');
+
+      if (!$(this).next('.faqs__content').is(':visible')) {
+        $(this).parent('.faqs__widget').addClass('active');
+        $(this).next('.faqs__content').slideDown(200);
+        $(this).find('svg').css('transform', 'rotate(180deg)');
+      }
+    });
+  });
+</script>

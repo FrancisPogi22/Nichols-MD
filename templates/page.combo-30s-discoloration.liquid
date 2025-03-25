@@ -103,86 +103,64 @@
       <h2 class="dark-gray">We Recommend the following Products</h2>
       <div class="product__container">
         <div class="product__widget">
-          <img
-            src="https://cdn.shopify.com/s/files/1/0727/8949/1929/files/Default_Product.webp?v=1741886224"
-            alt="Default Product"
-            loading="lazy"
-          >
-          <h5 class="light-gray">Product Name</h5>
-          <p class="light-blue">$20.00</p>
-          <a href="#" class="btn-primary"> View Product </a>
+          <a href="{{ all_products['clear-daily-soothing-uv-defense-spf-50'].url }}">
+            <img
+              src="{{ all_products['clear-daily-soothing-uv-defense-spf-50'].featured_image | img_url: '2048x' }}"
+              alt="{{ all_products['clear-daily-soothing-uv-defense-spf-50'].featured_image.alt | escape }}"
+              loading="lazy"
+            >
+          </a>
+          <a href="{{ all_products['clear-daily-soothing-uv-defense-spf-50'].url }}">
+            <h5 class="light-gray">{{ all_products['clear-daily-soothing-uv-defense-spf-50'].title }}</h5>
+          </a>
+          <p class="light-blue">{{ all_products['clear-daily-soothing-uv-defense-spf-50'].price | money }}</p>
+          <a href="{{ all_products['clear-daily-soothing-uv-defense-spf-50'].url }}" class="btn-primary">
+            View Product
+          </a>
         </div>
         <div class="product__widget">
-          <img
-            src="https://cdn.shopify.com/s/files/1/0727/8949/1929/files/Default_Product.webp?v=1741886224"
-            alt="Default Product"
-            loading="lazy"
-          >
-          <h5 class="light-gray">Product Name</h5>
-          <p class="light-blue">$20.00</p>
-          <a href="#" class="btn-primary"> View Product </a>
+          <a href="{{ all_products['skinceuticals-discoloration-defense'].url }}">
+            <img
+              src="{{ all_products['skinceuticals-discoloration-defense'].featured_image | img_url: '2048x' }}"
+              alt="{{ all_products['skinceuticals-discoloration-defense'].featured_image.alt | escape }}"
+              loading="lazy"
+            >
+          </a>
+          <a href="{{ all_products['skinceuticals-discoloration-defense'].url }}">
+            <h5 class="light-gray">{{ all_products['skinceuticals-discoloration-defense'].title }}</h5>
+          </a>
+          <p class="light-blue">{{ all_products['skinceuticals-discoloration-defense'].price | money }}</p>
+          <a href="{{ all_products['skinceuticals-discoloration-defense'].url }}" class="btn-primary"> View Product </a>
         </div>
         <div class="product__widget">
-          <img
-            src="https://cdn.shopify.com/s/files/1/0727/8949/1929/files/Default_Product.webp?v=1741886224"
-            alt="Default Product"
-            loading="lazy"
-          >
-          <h5 class="light-gray">Product Name</h5>
-          <p class="light-blue">$20.00</p>
-          <a href="#" class="btn-primary"> View Product </a>
+          <a href="{{ all_products['skinceuticals-glycolic-renewal-cleanser'].url }}">
+            <img
+              src="{{ all_products['skinceuticals-glycolic-renewal-cleanser'].featured_image | img_url: '2048x' }}"
+              alt="{{ all_products['skinceuticals-glycolic-renewal-cleanser'].featured_image.alt | escape }}"
+              loading="lazy"
+            >
+          </a>
+          <a href="{{ all_products['skinceuticals-glycolic-renewal-cleanser'].url }}">
+            <h5 class="light-gray">{{ all_products['skinceuticals-glycolic-renewal-cleanser'].title }}</h5>
+          </a>
+          <p class="light-blue">{{ all_products['skinceuticals-glycolic-renewal-cleanser'].price | money }}</p>
+          <a href="{{ all_products['skinceuticals-glycolic-renewal-cleanser'].url }}" class="btn-primary">
+            View Product
+          </a>
         </div>
         <div class="product__widget">
-          <img
-            src="https://cdn.shopify.com/s/files/1/0727/8949/1929/files/Default_Product.webp?v=1741886224"
-            alt="Default Product"
-            loading="lazy"
-          >
-          <h5 class="light-gray">Product Name</h5>
-          <p class="light-blue">$20.00</p>
-          <a href="#" class="btn-primary"> View Product </a>
-        </div>
-      </div>
-      <div class="product__container">
-        <div class="product__widget">
-          <img
-            src="https://cdn.shopify.com/s/files/1/0727/8949/1929/files/Default_Product.webp?v=1741886224"
-            alt="Default Product"
-            loading="lazy"
-          >
-          <h5 class="light-gray">Product Name</h5>
-          <p class="light-blue">$20.00</p>
-          <a href="#" class="btn-primary"> View Product </a>
-        </div>
-        <div class="product__widget">
-          <img
-            src="https://cdn.shopify.com/s/files/1/0727/8949/1929/files/Default_Product.webp?v=1741886224"
-            alt="Default Product"
-            loading="lazy"
-          >
-          <h5 class="light-gray">Product Name</h5>
-          <p class="light-blue">$20.00</p>
-          <a href="#" class="btn-primary"> View Product </a>
-        </div>
-        <div class="product__widget">
-          <img
-            src="https://cdn.shopify.com/s/files/1/0727/8949/1929/files/Default_Product.webp?v=1741886224"
-            alt="Default Product"
-            loading="lazy"
-          >
-          <h5 class="light-gray">Product Name</h5>
-          <p class="light-blue">$20.00</p>
-          <a href="#" class="btn-primary"> View Product </a>
-        </div>
-        <div class="product__widget">
-          <img
-            src="https://cdn.shopify.com/s/files/1/0727/8949/1929/files/Default_Product.webp?v=1741886224"
-            alt="Default Product"
-            loading="lazy"
-          >
-          <h5 class="light-gray">Product Name</h5>
-          <p class="light-blue">$20.00</p>
-          <a href="#" class="btn-primary"> View Product </a>
+          <a href="{{ all_products['skinceuticals-phloretin-cf'].url }}">
+            <img
+              src="{{ all_products['skinceuticals-phloretin-cf'].featured_image | img_url: '2048x' }}"
+              alt="{{ all_products['skinceuticals-phloretin-cf'].featured_image.alt | escape }}"
+              loading="lazy"
+            >
+          </a>
+          <a href="{{ all_products['skinceuticals-phloretin-cf'].url }}">
+            <h5 class="light-gray">{{ all_products['skinceuticals-phloretin-cf'].title }}</h5>
+          </a>
+          <p class="light-blue">{{ all_products['skinceuticals-phloretin-cf'].price | money }}</p>
+          <a href="{{ all_products['skinceuticals-phloretin-cf'].url }}" class="btn-primary"> View Product </a>
         </div>
       </div>
     </div>

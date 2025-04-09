@@ -145,7 +145,8 @@
 #categories .categories-product-list-container.skin-accessories-care {
   width: 100%;
 }
-#categories .button-container {
+#categories .button-container,
+#categories .add-to-cart-form {
   display: flex;
   flex-direction: column;
   gap: 10px;

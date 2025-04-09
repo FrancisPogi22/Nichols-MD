@@ -15,7 +15,6 @@ class ProductWidget {
   }
 
   bindEvents() {
-    // Binding filter events
     $("#priceRange").on("mouseup", () => {
       let t = $("#priceRange").val();
       $("#minPrice").text(t),
@@ -116,14 +115,34 @@ class ProductWidget {
           ),
           $("<button>", {
             type: "button",
-            class: "btn-primary AddToCart",
+            class: "btn-secondary AddToCart",
             id: "AddToCart",
-            click: (event) => this.addToCart(event, variantId), // Handle the Add to Cart click
-          }).text("Add to Cart")
+            click: (event) => this.addToCart(event, variantId),
+          }).text("Add to Cart"),
+          $("<button>", {
+            type: "button",
+            class: "btn-secondary checkout-btn",
+            click: (event) => this.checkoutProduct(event),
+          }).text("Checkout")
         ),
         $("<a>", { href: e, class: "btn-secondary" }).text(p)
       );
     return s.append(c, d, container), r.append(s), r;
+  }
+
+  async checkoutProduct(event) {
+    event.preventDefault();
+
+    let form = $(event.target).closest("form")[0];
+
+    if (!form) return;
+
+    await fetch("/cart/add", {
+      method: "POST",
+      body: new FormData(form),
+    });
+
+    window.location.href = "/checkout";
   }
 
   async addToCart(event, variantId) {
@@ -233,7 +252,6 @@ class ProductWidget {
       url: r,
       success: (e) => {
         let r = e.products;
-        // Apply the filters and sorting
         this.allProducts = this.filterAndSortProducts(r, t);
         this.totalPages = Math.ceil(
           this.allProducts.length / this.productsPerPage
@@ -249,7 +267,6 @@ class ProductWidget {
     });
   }
 
-  // Filters and sorts the products based on the selected criteria
   filterAndSortProducts(products, filters) {
     return products.filter((e) => {
       let r = parseFloat(e.variants[0].price),

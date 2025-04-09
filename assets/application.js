@@ -180,21 +180,41 @@ $(document).ready(() => {
       ".increase-quantity, .decrease-quantity",
       function (t) {
         t.preventDefault();
-        let a = $(this),
-          e = a.closest(".quantity-text").find(".quantity-value"),
-          n = a.data("line"),
-          i = parseInt(e.text(), 10),
-          c = a.hasClass("increase-quantity") ? i + 1 : Math.max(1, i - 1);
+
+        let $button = $(this),
+          $quantityValue = $button
+            .closest(".quantity-text")
+            .find(".quantity-value"),
+          lineIndex = $button.data("line"),
+          currentQuantity = parseInt($quantityValue.text(), 10),
+          newQuantity = $button.hasClass("increase-quantity")
+            ? currentQuantity + 1
+            : Math.max(1, currentQuantity - 1);
+
         $.ajax({
           url: "/cart/change.js",
           type: "POST",
           dataType: "json",
-          data: JSON.stringify({ line: parseInt(n, 10), quantity: c }),
+          data: JSON.stringify({
+            line: parseInt(lineIndex, 10),
+            quantity: newQuantity,
+          }),
           contentType: "application/json",
-          success(t) {
-            e.text(c), r(t), o();
+          success(updatedCart) {
+            // Instead of just updating quantity text, re-fetch the cart drawer HTML
+            $.ajax({
+              type: "GET",
+              url: "/cart",
+              dataType: "html",
+              success: function (cartHtml) {
+                const updatedCartDrawer = $(cartHtml)
+                  .find(".cart-drawer")
+                  .html();
+                $(".cart-drawer").html(updatedCartDrawer);
+              },
+            });
           },
-          error() {
+          error(xhr, status, error) {
             console.error("Error updating cart:", error);
           },
         });

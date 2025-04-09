@@ -24,7 +24,7 @@
         </div>
       </div>
       <div class="categories-product-main">
-        <div class="filtering-product-container">
+        {% comment %} <div class="filtering-product-container">
           <div class="filter-container">
             <p>Filter by Price ($)</p>
             <select name="priceFilter" id="priceFilter">
@@ -37,8 +37,8 @@
             </select>
           </div>
           <a class="btn-primary" id="filterBtn">Show Filtered Products</a>
-        </div>
-        <div class="categories-product-list-container">
+        </div> {% endcomment %}
+        <div class="categories-product-list-container hair">
           <div class="product-loader"></div>
           {% paginate collection.products by 9 %}
             <div class="categories-product-list">

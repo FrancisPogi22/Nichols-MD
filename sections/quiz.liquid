@@ -1,3 +1,4 @@
+{% comment %}  
 <link rel="preload" href="{{ 'quiz.css' | asset_url }}" as="style" onload="this.onload=null;this.rel='stylesheet'">
 <noscript>{{ 'quiz.css' | asset_url | stylesheet_tag }}</noscript>
 
@@ -65,11 +66,13 @@
           Rediscover your natural beauty with personalized treatments. From skincare rejuvenation to
           innovative procedures, experience transformative results and embrace a new level of confidence.
         </p>
-        {% comment %} <a href="#vf-696bwf7z-p-r" class="btn-primary">Take the Quiz</a> {% endcomment %}
+        <a href="#vf-696bwf7z-p-r" class="btn-primary">Take the Quiz</a> 
       </div>
     </div>
   </div>
 </section>
+
+{% endcomment %}
 
 {% schema %}
 {

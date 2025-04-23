@@ -131,8 +131,6 @@
     {{ 'application.css' | asset_url | stylesheet_tag }}
     {{ 'jquery.js' | asset_url | script_tag }}
     {{ 'application.js' | asset_url | script_tag }}
-    <!-- Lenis Smooth Scroll -->
-    <link rel="stylesheet" href="https://unpkg.com/lenis@1.1.9/dist/lenis.css">
   </head>
   <body>
     <div class="loader"></div>
@@ -143,44 +141,5 @@
     </main>
 
     {% sections 'footer-group' %}
-
-    <!-- Lenis Smooth Scroll -->
-    <script src="https://unpkg.com/lenis@1.1.9/dist/lenis.min.js"></script>
-
-    <script>
-      // LENIS SMOOTH SCROLL
-      let lenis;
-      if (Webflow.env('editor') === undefined) {
-        lenis = new Lenis({
-          lerp: 0.1,
-          wheelMultiplier: 0.7,
-          gestureOrientation: 'vertical',
-          normalizeWheel: false,
-          smoothTouch: false,
-        });
-        function raf(time) {
-          lenis.raf(time);
-          requestAnimationFrame(raf);
-        }
-        requestAnimationFrame(raf);
-      }
-
-      $('[data-lenis-start]').on('click', function () {
-        lenis.start();
-      });
-
-      $('[data-lenis-stop]').on('click', function () {
-        lenis.stop();
-      });
-
-      $('[data-lenis-toggle]').on('click', function () {
-        $(this).toggleClass('stop-scroll');
-        if ($(this).hasClass('stop-scroll')) {
-          lenis.stop();
-        } else {
-          lenis.start();
-        }
-      });
-    </script>
   </body>
 </html>

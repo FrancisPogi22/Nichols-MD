@@ -19,17 +19,55 @@ class PredictiveSearch {
 
   fetchResults() {
     let query = this.input.value.trim();
+
     if (query.length > 0) {
-      fetch(`/search/suggest.json?q=${encodeURIComponent(query)}&resources[type]=product`)
-        .then((res) => res.json())
-        .then((data) => {
-          if (data?.resources?.results?.products) {
-            this.displayResults(data.resources.results.products);
+      let allCollections = [];
+      const productLimit = 100; // Limit products per collection shown
+
+      const fetchAllCollections = (page = 1) => {
+        $.getJSON(`/collections.json?page=${page}&limit=50`, (response) => {
+          const collections = response.collections;
+
+          if (collections.length > 0) {
+            allCollections = allCollections.concat(collections);
+            fetchAllCollections(page + 1); // Fetch next page
           } else {
-            this.clearResults();
+            // All collections fetched
+            const matchedCollections = allCollections.filter(
+              (collection) =>
+                collection.title.toLowerCase().includes(query.toLowerCase()) ||
+                collection.handle.toLowerCase().includes(query.toLowerCase())
+            );
+
+            if (matchedCollections.length > 0) {
+              matchedCollections.forEach((collection) => {
+                // IMPORTANT: Add ?limit=250 here
+                $.getJSON(
+                  `/collections/${collection.handle}/products.json?limit=250`,
+                  (productsData) => {
+                    const limitedProducts = productsData.products.slice(
+                      0,
+                      productLimit
+                    );
+                    this.displayResults(limitedProducts, collection.title);
+                  }
+                ).fail((err) => {
+                  console.error(
+                    `Error fetching products for collection ${collection.title}:`,
+                    err
+                  );
+                });
+              });
+            } else {
+              this.clearResults();
+            }
           }
-        })
-        .catch((err) => console.error("Error fetching search results:", err));
+        }).fail((err) => {
+          console.error("Error fetching collections:", err);
+        });
+      };
+
+      fetchAllCollections();
     } else {
       this.clearResults();
     }
@@ -40,17 +78,21 @@ class PredictiveSearch {
     if (products && products.length > 0) {
       this.results.style.display = "block";
       products.forEach((product) => {
+        const imageUrl = product.images[0].src
+          ? product.images[0].src
+          : "path/to/placeholder-image.jpg";
+
         this.results.insertAdjacentHTML(
           "beforeend",
           `<div class="search-widget">
-            <a href="${product.url}">
-              <img src="${product.featured_image.url}" alt="${product.title}">
-              <div class="product-details">
-                <p>${product.title}</p>
-                <p>$${product.price}</p>
-              </div>
-            </a>
-          </div>`
+          <a href="${product.handle}">
+            <img src="${imageUrl}" alt="${product.title}">
+            <div class="product-details">
+              <p>${product.title}</p>
+              <p>$${product.variants[0].price}</p>
+            </div>
+          </a>
+        </div>`
         );
       });
     }
@@ -62,4 +104,7 @@ class PredictiveSearch {
   }
 }
 
-const predictiveSearch = new PredictiveSearch("searchInput", "search-details-con");
+const predictiveSearch = new PredictiveSearch(
+  "searchInput",
+  "search-details-con"
+);

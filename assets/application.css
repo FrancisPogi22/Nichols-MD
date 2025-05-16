@@ -800,8 +800,10 @@ input[type="range"]:focus::-ms-fill-upper {
 .product-container .product-widget img {
   width: 100%;
   height: 419px;
-  margin: 0 auto 29px;
   object-fit: cover;
+}
+.product-container .product-widget a:first-child {
+  margin: 0 auto 29px;
 }
 .shop-container {
   display: flex;
@@ -1116,12 +1118,34 @@ input[type="range"]:focus::-ms-fill-upper {
   }
 }
 @media screen and (max-width: 767px) {
+  #MainContent {
+    display: flex;
+    flex-direction: column;
+  }
+  #MainContent :is(.shopify-section):nth-child(1) {
+    order: 2;
+  }
+  #MainContent :is(.shopify-section):nth-child(2) {
+    order: 1;
+  }
+  #MainContent :is(.shopify-section):nth-child(3) {
+    order: 3;
+  }
+  #MainContent :is(.shopify-section):nth-child(4) {
+    order: 4;
+  }
+  #MainContent :is(.shopify-section):nth-child(5) {
+    order: 5;
+  }
+  #MainContent :is(.shopify-section):nth-child(6) {
+    order: 6;
+  }
   h1 {
     font-size: 40px;
   }
   h3,
   h4 {
-    font-size: 25px;
+    font-size: 22px;
   }
   h2 {
     font-size: 35px;
@@ -1135,7 +1159,8 @@ input[type="range"]:focus::-ms-fill-upper {
   }
   .btn-primary,
   .btn-secondary {
-    font-size: 14px;
+    font-size: 12px;
+    padding: 12px 16px;
   }
   #header .main-header-cotainer .btn-primary,
   #header .right-panel #customer_login_link,
@@ -1174,20 +1199,22 @@ input[type="range"]:focus::-ms-fill-upper {
   #footer .footer-container {
     flex-direction: column;
     padding: 60px 0;
-    gap: 50px;
-  }
-  .product-container {
-    grid-template-columns: 1fr;
+    gap: 30px;
   }
   .product-container .product-widget img {
     max-width: 500px;
-    height: 100%;
-    max-height: 250px;
+    height: 250px;
+  }
+  .product-container {
+    gap: 20px;
   }
   #skincare .sub-link-container {
     max-width: 100%;
     flex-direction: column;
     gap: 30px;
+  }
+  #shop .product-widget a:last-of-type {
+    font-size: 12px;
   }
   #skincare .wrapper {
     max-height: 70vh;
@@ -1197,7 +1224,7 @@ input[type="range"]:focus::-ms-fill-upper {
     font-size: 12px;
   }
   #footer .footer-logo {
-    width: 277px;
+    width: 150px;
   }
   #skincare .sub-link-container ul:last-of-type {
     max-width: 100%;

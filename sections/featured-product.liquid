@@ -1,4 +1,9 @@
-<link rel="preload" href="{{ 'featured-product.css' | asset_url }}" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<link
+  rel="preload"
+  href="{{ 'featured-product.css' | asset_url }}"
+  as="style"
+  onload="this.onload=null;this.rel='stylesheet'"
+>
 <noscript>{{ 'featured-product.css' | asset_url | stylesheet_tag }}</noscript>
 
 <section id="featured-product">
@@ -63,6 +68,12 @@
     "groups": ["header", "footer"]
   },
   "settings": [
+    {
+      "type": "checkbox",
+      "id": "isMobile",
+      "default": false,
+      "label": "Show in Mobile"
+    },
     {
       "type": "header",
       "content": "Lead In Text"

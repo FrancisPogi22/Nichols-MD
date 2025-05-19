@@ -6,7 +6,13 @@ class PredictiveSearch {
   }
 
   setupListeners() {
-    this.input.addEventListener("keyup", this.fetchResults.bind(this));
+    let debounceTimer;
+    this.input.addEventListener("keyup", () => {
+      clearTimeout(debounceTimer);
+      debounceTimer = setTimeout(() => {
+        this.fetchResults();
+      }, 300);
+    });
   }
 
   debounce(func, delay) {
@@ -22,7 +28,18 @@ class PredictiveSearch {
 
     if (query.length > 0) {
       let allCollections = [];
-      const productLimit = 100; // Limit products per collection shown
+      const productLimit = 100;
+      const uniqueProductsMap = new Map();
+
+      const normalize = (str) => str.toLowerCase().replace(/[^a-z0-9]/g, "");
+
+      const addUniqueProducts = (products) => {
+        products.forEach((product) => {
+          if (!uniqueProductsMap.has(product.id)) {
+            uniqueProductsMap.set(product.id, product);
+          }
+        });
+      };
 
       const fetchAllCollections = (page = 1) => {
         $.getJSON(`/collections.json?page=${page}&limit=50`, (response) => {
@@ -30,37 +47,60 @@ class PredictiveSearch {
 
           if (collections.length > 0) {
             allCollections = allCollections.concat(collections);
-            fetchAllCollections(page + 1); // Fetch next page
+            fetchAllCollections(page + 1);
           } else {
-            // All collections fetched
-            const matchedCollections = allCollections.filter(
-              (collection) =>
-                collection.title.toLowerCase().includes(query.toLowerCase()) ||
-                collection.handle.toLowerCase().includes(query.toLowerCase())
-            );
+            const search = normalize(query);
+
+            const matchedCollections = allCollections.filter((collection) => {
+              const title = normalize(collection.title);
+              const handle = normalize(collection.handle);
+              return title.includes(search) || handle.includes(search);
+            });
+
+            let collectionFetches = [];
 
             if (matchedCollections.length > 0) {
-              matchedCollections.forEach((collection) => {
-                // IMPORTANT: Add ?limit=250 here
-                $.getJSON(
-                  `/collections/${collection.handle}/products.json?limit=250`,
-                  (productsData) => {
-                    const limitedProducts = productsData.products.slice(
-                      0,
-                      productLimit
+              collectionFetches = matchedCollections.map((collection) => {
+                return $.getJSON(
+                  `/collections/${collection.handle}/products.json?limit=250`
+                )
+                  .then((productsData) => {
+                    addUniqueProducts(productsData.products);
+                  })
+                  .fail((err) => {
+                    console.error(
+                      `Error fetching products for collection ${collection.title}:`,
+                      err
                     );
-                    this.displayResults(limitedProducts, collection.title);
-                  }
-                ).fail((err) => {
-                  console.error(
-                    `Error fetching products for collection ${collection.title}:`,
-                    err
-                  );
-                });
+                  });
               });
-            } else {
-              this.clearResults();
             }
+
+            Promise.all(collectionFetches).then(() => {
+              $.getJSON(`/products.json?limit=250`, (productResponse) => {
+                const matchedProducts = productResponse.products.filter(
+                  (product) => {
+                    const title = normalize(product.title);
+                    return title.includes(search);
+                  }
+                );
+
+                addUniqueProducts(matchedProducts);
+
+                // Convert Map to Array and limit
+                const finalProducts = Array.from(
+                  uniqueProductsMap.values()
+                ).slice(0, productLimit);
+
+                if (finalProducts.length > 0) {
+                  this.displayResults(finalProducts, "Search Results");
+                } else {
+                  this.clearResults();
+                }
+              }).fail((err) => {
+                console.error("Error fetching products:", err);
+              });
+            });
           }
         }).fail((err) => {
           console.error("Error fetching collections:", err);
@@ -85,7 +125,7 @@ class PredictiveSearch {
         this.results.insertAdjacentHTML(
           "beforeend",
           `<div class="search-widget">
-          <a href="${product.handle}">
+          <a href="products/${product.handle}">
             <img src="${imageUrl}" alt="${product.title}">
             <div class="product-details">
               <p>${product.title}</p>

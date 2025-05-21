@@ -18,11 +18,11 @@
 <section id="page-header">
   <div class="wrapper">
     <div class="page-header-container">
-      <h1 class="white">What is your Skincare Product?</h1>
+      <h1 class="white">Prevent and Protect: Skincare for Fine Lines & Wrinkles in Oily Skin in Your 20s</h1>
       <div class="header__text">
-        <p class="white">{Add Skin Type}</p>
-        <p class="white">{Add Age}</p>
-        <p class="white">{Add Concern}</p>
+        <p class="white">Oily</p>
+        <p class="white">20s</p>
+        <p class="white">Fine Lines & Wrinkles</p>
       </div>
       <img
         src="https://cdn.shopify.com/s/files/1/0727/8949/1929/files/Flower.webp?v=1733414521"
@@ -38,45 +38,64 @@
     <div class="result__container">
       <div class="result__header__description">
         <p class="lead-in light-blue">Your results</p>
-        <h2>Lorem ipsum dolor sit amet</h2>
+        <h2>Balance Oil and Defend Against Early Aging Signs</h2>
         <p class="light-gray">
-          Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
-          Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+          Even in your 20s, oily skin is vulnerable to the first signs of aging. This NicholsMD skincare routine helps
+          smooth early fine lines, manage oil production, and protect your skin from environmental stress.
         </p>
       </div>
       <div class="result__first__row">
         <div class="result__description__container">
-          <p class="light-gray">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
-            dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex
-            ea commodo consequat.
-            <br>
-            <br>
-            Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
-            Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est
-            laborum
-            <br>
-            <br>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
-            dolore magna aliqua.
-          </p>
+          <p class="light-gray">Your Essential Skincare Set for Oily Skin:</p>
           <br>
           <br>
           <ul>
             <li>
               <p class="light-gray">
-                <strong>Lorem ipsum dolor sit amet</strong><br>
-                Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
-                Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est
-                laborum.
+                <strong>Clear Daily Soothing UV Defense SPF</strong><br>
+                Lightweight and oil-free, this sunscreen protects against UV damage without clogging pores or causing
+                shine.
               </p>
             </li>
             <li>
               <p class="light-gray">
-                <strong>Lorem ipsum dolor sit amet</strong><br>
-                Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
-                Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est
-                laborum.
+                <strong>AGE Interrupter</strong><br>
+                Combat early fine lines and support youthful skin with this powerful anti-aging cream that improves
+                firmness and texture.
+              </p>
+            </li>
+            <li>
+              <p class="light-gray">
+                <strong>Simply Clean Cleanser</strong><br>
+                Gently remove excess oil and impurities while keeping your skin clean, refreshed, and balanced.
+              </p>
+            </li>
+            <li>
+              <p class="light-gray">
+                <strong>Retinol 0.3 by SkinCeuticals</strong><br>
+                Encourage healthy cell turnover and reduce the appearance of early fine lines with this
+                beginner-strength retinol treatment.
+              </p>
+            </li>
+            <li>
+              <p class="light-gray">
+                <strong>P-Tiox</strong><br>
+                Strengthen the skin barrier and visibly improve elasticity with this peptide-rich serum designed to
+                smooth and firm.
+              </p>
+            </li>
+            <li>
+              <p class="light-gray">
+                <strong>Serum 10 by SkinCeuticals</strong><br>
+                Provide antioxidant defense and brighten the skin with this lightweight vitamin C serum formulated for
+                younger, oily skin.
+              </p>
+            </li>
+            <li>
+              <p class="light-gray">
+                <strong>A.G.E. Advanced Eye Complex</strong><br>
+                Target puffiness and early wrinkles around the eyes with this advanced eye cream that keeps the delicate
+                area bright and youthful.
               </p>
             </li>
           </ul>
@@ -130,9 +149,7 @@
             <h5 class="light-gray">{{ all_products['a-g-e-interrupter-advanced'].title }}</h5>
           </a>
           <p class="light-blue">{{ all_products['a-g-e-interrupter-advanced'].price | money }}</p>
-          <a href="{{ all_products['a-g-e-interrupter-advanced'].url }}" class="btn-primary">
-            View Product
-          </a>
+          <a href="{{ all_products['a-g-e-interrupter-advanced'].url }}" class="btn-primary"> View Product </a>
         </div>
         <div class="product__widget">
           <a href="{{ all_products['skinceuticals-simply-clean-cleanser'].url }}">
@@ -146,9 +163,7 @@
             <h5 class="light-gray">{{ all_products['skinceuticals-simply-clean-cleanser'].title }}</h5>
           </a>
           <p class="light-blue">{{ all_products['skinceuticals-simply-clean-cleanser'].price | money }}</p>
-          <a href="{{ all_products['skinceuticals-simply-clean-cleanser'].url }}" class="btn-primary">
-            View Product
-          </a>
+          <a href="{{ all_products['skinceuticals-simply-clean-cleanser'].url }}" class="btn-primary"> View Product </a>
         </div>
         <div class="product__widget">
           <a href="{{ all_products['skinceuticals-retinol-0-3'].url }}">
@@ -162,9 +177,7 @@
             <h5 class="light-gray">{{ all_products['skinceuticals-retinol-0-3'].title }}</h5>
           </a>
           <p class="light-blue">{{ all_products['skinceuticals-retinol-0-3'].price | money }}</p>
-          <a href="{{ all_products['skinceuticals-retinol-0-3'].url }}" class="btn-primary">
-            View Product
-          </a>
+          <a href="{{ all_products['skinceuticals-retinol-0-3'].url }}" class="btn-primary"> View Product </a>
         </div>
         <div class="product__widget">
           <a href="{{ all_products['skinceuticals-p-tiox'].url }}">
